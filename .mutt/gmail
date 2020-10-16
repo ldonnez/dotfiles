@@ -1,0 +1,29 @@
+set from = "lenny.donnez@gmail.com"
+set realname = "Lenny"
+set sendmail = "msmtp -a gmail"
+set folder = ~/.mail/gmail
+
+set spoolfile = +Inbox
+set mbox = +Inbox
+set postponed ="+[Gmail]/Drafts"
+set record = "+[Gmail]/Sent Mail"
+set trash  = "+[Gmail]/Deleted"
+
+set header_cache =~/.mutt/gmail/cache/headers
+set message_cachedir =~/.mutt/gmail/cache/bodies
+set certificate_file =~/.mutt/gmail/certificates
+
+set sort = reverse-threads
+set sort_aux = last-date-received
+
+macro index,pager S "<save-message>=[Gmail]/Spam<enter><enter>" "Report spam"
+macro index,pager d "<save-message>=[Gmail]/Bin<enter>" "Deleted"
+
+mailboxes  +Inbox \
+           +GitHub \
+           +"Code climate"\
+           +"[Gmail]/Sent Mail" \
+           +"[Gmail]/Drafts" \
+           +"[Gmail]/Spam" \
+           +"[Gmail]/Bin" \
+           +"[Gmail]/All Mail"

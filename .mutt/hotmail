@@ -1,0 +1,27 @@
+set from = "lenny_donnez@hotmail.com"
+set realname = "Lenny"
+set sendmail = "msmtp -a hotmail"
+
+set folder = ~/.mail/hotmail
+set spoolfile = +Inbox
+set mbox = +Inbox
+set postponed =+Drafts
+set record =+Sent
+
+set header_cache =~/.mutt/work/cache/headers
+set message_cachedir =~/.mutt/hotmail/cache/bodies
+set certificate_file =~/.mutt/hotmail/certificates
+
+set sort = reverse-threads
+set sort_aux = last-date-received
+
+macro index,pager S "<save-message>=Junk<enter><enter>" "Report spam"
+macro index,pager d "<save-message>=Deleted<enter>" "Deleted"
+macro index,pager y "<save-message>=Archive<enter>" "Archive"
+
+mailboxes +Inbox \
+          +Outbox \
+          +Sent \
+          +Drafts \
+          +Junk \
+          +Deleted

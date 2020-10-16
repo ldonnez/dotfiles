@@ -1,0 +1,63 @@
+# Compiled source #
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Packages #
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and databases #
+*.log
+#*.sql
+*.sqlite
+*.dump
+tags
+
+# OS generated files #
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Vim #
+*.swp
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+*~
+*.swo
+.swo
+
+# IDE files #
+nbproject
+.~lock.*
+.buildpath
+.idea
+.project
+.settings
+.tags.*
+tags.*
+tags
+.undodir
+
+# Rails #
+.ruby-version
+tmp/*
+
+# NODE #
+node_modules

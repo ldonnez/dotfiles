@@ -1,0 +1,26 @@
+set from = "lenny@pau.be"
+set realname = "Lenny"
+set sendmail = "msmtp -a work"
+
+set folder = ~/.mail/work
+set spoolfile = +Inbox
+set mbox = +Inbox
+set postponed = "+[Gmail]/Drafts"
+set record = "+[Gmail]/Sent Mail"
+set trash  = "+[Gmail]/Deleted"
+
+set header_cache =~/.mutt/work/cache/headers
+set message_cachedir =~/.mutt/work/cache/bodies
+set certificate_file =~/.mutt/work/certificates
+
+set sort = reverse-threads
+set sort_aux = last-date-received
+
+macro index,pager S "<save-message>=[Gmail]/Spam<enter><enter>" "Report spam"
+macro index,pager d "<save-message>=[Gmail]/Bin<enter>" "Deleted"
+
+mailboxes +Inbox \
+          +"[Gmail]/Drafts" \
+          +"[Gmail]/Sent Mail" \
+          +"[Gmail]/Bin" \
+          +"[Gmail]/All Mail"

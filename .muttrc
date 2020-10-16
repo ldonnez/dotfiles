@@ -1,0 +1,139 @@
+#Folder hooks
+folder-hook work 'source ~/.mutt/work'
+folder-hook gmail 'source ~/.mutt/gmail'
+folder-hook hotmail 'source ~/.mutt/hotmail'
+
+#Sources
+source ~/.mutt/gmail
+source ~/.mutt-alias
+
+# Rebind for neomutt
+bind index c noop
+bind index g noop
+
+#Key mappings
+macro index <f2> '<sync-mailbox><enter-command>source ~/.mutt/gmail<enter><change-folder>!<enter>'
+macro index <f3> '<sync-mailbox><enter-command>source ~/.mutt/work<enter><change-folder>!<enter>'
+macro index <f4> '<sync-mailbox><enter-command>source ~/.mutt/hotmail<enter><change-folder>!<enter>'
+macro index b '<enter-command>toggle sidebar_visible<enter><refresh>'
+macro pager b '<enter-command>toggle sidebar_visible<enter><redraw-screen>'
+macro pager \cb <pipe-entry>'urlview'<enter> 'Follow links with urlview'
+bind pager <up> previous-line #scroll inside the message rather than the index
+bind pager <down> next-line
+macro index O "!mbsync -a^M" "Update through mbsync"
+macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all messages as read"
+bind index gg       first-entry
+bind index G        last-entry
+bind index gr    group-reply          # reply to all recipients
+bind attach <return>    view-mailcap
+macro index,pager A "<pipe-message>abook --add-email-quiet<return>" "add the sender address to abook"
+#bind editor <Tab> complete-query
+bind index,pager \CP sidebar-prev
+bind index,pager \CN sidebar-next
+bind index,pager \CI sidebar-open
+set menu_scroll
+
+# Not much
+macro index <F8> \
+      "<enter-command>unset wait_key<enter><shell-escape>notmuch-mutt --prompt search<enter><change-folder-readonly>~/.cache/notmuch/mutt/results<enter>" \
+      "search mail (using notmuch)"
+macro index <F9> \
+          "<enter-command>unset wait_key<enter><pipe-message>notmuch-mutt  thread<enter><change-folder-readonly>~/.cache/notmuch/mutt/results<enter><enter-command>set wait_key<enter>" \
+          "search and reconstruct owning thread (using notmuch)"
+
+# Basic Options
+set wait_key = no        # shut up, mutt
+set mbox_type = Maildir  # mailbox type
+set timeout = 3          # idle time before scanning
+set mail_check = 0       # minimum time between scans
+unset move               # gmail does that
+set delete               # don't ask, just do
+unset confirmappend      # don't ask, just do!
+set quit                 # don't ask, just do!!
+unset mark_old           # read/new is good enough for me
+set beep_new             # bell on new mails
+set pipe_decode          # strip headers and eval mimes when piping
+set thorough_search # strip headers and eval mimes before searching
+set sleep_time = 0 # be fast
+auto_view text/html
+alternative_order text/plain text/enriched text/html
+set query_command= "abook --mutt-query '%s'"
+set editor = "nvim"
+set alias_file=~/.mutt-alias
+set pager_index_lines = 10
+set sendmail_wait = 0 # no please don't silently fail, email is important
+unset record
+unset markers # no ugly plus signs
+
+# Index View Options
+set date_format = "%d/%m"
+set index_format = "[%Z]  %D  %-20.20F  %s"
+set sort = "threads"                         # like gmail
+set strict_threads = "yes"
+set sort_aux = "reverse-last-date-received"  # like gmail
+set uncollapse_jump                        # don't collapse on an unread message
+set sort_re                                # thread based on regex
+set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
+set pipe_decode          # strip headers and eval mimes when piping
+set thorough_search      # strip headers and eval mimes before searching
+unset collapse_unread
+
+#Compos options
+set envelope_from                    # which from?
+set sig_dashes                       # dashes before sig
+set edit_headers                     # show headers when composing
+set fast_reply                       # skip to compose when replying
+set askcc                            # ask for CC:
+set fcc_attach                       # save attachments with the body
+unset mime_forward                   # forward attachments as part of body
+set forward_format = "Fwd: %s"       # format of subject when forwarding
+set forward_decode                   # decode when forwarding
+set attribution = "On %d, %n wrote:" # format of quoting header
+set reply_to                         # reply to Reply to: field
+set reverse_name                     # reply as whomever it was to
+set include                          # include message in replies
+set forward_quote                    # include message in forwards
+
+#Sidebar patch
+set sidebar_width=30
+set sidebar_visible=yes
+set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
+set sidebar_short_path
+set mail_check_stats
+
+# Colors
+color sidebar_new yellow default
+color   hdrdefault      green           black
+color normal    color253  color234 # mod
+color indicator     color230      color238
+color status        color101      color16
+color tree          color208        color234
+color signature     color102        color234
+color message       color253        color234
+color attachment  color117        color234
+color error         color30       color234
+color tilde         color130      color235
+color search       color100     default
+color markers      color138     default
+color quoted        color107     color234             # quoted text
+color quoted1       color66      color234
+color quoted2       color32      color234
+color quoted3       color30      color234
+color quoted4       color99      color234
+color quoted5       color36      color234
+color quoted6       color114     color234
+color quoted7       color109     color234
+color quoted8       color41      color234
+color index   color202  color234  ~F         # Flagged
+color index           color39       color234  ~N          # New
+color index           color39       color234  ~O
+color index           color229      color22  ~T         # Tagged
+color index           color240      color234  ~D         # Deleted
+# --- header ---
+color hdrdefault  color234     color234
+color header    color132      color233    '^date:'
+color header    color153      color233    '^(to|cc|bcc):'
+color header    color120      color233    '^from:'
+color header    color178      color233    '^subject:'
+color header      color31       color233    '^user-agent:'
+color header    color29       color233    '^reply-to:'

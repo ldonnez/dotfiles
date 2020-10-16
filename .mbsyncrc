@@ -1,0 +1,121 @@
+### GMAIL ###
+IMAPAccount gmail
+# Address to connect to
+Host imap.gmail.com
+AuthMechs LOGIN
+User lenny.donnez@gmail.com
+PassCmd "gpg -q --no-tty --for-your-eyes-only -d ~/.secrets/lenny.donnez@gmail.com.gpg"
+# To store the password in an encrypted file use PassCmd instead of Pass
+# PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.mailpass.gpg"
+#
+# Use SSL
+SSLType IMAPS
+SSLVersions TLSv1
+# The following line should work. If get certificate errors, uncomment the two following lines and read the "Troubleshooting" section.
+#CertificateFile /etc/ssl/certs/ca-certificates.crt
+#CertificateFile ~/.cert/imap.gmail.com.pem
+#CertificateFile ~/.cert/Equifax_Secure_CA.pem
+
+IMAPStore gmail-remote
+Account gmail
+
+MaildirStore gmail-local
+Subfolders Verbatim
+# The trailing "/" is important
+Path ~/.mail/gmail/
+Inbox ~/.mail/gmail/Inbox
+
+Channel gmail
+Master :gmail-remote:
+Slave :gmail-local:
+# Exclude everything under the internal [Gmail] folder, except the interesting folders
+#Patterns * ![Gmail]* "[Gmail]/Sent Mail" "[Gmail]/Starred" "[Gmail]/All Mail"
+# Or include everything
+Patterns * ![Gmail]* "[Gmail]/Sent Mail" "[Gmail]/Drafts" "[Gmail]/Bin" "[Gmail]/All Mail"
+# Automatically create missing mailboxes, both locally and on the server
+Create Both
+# Save the synchronization state files in the relevant directory
+SyncState *
+Expunge Both
+
+
+### WORK ###
+IMAPAccount work 
+# Address to connect to
+Host imap.gmail.com
+AuthMechs LOGIN
+User lenny@pau.be
+PassCmd "gpg -q --no-tty --for-your-eyes-only -d ~/.secrets/lenny@pau.be.gpg"
+# To store the password in an encrypted file use PassCmd instead of Pass
+# PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.mailpass.gpg"
+#
+# Use SSL
+SSLType IMAPS
+SSLVersions TLSv1
+# The following line should work. If get certificate errors, uncomment the two following lines and read the "Troubleshooting" section.
+#CertificateFile /etc/ssl/certs/ca-certificates.crt
+#CertificateFile ~/.cert/imap.gmail.com.pem
+#CertificateFile ~/.cert/Equifax_Secure_CA.pem
+
+IMAPStore work-remote
+Account work
+
+MaildirStore work-local
+Subfolders Verbatim
+# The trailing "/" is important
+Path ~/.mail/work/
+Inbox ~/.mail/work/Inbox
+
+Channel work
+Master :work-remote:
+Slave :work-local:
+# Exclude everything under the internal [Gmail] folder, except the interesting folders
+#Patterns * ![Gmail]* "[Gmail]/Sent Mail" "[Gmail]/Starred" "[Gmail]/All Mail"
+# Or include everything
+Patterns * ![Gmail]* "[Gmail]/Sent Mail" "[Gmail]/Drafts" "[Gmail]/Bin" "[Gmail]/All Mail"
+# Automatically create missing mailboxes, both locally and on the server
+Create Both
+# Save the synchronization state files in the relevant directory
+SyncState *
+Expunge Both
+
+### HOTMAIL ###
+IMAPAccount hotmail
+# Address to connect to
+Host imap-mail.outlook.com
+Port 993
+AuthMechs LOGIN
+User lenny_donnez@hotmail.com
+PassCmd "gpg -q --no-tty --for-your-eyes-only -d ~/.secrets/lenny_donnez@hotmail.com.gpg"
+# To store the password in an encrypted file use PassCmd instead of Pass
+# PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.mailpass.gpg"
+#
+# Use SSL
+SSLType IMAPS
+SSLVersions TLSv1
+# The following line should work. If get certificate errors, uncomment the two following lines and read the "Troubleshooting" section.
+#CertificateFile /etc/ssl/certs/ca-certificates.crt
+#CertificateFile ~/.cert/imap.gmail.com.pem
+#CertificateFile ~/.cert/Equifax_Secure_CA.pem
+
+IMAPStore hotmail-remote
+Account hotmail
+
+MaildirStore hotmail-local
+Subfolders Verbatim
+# The trailing "/" is important
+Path ~/.mail/hotmail/
+Inbox ~/.mail/hotmail/Inbox/
+
+Channel hotmail
+Master :hotmail-remote:
+Slave :hotmail-local:
+# Exclude everything under the internal [Gmail] folder, except the interesting folders
+#Patterns * ![Gmail]* "[Gmail]/Sent Mail" "[Gmail]/Starred" "[Gmail]/All Mail"
+# Or include everything
+Patterns *
+# Automatically create missing mailboxes, both locally and on the server
+Create Both
+# Save the synchronization state files in the relevant directory
+SyncState *
+Expunge Both
