@@ -116,6 +116,10 @@ export LANG=en_US.UTF-8
 export PATH=/usr/bin:$PATH
 export PATH=/usr/local/bin:$PATH
 export PATH=/usr/local/sbin:$PATH
+export PATH=$HOME/.local/bin:$PATH
+
+# NPM
+export PATH="$PATH:$HOME/.npm/bin"
 
 # GO
 export GO111MODULE=on
