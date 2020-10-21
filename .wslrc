@@ -1,1 +1,5 @@
-sudo service cron start
+#!/usr/bin/env bash
+
+if [ -z $(pgrep cron) ]; then
+  sudo service cron start
+fi
