@@ -11,6 +11,11 @@ source ~/.zsh/plugins/zsh-z.pugin.zsh
 # RBENV
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
+# WSL2
+if [[ -a ~/.wslrc ]]; then
+  source ~/.wslrc
+fi
+
 #*********************************************************************
 #
 #********* HISTORY ***************************************************
