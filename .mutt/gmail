@@ -24,6 +24,5 @@ mailboxes  +Inbox \
            +"Code climate"\
            +"[Gmail]/Sent Mail" \
            +"[Gmail]/Drafts" \
-           +"[Gmail]/Spam" \
            +"[Gmail]/Bin" \
            +"[Gmail]/All Mail"
