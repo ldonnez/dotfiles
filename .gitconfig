@@ -4,11 +4,9 @@
 [user]
 	name = Lenny
 	email = lenny.donnez@gmail.com
-[credential]
-	helper = osxkeychain
 [alias]
-  files = !git diff --name-only $(git merge-base HEAD \"$REVIEW_BASE\")
-  review = !nvim -p $(git files) +\"tabdo Gdiff $REVIEW_BASE\" +\"let g:gitgutter_diff_base = '$REVIEW_BASE'\"
-  reviewone = !nvim -p +\"tabdo Gdiff $REVIEW_BASE\" +\"let g:gitgutter_diff_base = '$REVIEW_BASE'\"
+	files = !git diff --name-only $(git merge-base HEAD \"$REVIEW_BASE\")
+	review = !nvim -p $(git files) +\"tabdo Gdiff $REVIEW_BASE\" +\"let g:gitgutter_diff_base = '$REVIEW_BASE'\"
+	reviewone = !nvim -p +\"tabdo Gdiff $REVIEW_BASE\" +\"let g:gitgutter_diff_base = '$REVIEW_BASE'\"
 [gpg]
 	program = gpg2
