@@ -3,3 +3,8 @@
 if [ -z $(pgrep cron) ]; then
   sudo service cron start
 fi
+
+if [ -z $(pgrep ssh-agent) ]; then
+  eval $(ssh-agent -s)
+  ssh-add
+fi
