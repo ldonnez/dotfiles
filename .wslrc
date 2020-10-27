@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 
-if [ -z $(pgrep cron) ]; then
+if [[ -z $(pgrep cron) ]]; then
   sudo service cron start
 fi
 
-if [ -z $(pgrep ssh-agent) ]; then
-  eval $(ssh-agent -s)
-  ssh-add
+if [[ -z $(pgrep sshd ) ]]; then
+  sudo service ssh start
 fi
+
+ssh-agent -k; eval $(ssh-agent -s)
+ssh-add
