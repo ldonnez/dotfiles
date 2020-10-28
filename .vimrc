@@ -213,7 +213,9 @@ let g:gitgutter_preview_win_floating = 0
 " URL: https://github.com/APZelos/blamer.nvim
 " Plugin: APZelos/blamer.nvim
 
-let g:blamer_enabled = 1
+if has("unix")
+  let g:blamer_enabled = 1
+endif
 
 "*******************************************************************************
 "
