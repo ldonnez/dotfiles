@@ -8,9 +8,10 @@ if [[ -z $(pgrep sshd ) ]]; then
   sudo service ssh start
 fi
 
-if [[ -z $TMUX ]]; then
-  killall ssh-agent; eval $(ssh-agent -s)
-  ssh-add
+if [ -z "$SSH_AUTH_SOCK" ]
+then
+   eval $(ssh-agent -s)
+   ssh-add
 fi
 
 function update_environment_from_tmux() {
