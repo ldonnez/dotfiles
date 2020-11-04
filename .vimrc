@@ -286,6 +286,7 @@ let $FZF_DEFAULT_COMMAND = 'ag --hidden --skip-vcs-ignores -l -g ""'
 nnoremap <C-p> :Files<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>w :Windows<CR>
+nnoremap <leader>g :GFiles?<CR>
 
 if has("unix")
   let g:fzf_layout = { 'window': { 'width': 0.4, 'height': 0.6, 'yoffset': 0.1, 'xoffset': 0.5, 'border': "sharp" } }
