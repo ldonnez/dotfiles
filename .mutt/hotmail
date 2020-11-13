@@ -8,9 +8,9 @@ set mbox = +Inbox
 set postponed =+Drafts
 set record =+Sent
 
-set header_cache =~/.mutt/work/cache/headers
-set message_cachedir =~/.mutt/hotmail/cache/bodies
-set certificate_file =~/.mutt/hotmail/certificates
+set header_cache =~/.mutt/cache/headers/hotmail
+set message_cachedir =~/.mutt/cache/bodies/hotmail
+set certificate_file =~/.mutt/certificates/hotmail
 
 set sort = reverse-threads
 set sort_aux = last-date-received

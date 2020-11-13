@@ -9,9 +9,9 @@ set postponed ="+[Gmail]/Drafts"
 set record = "+[Gmail]/Sent Mail"
 set trash  = "+[Gmail]/Deleted"
 
-set header_cache =~/.mutt/gmail/cache/headers
-set message_cachedir =~/.mutt/gmail/cache/bodies
-set certificate_file =~/.mutt/gmail/certificates
+set header_cache =~/.mutt/cache/headers/gmail
+set message_cachedir =~/.mutt/cache/bodies/gmail
+set certificate_file =~/.mutt/certificates/gmail
 
 set sort = reverse-threads
 set sort_aux = last-date-received
