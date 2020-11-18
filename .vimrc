@@ -289,7 +289,7 @@ nnoremap <leader>w :Windows<CR>
 nnoremap <leader>g :GFiles?<CR>
 
 if has("unix")
-  let g:fzf_layout = { 'window': { 'width': 0.4, 'height': 0.6, 'yoffset': 0.1, 'xoffset': 0.5, 'border': "sharp" } }
+  let g:fzf_layout = { 'window': { 'width': 0.7, 'height': 0.6, 'yoffset': 0.1, 'xoffset': 0.5, 'border': "sharp" } }
   let g:fzf_preview_window = ['down:60%']
 else
   let g:fzf_layout = { 'window': { 'width': 0.6, 'height': 0.3, 'yoffset': 0.1, 'xoffset': 0.6, 'border': "top" } }
