@@ -15,11 +15,14 @@ set quickview
 
 if has("unix")
  command! FZFfind :execute 'goto' fnameescape(term('ag --hidden --skip-vcs-ignores -l -g "" | fzf 2>/dev/tty'))
+ command! FZFfindInGit :execute 'goto' fnameescape(term('ag $(git rev-parse --show-toplevel) --hidden --skip-vcs-ignores -l -g "" | fzf 2>/dev/tty'))
 else
  command! FZFfind :execute 'goto' fnameescape(term('ag --hidden --skip-vcs-ignores -l -g "" | fzf'))
+ command! FZFfindInGit :execute 'goto' fnameescape(term('powershell ag $(git rev-parse --show-toplevel) --hidden --skip-vcs-ignores -l -g . | fzf'))
 endif
 
 nnoremap <c-f> :FZFfind<cr>
+nnoremap <c-g> :FZFfindInGit<cr>
 
 " This makes vifm perform file operations on its own instead of relying on
 " standard utilities like `cp`.  While using `cp` and alike is a more universal
