@@ -35,6 +35,7 @@ set wildmenu
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.jpg,*.png,.git/*,node_modules/*
 set signcolumn=auto
 set incsearch
+set hlsearch
 set shortmess+=aT
 set backupdir=$HOME/.vim/backup//
 set directory=$HOME/.vim/swap//
@@ -85,8 +86,8 @@ inoremap jj <esc>
 noremap <leader><space> :call DeleteTrailingWS()<CR>
 nnoremap <leader>ev :vsplit $MYVIMRC <cr>
 nnoremap <leader>sv :source $MYVIMRC <cr>
-vnoremap * y/\V<C-R>=escape(@",'/\')<CR><CR>
-
+"Use '*' in visual mode to search on visually selected text
+vnoremap * y/\V<C-R>=escape(@",'/\')<CR><CR> 
 "*******************************************************************************
 "
 "********* FUNCTIONS ***********************************************************
