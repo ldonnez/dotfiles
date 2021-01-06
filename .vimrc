@@ -83,21 +83,6 @@ nnoremap j gj
 nnoremap k gk
 inoremap jj <esc>
 noremap <leader><space> :call DeleteTrailingWS()<CR>
-nnoremap <leader>1 1gt
-nnoremap <leader>2 2gt
-nnoremap <leader>3 3gt
-nnoremap <leader>4 4gt
-nnoremap <leader>5 5gt
-nnoremap <leader>h :bp<CR>
-nnoremap <leader>l :bn<CR>
-nnoremap t0  :tabfirst<CR>
-nnoremap tl  :tabnext<CR>
-nnoremap th  :tabprev<CR>
-nnoremap t$  :tablast<CR>
-nnoremap tt  :tabedit<Space>
-nnoremap tm  :tabm<Space>
-nnoremap td  :tabclose<CR>
-nnoremap tn :tabnew<CR>
 nnoremap <leader>ev :vsplit $MYVIMRC <cr>
 nnoremap <leader>sv :source $MYVIMRC <cr>
 
