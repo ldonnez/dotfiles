@@ -85,6 +85,7 @@ inoremap jj <esc>
 noremap <leader><space> :call DeleteTrailingWS()<CR>
 nnoremap <leader>ev :vsplit $MYVIMRC <cr>
 nnoremap <leader>sv :source $MYVIMRC <cr>
+vnoremap * y/\V<C-R>=escape(@",'/\')<CR><CR>
 
 "*******************************************************************************
 "
@@ -137,7 +138,6 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'alvan/vim-closetag'
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-surround'
-Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'vimwiki/vimwiki'
@@ -354,16 +354,6 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
-
-"*******************************************************************************
-"
-"********* MULTICURSOR *********************************************************
-" URL: https://github.com/mg979/vim-visual-multi
-" Plugin: terryma/vim-multiple-cursors
-
-let g:VM_maps = {}
-let g:VM_maps['Find Under']         = '<C-n>'
-let g:VM_maps['Find Subword Under'] = '<C-n>'
 
 "*******************************************************************************
 "
