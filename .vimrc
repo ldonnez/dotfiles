@@ -151,6 +151,8 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'voldikss/vim-floaterm'
 Plug 'APZelos/blamer.nvim'
+Plug 'tpope/vim-dadbod'
+Plug 'kristijanhusak/vim-dadbod-ui'
 call plug#end()
 
 "*******************************************************************************
@@ -417,6 +419,14 @@ let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
 let g:tex_flavor = 'latex'
 let g:vimtex_compiler_progname = 'nvr'
 autocmd Filetype tex setl updatetime=1
+
+"*******************************************************************************
+"
+"********* vim-dadbod-ui *******************************************************
+" URL: https://github.com/kristijanhusak/vim-dadbod-ui
+" Plugin: kristijanhusak/vim-dadbod-ui
+
+let g:db_ui_save_location = '~/SynologyDrive/development/saved_queries'
 
 "*******************************************************************************
 "
