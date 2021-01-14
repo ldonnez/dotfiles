@@ -86,6 +86,7 @@ inoremap jj <esc>
 noremap <leader><space> :call DeleteTrailingWS()<CR>
 nnoremap <leader>ev :vsplit $MYVIMRC <cr>
 nnoremap <leader>sv :source $MYVIMRC <cr>
+tnoremap <C-[> <Esc>
 "Use '*' in visual mode to search on visually selected text
 vnoremap * y/\V<C-R>=escape(@",'/\')<CR><CR>
 "*******************************************************************************
