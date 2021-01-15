@@ -99,10 +99,6 @@ func! DeleteTrailingWS()
   exe "normal `z"
 endfunc
 
-func! BufferCount()
- return len(getbufinfo({'buflisted':1}))
-endfunc
-
 "*******************************************************************************
 "
 "********* PLUGINS *************************************************************
@@ -250,15 +246,12 @@ let g:lightline = {
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified', 'cocstatus']],
-      \   'right': [ [ 'lineinfo', 'buffercount' ],
-      \              [ 'percent' ],
-      \              [ 'fileformat', 'fileencoding', 'filetype' ] ]
+      \   'right': [ [ 'fileformat', 'fileencoding', 'filetype' ] ]
       \
       \ },
       \ 'component_function': {
       \   'gitbranch': 'fugitive#head',
-      \   'cocstatus': 'StatusDiagnostic',
-      \   'buffercount': 'BufferCount'
+      \   'cocstatus': 'StatusDiagnostic'
       \ },
       \ }
 
