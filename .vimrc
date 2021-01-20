@@ -89,6 +89,10 @@ nnoremap <leader>sv :source $MYVIMRC <cr>
 tnoremap <C-[> <Esc>
 "Use '*' in visual mode to search on visually selected text
 vnoremap * y/\V<C-R>=escape(@",'/\')<CR><CR>
+
+"Write :FormatJson in a .json file to format
+autocmd FileType json command! FormatJson :call FormatJson()
+
 "*******************************************************************************
 "
 "********* FUNCTIONS ***********************************************************
@@ -97,6 +101,10 @@ func! DeleteTrailingWS()
   exe "normal mz"
   %s/\s\+$//ge
   exe "normal `z"
+endfunc
+
+func! FormatJson()
+  exe "%!jq ."
 endfunc
 
 "*******************************************************************************
