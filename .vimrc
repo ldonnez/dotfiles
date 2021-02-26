@@ -182,6 +182,7 @@ let g:floaterm_autoclose = 2
 let g:floaterm_autohide = 0
 let g:floaterm_title = ""
 let g:floaterm_width = 0.7
+let g:floaterm_opener = "vsplit"
 
 autocmd FileType floaterm call s:floatermSettings()
 
