@@ -165,6 +165,9 @@ GPG_CONFIG_FILE="~/.gnupg/gpg-agent.conf"
 # GIT
 export REVIEW_BASE=develop
 
+# HOMEBREW
+export HOMEBREW_NO_AUTO_UPDATE=1
+
 #*********************************************************************
 #
 #********* AUTOLOADS *************************************************
