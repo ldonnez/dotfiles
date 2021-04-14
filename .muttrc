@@ -102,38 +102,27 @@ set sidebar_short_path
 set mail_check_stats
 
 # Colors
-color sidebar_new yellow default
-color   hdrdefault      green           black
-color normal    color253  color234 # mod
-color indicator     color230      color238
-color status        color101      color16
-color tree          color208        color234
-color signature     color102        color234
-color message       color253        color234
-color attachment  color117        color234
-color error         color30       color234
-color tilde         color130      color235
-color search       color100     default
-color markers      color138     default
-color quoted        color107     color234             # quoted text
-color quoted1       color66      color234
-color quoted2       color32      color234
-color quoted3       color30      color234
-color quoted4       color99      color234
-color quoted5       color36      color234
-color quoted6       color114     color234
-color quoted7       color109     color234
-color quoted8       color41      color234
-color index   color202  color234  ~F         # Flagged
-color index           color39       color234  ~N          # New
-color index           color39       color234  ~O
-color index           color229      color22  ~T         # Tagged
-color index           color240      color234  ~D         # Deleted
-# --- header ---
-color hdrdefault  color234     color234
-color header    color132      color233    '^date:'
-color header    color153      color233    '^(to|cc|bcc):'
-color header    color120      color233    '^from:'
-color header    color178      color233    '^subject:'
-color header      color31       color233    '^user-agent:'
-color header    color29       color233    '^reply-to:'
+color normal		default default                                                        # default colours
+color index		brightblue default ~N                                                    # new messages
+color index		red default ~F                                                           # flagged messages
+color index		blue default ~T                                                          # tagged messages
+color index		brightred default ~D                                                     # deleted messages
+color body		brightgreen default         (https?|ftp)://[\-\.+,/%~_:?&=\#a-zA-Z0-9]+  # links
+color body		brightgreen default         [\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+          # email-addresses
+color attachment	magenta default                                                      # attachments
+color signature		brightwhite default                                                  # sigs
+color search		brightred black                                                        # highlight results
+color indicator		black cyan                                                           # currently highlighted message
+color error		red default                                                              # error messages
+color status		white brightblack                                                      # status line
+color tree		white default                                                            # thread tree arrows
+color tilde		cyan default                                                             # blank line padding
+color hdrdefault	brightblue default                                                   # default headers
+color header		cyan default "^From:"
+color header	 	cyan default "^Subject:"
+color quoted		cyan default                                                           # quote colours
+color quoted1		brightcyan default
+color quoted2		blue default
+color quoted3		green default
+color quoted4		yellow default
+color quoted5		red default
