@@ -90,6 +90,8 @@ tnoremap <C-[> <Esc>
 "Use '*' in visual mode to search on visually selected text
 vnoremap * y/\V<C-R>=escape(@",'/\')<CR><CR>
 
+command! BufOnly execute '%bdelete|edit #|normal `"'
+
 "Write :FormatJson in a .json file to format
 autocmd FileType json command! FormatJson :call FormatJson()
 
