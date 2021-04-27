@@ -93,14 +93,6 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS"\
 #
 #********* ALIASES ***************************************************
 
-alias_ssh() {
-  echo -e "\033]11;#336699\a"
-  'ssh' $@
-  echo -ne "\033]110;\007\033]111;\007"
-}
-
-alias ssh=alias_ssh
-
 alias reload="source ~/.zshrc"
 alias vi="nvim"
 alias be="bundle exec"
@@ -176,6 +168,11 @@ export REVIEW_BASE=develop
 
 # HOMEBREW
 export HOMEBREW_NO_AUTO_UPDATE=1
+
+# NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 #*********************************************************************
 #
