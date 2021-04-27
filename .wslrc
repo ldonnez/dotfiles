@@ -13,11 +13,3 @@ then
    eval $(ssh-agent -s)
    ssh-add
 fi
-
-function update_environment_from_tmux() {
-  if [ -n "${TMUX}" ]; then
-    eval "$(tmux show-environment -s)"
-  fi
-}
-
-add-zsh-hook precmd update_environment_from_tmux

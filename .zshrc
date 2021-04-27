@@ -15,6 +15,15 @@ if [[ -a ~/.wslrc ]]; then
   source ~/.wslrc
 fi
 
+# TMUX
+function update_environment_from_tmux() {
+  if [ -n "${TMUX}" ]; then
+    eval "$(tmux show-environment -s)"
+  fi
+}
+
+add-zsh-hook precmd update_environment_from_tmux
+
 #*********************************************************************
 #
 #********* HISTORY ***************************************************
