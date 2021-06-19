@@ -153,13 +153,25 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'airblade/vim-gitgutter'
 Plug 'lervag/vimtex'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'voldikss/vim-floaterm'
 Plug 'APZelos/blamer.nvim'
 Plug 'tpope/vim-dadbod'
 Plug 'kristijanhusak/vim-dadbod-ui'
+Plug 'pantharshit00/vim-prisma'
+if !has("nvim")
+  Plug 'voldikss/vim-floaterm'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+endif
+if has("nvim")
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'hrsh7th/nvim-compe'
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'jose-elias-alvarez/null-ls.nvim'
+  Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'kyazdani42/nvim-tree.lua'
+endif
 call plug#end()
 
 "*******************************************************************************
@@ -176,24 +188,43 @@ endif
 " URL: https://github.com/voldikss/vim-floaterm
 " Plugin: voldikss/vim-floaterm
 
-function s:floatermSettings()
-    tnoremap <silent> <buffer> <C-[> <C-\><C-n>:FloatermKill!<CR>
-endfunction
+if !has('nvim')
+  function s:floatermSettings()
+      tnoremap <silent> <buffer> <C-[> <C-\><C-n>:FloatermKill!<CR>
+  endfunction
 
-let g:floaterm_autoclose = 2
-let g:floaterm_autohide = 0
-let g:floaterm_title = ""
-let g:floaterm_width = 0.7
-let g:floaterm_opener = "vsplit"
+  let g:floaterm_autoclose = 2
+  let g:floaterm_autohide = 0
+  let g:floaterm_title = ""
+  let g:floaterm_width = 0.7
+  let g:floaterm_opener = "vsplit"
 
-autocmd FileType floaterm call s:floatermSettings()
+  autocmd FileType floaterm call s:floatermSettings()
+endif
 
 "*******************************************************************************
 "
 "********* VIFM ****************************************************************
+if !has("nvim")
+  nnoremap <silent> <C-e> :FloatermNew vifm <CR>
+endif
 
-nnoremap <silent> <C-e> :FloatermNew vifm <CR>
+"*******************************************************************************
+"
+"********* NVIM-TREE ************************************************************
+" URL: https://github.com/kyazdani42/nvim-tree.lua
+" Plugin: kyazdani42/nvim-tree.lua
 
+if has("nvim")
+  nnoremap <silent> <C-e> :NvimTreeToggle<CR>
+  nnoremap <leader>n :NvimTreeFindFile<CR>
+  let g:nvim_tree_show_icons = {
+    \ 'git': 0,
+    \ 'folders': 0,
+    \ 'files': 0,
+    \ 'folder_arrows': 0,
+    \ }
+endif
 "*******************************************************************************
 "
 "********* GIT GUTTER **********************************************************
@@ -244,7 +275,7 @@ call matchadd('ColorColumn', '\%81v', 100) "show when line goes over 80 lines
 " URL: https://github.com/sheerun/vim-polyglot
 " Plugin: sheerun/vim-polyglot
 
-"let g:polyglot_disabled = ['latex']
+"let g:polyglot_disabled = ['latex', 'typescript', 'typescriptreact']
 
 "*******************************************************************************
 "
@@ -316,50 +347,52 @@ let g:fzf_colors =
 " URL: https://github.com/neoclide/coc.nvim
 " Plugin: neoclide/coc.nvim
 
-let g:coc_global_extensions = [
-    \ 'coc-json',
-    \ 'coc-tsserver',
-    \ 'coc-html',
-    \ 'coc-emmet',
-    \ 'coc-eslint',
-    \ 'coc-prettier',
-    \ 'coc-css'
-\ ]
+if !has('nvim')
+  let g:coc_global_extensions = [
+      \ 'coc-json',
+      \ 'coc-tsserver',
+      \ 'coc-html',
+      \ 'coc-emmet',
+      \ 'coc-eslint',
+      \ 'coc-prettier',
+      \ 'coc-css'
+  \ ]
 
-autocmd CursorHold * silent call CocActionAsync('highlight')
+  autocmd CursorHold * silent call CocActionAsync('highlight')
 
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
+  command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
-nmap <leader>qf  <Plug>(coc-fix-current)
-nmap <silent> gd <Plug>(coc-definition)
-nmap <leader>rn <Plug>(coc-rename)
-nmap <silent> gr <Plug>(coc-references)
-nnoremap <silent> <leader>cR  :<C-u>CocRestart<CR>
-nnoremap <silent> <leader>cc  :<C-u>CocList commands<cr>
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-nmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>ac  <Plug>(coc-codeaction)
+  nmap <leader>qf  <Plug>(coc-fix-current)
+  nmap <silent> gd <Plug>(coc-definition)
+  nmap <leader>rn <Plug>(coc-rename)
+  nmap <silent> gr <Plug>(coc-references)
+  nnoremap <silent> <leader>cR  :<C-u>CocRestart<CR>
+  nnoremap <silent> <leader>cc  :<C-u>CocList commands<cr>
+  nnoremap <silent> K :call <SID>show_documentation()<CR>
+  nmap <leader>a  <Plug>(coc-codeaction-selected)
+  nmap <leader>ac  <Plug>(coc-codeaction)
 
-function! StatusDiagnostic() abort
-  let info = get(b:, 'coc_diagnostic_info', {})
-  if empty(info) | return '' | endif
-  let msgs = []
-  if get(info, 'error', 0)
-    call add(msgs, 'E' . info['error'])
-  endif
-  if get(info, 'warning', 0)
-    call add(msgs, 'W' . info['warning'])
-  endif
-  return join(msgs, ' '). ' ' . get(g:, 'coc_status', '')
-endfunction
+  function! StatusDiagnostic() abort
+    let info = get(b:, 'coc_diagnostic_info', {})
+    if empty(info) | return '' | endif
+    let msgs = []
+    if get(info, 'error', 0)
+      call add(msgs, 'E' . info['error'])
+    endif
+    if get(info, 'warning', 0)
+      call add(msgs, 'W' . info['warning'])
+    endif
+    return join(msgs, ' '). ' ' . get(g:, 'coc_status', '')
+  endfunction
 
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
+  function! s:show_documentation()
+    if (index(['vim','help'], &filetype) >= 0)
+      execute 'h '.expand('<cword>')
+    else
+      call CocAction('doHover')
+    endif
+  endfunction
+endif
 
 "*******************************************************************************
 "
@@ -441,3 +474,10 @@ autocmd FileType mail set noautoindent |
       \ setlocal textwidth=72 |
       \ setlocal nonumber |
       \ setlocal spell spelllang=nl,en_us
+
+if has("nvim")
+lua << EOF
+  require"ld/lsp"
+  require"ld/treesitter"
+EOF
+endif
