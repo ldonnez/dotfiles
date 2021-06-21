@@ -1,5 +1,5 @@
 local global = {}
-local home    = os.getenv("HOME")
+local home = vim.fn.getenv("HOME")
 
 function global:load_variables()
   self.home = home
