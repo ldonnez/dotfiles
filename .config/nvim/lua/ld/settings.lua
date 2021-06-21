@@ -42,6 +42,7 @@ vim.opt.directory = global.home .. "/.config/nvim/swap//"
 vim.opt.undodir = global.home .. "/.config/nvim/undo//"
 vim.opt.backupskip = "/tmp/*"
 
+vim.opt.guifont = "Hack:h16"
 vim.cmd[[au TermOpen * setlocal nonumber list]]
 vim.cmd[[
   autocmd FileType mail set noautoindent | setlocal nosmartindent | setlocal textwidth=72 | setlocal nonumber
