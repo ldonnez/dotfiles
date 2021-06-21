@@ -43,6 +43,11 @@ vim.opt.undodir = global.home .. "/.config/nvim/undo//"
 vim.opt.backupskip = "/tmp/*"
 
 vim.opt.guifont = "Hack:h16"
+
+if vim.fn.getenv('TERM_PROGRAM') ~= 'Apple_Terminal' then
+  vim.opt.termguicolors = true
+end
+
 vim.cmd[[au TermOpen * setlocal nonumber list]]
 vim.cmd[[
   autocmd FileType mail set noautoindent | setlocal nosmartindent | setlocal textwidth=72 | setlocal nonumber
