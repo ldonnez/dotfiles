@@ -1,4 +1,5 @@
 local lspconfig = require"lspconfig"
+local utils = require"ld.lsp.utils"
 
 local eslint = {
   lintCommand = "eslint_d -f unix --stdin --stdin-filename ${INPUT}",
@@ -15,6 +16,7 @@ local prettier = {
 
 lspconfig.efm.setup {
     on_attach = function(client)
+        utils.on_attach(client)
         client.resolved_capabilities.document_formatting = true
         if client.resolved_capabilities.document_formatting then
           vim.cmd("command -buffer Formatting lua vim.lsp.buf.formatting()")
