@@ -97,6 +97,7 @@ alias reload="source ~/.zshrc"
 alias vi="nvim"
 alias be="bundle exec"
 alias ghetto='ruby -e "print File.open('"'/usr/share/dict/words'"').read.lines.reject{|w| w.length < 3 || 10 < w.length}.sample(4).map{|w| w.strip! && w.downcase}.join('"'-'"')"'
+alias radio1='mplayer http://icecast.vrtcdn.be/radio1-high.mp3 '
 
 # GIT ALIASES
 alias gcl='git clone'
