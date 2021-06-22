@@ -1,6 +1,6 @@
 vim.api.nvim_set_keymap('n', '<C-p>', ':Files<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>b', ':Buffers<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>g', ':GFiles<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>g', ':GFiles?<CR>', { noremap = true, silent = true })
 
 vim.cmd[[let $FZF_DEFAULT_COMMAND = 'ag --hidden --skip-vcs-ignores -l -g ""']]
 
