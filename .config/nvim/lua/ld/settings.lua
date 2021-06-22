@@ -48,6 +48,10 @@ if vim.fn.getenv('TERM_PROGRAM') ~= 'Apple_Terminal' then
   vim.opt.termguicolors = true
 end
 
+if vim.fn.isdirectory(global.backup_dir) ~= 1 then
+  vim.fn.mkdir(global.backup_dir, "p")
+end
+
 vim.cmd[[au TermOpen * setlocal nonumber list]]
 vim.cmd[[
   autocmd FileType mail set noautoindent | setlocal nosmartindent | setlocal textwidth=72 | setlocal nonumber
