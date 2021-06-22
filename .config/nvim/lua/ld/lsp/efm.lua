@@ -19,7 +19,6 @@ lspconfig.efm.setup {
         utils.on_attach(client)
         client.resolved_capabilities.document_formatting = true
         if client.resolved_capabilities.document_formatting then
-          vim.cmd("command -buffer Formatting lua vim.lsp.buf.formatting()")
           vim.cmd("autocmd BufWritePost <buffer> lua vim.lsp.buf.formatting()")
         end
     end,
