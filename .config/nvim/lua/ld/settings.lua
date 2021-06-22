@@ -37,9 +37,9 @@ vim.opt.undofile = true
 vim.opt.backup = true
 vim.opt.writebackup = true
 vim.opt.swapfile = true
-vim.opt.backupdir = global.home .. "/.config/nvim/backup//"
-vim.opt.directory = global.home .. "/.config/nvim/swap//"
-vim.opt.undodir = global.home .. "/.config/nvim/undo//"
+vim.opt.backupdir = global.backup_dir .. "//"
+vim.opt.directory = global.swap_dir .. "//"
+vim.opt.undodir = global.undo_dir .. "//"
 vim.opt.backupskip = "/tmp/*"
 
 vim.opt.guifont = "Hack:h16"

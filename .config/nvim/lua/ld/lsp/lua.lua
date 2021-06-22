@@ -12,8 +12,7 @@ else
   print("Unsupported system for sumneko")
 end
 
--- set the path to the sumneko installation; if you previously installed via the now deprecated :LspInstall, use
-local sumneko_root_path = global.home .. "/.config/nvim/cache/lua-language-server"
+local sumneko_root_path = global.cache_dir .. "/lua-language-server"
 local sumneko_binary = sumneko_root_path.."/bin/"..system_name.."/lua-language-server"
 
 local runtime_path = vim.split(package.path, ';')
