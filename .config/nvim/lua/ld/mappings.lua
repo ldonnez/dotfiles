@@ -8,3 +8,4 @@ vim.api.nvim_set_keymap('n', '<leader><space>', [[:%s/\s\+$//<CR>]], { noremap =
 vim.api.nvim_set_keymap('v', '*', [[y/\V<C-R>=escape(@",'/\')<CR><CR>]], { noremap = true, silent = true })
 
 vim.cmd[[command! BufOnly execute '%bdelete|edit #|normal `"']]
+vim.cmd[[autocmd FileType json command! Format :exe "%!jq ."]]
