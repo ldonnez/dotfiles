@@ -21,7 +21,6 @@ require('packer').startup(function()
   use 'mattn/emmet-vim'
   use 'jiangmiao/auto-pairs'
   use 'alvan/vim-closetag'
-  use 'joshdick/onedark.vim'
   use 'tpope/vim-surround'
   use 'itchyny/lightline.vim'
   use 'vimwiki/vimwiki'
