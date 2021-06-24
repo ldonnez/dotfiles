@@ -8,7 +8,7 @@ vim.cmd([[let $FZF_DEFAULT_COMMAND = 'ag --path-to-ignore ]] .. global.home_dir 
 
 vim.g.fzf_layout = { window = { width = 0.7, height = 0.6, yoffset = 0.1, xoffset = 0.5, border = "sharp" } }
 
-if vim.fn.has('win32') == 0 then
+if not global.is_windows then
   vim.g.fzf_preview_window = 'down:60%'
 else
   vim.g.fzf_preview_window = {}

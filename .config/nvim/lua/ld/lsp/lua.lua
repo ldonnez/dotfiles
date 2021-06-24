@@ -2,11 +2,11 @@ local global = require"ld.global"
 local utils = require"ld.lsp.utils"
 
 local system_name
-if vim.fn.has("mac") == 1 then
+if global.is_mac then
   system_name = "macOS"
-elseif vim.fn.has("unix") == 1 then
+elseif global.is_unix then
   system_name = "Linux"
-elseif vim.fn.has('win32') == 1 then
+elseif global.is_windows then
   system_name = "Windows"
 else
   print("Unsupported system for sumneko")

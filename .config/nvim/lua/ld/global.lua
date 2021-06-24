@@ -9,6 +9,9 @@ function global:load_variables()
   self.undo_dir = config .. "/undo"
   self.swap_dir = config .. "/swap"
   self.cache_dir = config .. "/cache"
+  self.is_windows = vim.fn.has('win32') == 1
+  self.is_unix = vim.fn.has('unix') == 1
+  self.is_mac = vim.fn.has('mac') == 1
 end
 
 global:load_variables()
