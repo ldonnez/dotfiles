@@ -1,8 +1,10 @@
+local global = require "ld.global"
+
 vim.api.nvim_set_keymap('n', '<C-p>', ':Files<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>b', ':Buffers<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>g', ':GFiles?<CR>', { noremap = true, silent = true })
 
-vim.cmd[[let $FZF_DEFAULT_COMMAND = 'ag --hidden --skip-vcs-ignores -l -g ""']]
+vim.cmd([[let $FZF_DEFAULT_COMMAND = 'ag --path-to-ignore ]] .. global.home_dir .. [[/.agignore --hidden --skip-vcs-ignores -l -g ""']])
 
 vim.g.fzf_layout = { window = { width = 0.7, height = 0.6, yoffset = 0.1, xoffset = 0.5, border = "sharp" } }
 
