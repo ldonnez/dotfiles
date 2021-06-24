@@ -1,12 +1,5 @@
-
-local function get_cmd()
-  if vim.fn.has('win32') == 1 then
-    return { "yaml-language-server.cmd", "--stdio" }
-  else
-    return { "yaml-language-server", "--stdio" }
-  end
-end
+local utils = require"ld.lsp.utils"
 
 require'lspconfig'.yamlls.setup{
-  cmd = get_cmd()
+  cmd = utils.get_cmd_executable("yaml-language-server")
 }

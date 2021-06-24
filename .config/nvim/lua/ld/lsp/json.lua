@@ -1,15 +1,8 @@
 local lspconfig = require"lspconfig"
-
-local function get_cmd()
-  if vim.fn.has('win32') == 1 then
-    return { "vscode-json-language-server.cmd", "--stdio" }
-  else
-    return { "vscode-json-language-server", "--stdio" }
-  end
-end
+local utils = require"ld.lsp.utils"
 
 lspconfig.jsonls.setup {
-    cmd = get_cmd(),
+    cmd = utils.get_cmd_executable("vscode-json-language-server"),
     commands = {
       Format = {
         function()

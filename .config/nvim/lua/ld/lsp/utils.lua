@@ -1,3 +1,5 @@
+local global = require("ld.global")
+
 local utils = {}
 
 function utils.buf_set_keymap(...)
@@ -6,6 +8,14 @@ end
 
 function utils.buf_set_option(...)
   vim.api.nvim_buf_set_option(vim.bufnr, ...)
+end
+
+function utils.get_cmd_executable(lsp_executable)
+  if global.is_windows then
+    return { lsp_executable .. ".cmd", "--stdio" }
+  else
+    return { lsp_executable, "--stdio" }
+  end
 end
 
 function utils.on_attach(client, bufnr)
