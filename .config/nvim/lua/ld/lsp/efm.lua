@@ -10,8 +10,9 @@ local eslint = {
   formatStdin = true
 }
 local prettier = {
-    formatCommand = "prettier ${--config-precedence:configPrecedence} --stdin --stdin-filepath ${INPUT}",
-    formatStdin = true
+    formatCommand = './node_modules/.bin/prettier --stdin --stdin-filepath ${INPUT}',
+    formatStdin = true,
+    rootMarkers = {'package.json'}
 }
 
 local efm_root_markers = { 'package.json', '.git/' }
