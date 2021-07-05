@@ -22,7 +22,7 @@ lspconfig.efm.setup {
         utils.on_attach(client)
         client.resolved_capabilities.document_formatting = true
         if client.resolved_capabilities.document_formatting then
-          vim.cmd("autocmd BufWritePost <buffer> lua vim.lsp.buf.formatting()")
+          utils.buf_set_keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", { noremap=true, silent=true })
         end
     end,
     root_dir = function()
