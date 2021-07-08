@@ -30,7 +30,7 @@ lspconfig.efm.setup {
     end,
     init_options = {
         documentFormatting = true,
-        codeAction = true
+        codeAction = false
     },
     settings = {
         languages = {

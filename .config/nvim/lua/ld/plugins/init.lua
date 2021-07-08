@@ -35,6 +35,7 @@ require('packer').startup(function()
   use 'kristijanhusak/vim-dadbod-ui'
   use 'pantharshit00/vim-prisma'
   use 'dhruvasagar/vim-table-mode'
+  use 'jose-elias-alvarez/null-ls.nvim'
   use {'jose-elias-alvarez/nvim-lsp-ts-utils', requires = {'nvim-lua/plenary.nvim' }}
   use 'kyazdani42/nvim-tree.lua'
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }

@@ -1,6 +1,12 @@
 local lspconfig = require"lspconfig"
 local utils = require"ld.lsp.utils"
 
+require("null-ls").setup {
+    on_attach = function(client)
+      client.resolved_capabilities.document_formatting = false
+    end
+}
+
 lspconfig.tsserver.setup {
     on_attach = function(client, bufnr)
         -- disable tsserver formatting if you plan on formatting via null-ls
@@ -15,7 +21,7 @@ lspconfig.tsserver.setup {
             import_all_timeout = 5000, -- ms
 
             -- eslint
-            eslint_enable_code_actions = false,
+            eslint_enable_code_actions = true,
             eslint_enable_disable_comments = true,
             eslint_bin = "eslint_d",
             eslint_config_fallback = nil,
