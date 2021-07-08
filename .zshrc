@@ -99,6 +99,10 @@ alias be="bundle exec"
 alias ghetto='ruby -e "print File.open('"'/usr/share/dict/words'"').read.lines.reject{|w| w.length < 3 || 10 < w.length}.sample(4).map{|w| w.strip! && w.downcase}.join('"'-'"')"'
 alias radio1='mplayer http://icecast.vrtcdn.be/radio1-high.mp3 '
 
+if [ $(uname) = "Darwin" ]; then
+  alias sleepnow="pmset sleepnow"
+fi
+
 # GIT ALIASES
 alias gcl='git clone'
 alias ga='git add'
