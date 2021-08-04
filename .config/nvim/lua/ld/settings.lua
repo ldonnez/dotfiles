@@ -41,8 +41,8 @@ vim.opt.backupdir = global.backup_dir .. "//"
 vim.opt.directory = global.swap_dir .. "//"
 vim.opt.undodir = global.undo_dir .. "//"
 vim.opt.backupskip = "/tmp/*"
-
 vim.opt.guifont = "Hack:h16"
+vim.opt.autoread = true
 
 if vim.fn.getenv('TERM_PROGRAM') ~= 'Apple_Terminal' then
   vim.opt.termguicolors = true
