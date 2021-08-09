@@ -24,9 +24,7 @@ lspconfig.efm.setup {
           utils.buf_set_keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", { noremap=true, silent=true })
         end
     end,
-    root_dir = function()
-        return vim.fn.getcwd()
-    end,
+    root_dir = lspconfig.util.root_pattern({ '.git/', '.' }),
     init_options = {
         documentFormatting = true,
         codeAction = false
