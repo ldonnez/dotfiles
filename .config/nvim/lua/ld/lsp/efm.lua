@@ -21,6 +21,7 @@ local prettierGlobal = {
   formatStdin = true
 }
 
+local stylua = { formatCommand = 'stylua -s -', formatStdin = true }
 
 lspconfig.efm.setup {
     on_attach = function(client)
@@ -60,5 +61,6 @@ lspconfig.efm.setup {
         "markdown",
         "yaml",
         "vimkwiki",
+        "lua"
     }
 }
