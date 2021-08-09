@@ -15,7 +15,6 @@ local prettier = {
     rootMarkers = {'package.json'}
 }
 
-local efm_root_markers = { 'package.json', '.git/' }
 
 lspconfig.efm.setup {
     on_attach = function(client)
@@ -35,9 +34,14 @@ lspconfig.efm.setup {
     settings = {
         languages = {
             typescript = {prettier, eslint},
-            typescriptreact = {prettier, eslint}
-        },
-        rootMarkers = efm_root_markers,
+            typescriptreact = {prettier, eslint},
+            json = {prettierGlobal},
+            html = {prettier},
+            markdown = {prettierGlobal},
+            yaml = {prettierGlobal},
+            vimwiki = {prettierGlobal},
+            lua = { stylua },
+        }
     },
     filetypes = {
         "javascript",
