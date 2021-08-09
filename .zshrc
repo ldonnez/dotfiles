@@ -165,6 +165,9 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH=/usr/local/php/bin:$PATH
 export PATH="$PATH:$HOME/.composer/vendor/bin"
 
+# RUST
+export PATH="$PATH:$HOME/.cargo/bin"
+
 # GPG
 GPG_CONFIG_FILE="~/.gnupg/gpg-agent.conf"
 
@@ -185,3 +188,5 @@ export NVM_DIR="$HOME/.nvm"
 
 # LOAD AUTOCOMPLETIONS
 autoload -U compinit && compinit
+
+alias luamake=/Users/lenny/.config/nvim/cache/lua-language-server/3rd/luamake/luamake
