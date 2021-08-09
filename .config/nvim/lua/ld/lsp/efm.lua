@@ -9,10 +9,16 @@ local eslint = {
   formatCommand = "eslint_d --fix-to-stdout --stdin --stdin-filename=${INPUT}",
   formatStdin = true
 }
+
 local prettier = {
-    formatCommand = './node_modules/.bin/prettier --stdin --stdin-filepath ${INPUT}',
-    formatStdin = true,
-    rootMarkers = {'package.json'}
+  formatCommand = './node_modules/.bin/prettier --stdin --stdin-filepath ${INPUT}',
+  formatStdin = true,
+  rootMarkers = {'package.json'}
+}
+
+local prettierGlobal = {
+  formatCommand = 'prettier --stdin --stdin-filepath ${INPUT}',
+  formatStdin = true
 }
 
 
@@ -47,6 +53,12 @@ lspconfig.efm.setup {
         "javascript.jsx",
         "typescript",
         "typescriptreact",
-        "typescript.tsx"
+        "typescript.tsx",
+        "typescript.tsx",
+        "json",
+        "html",
+        "markdown",
+        "yaml",
+        "vimkwiki",
     }
 }
