@@ -36,7 +36,7 @@ lspconfig.efm.setup({
 			)
 		end
 	end,
-	root_dir = lspconfig.util.root_pattern({ ".git/", "." }),
+	root_dir = lspconfig.util.root_pattern(".git", vim.fn.getcwd()),
 	init_options = {
 		documentFormatting = true,
 		codeAction = false,
