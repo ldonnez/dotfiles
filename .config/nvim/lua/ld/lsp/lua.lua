@@ -12,7 +12,7 @@ else
 	print("Unsupported system for sumneko")
 end
 
-local sumneko_root_path = global.cache_dir .. "/lua-language-server"
+local sumneko_root_path = global.plugin_installation_path .. "/lua-language-server"
 local sumneko_binary = sumneko_root_path .. "/bin/" .. system_name .. "/lua-language-server"
 
 local runtime_path = vim.split(package.path, ";")
@@ -20,6 +20,7 @@ table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
 require("lspconfig").sumneko_lua.setup({
+	capababilities = utils.cmp_capababilities(),
 	on_attach = function(client)
 		utils.on_attach(client)
 	end,

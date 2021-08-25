@@ -1,4 +1,5 @@
 local execute = vim.api.nvim_command
+local global = require("ld.global")
 
 local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 
@@ -51,6 +52,14 @@ require("packer").startup(function()
 	use({ "hrsh7th/nvim-cmp", requires = {
 		"hrsh7th/cmp-nvim-lsp",
 	} })
+	if global.is_unix then
+		use({
+			"sumneko/lua-language-server",
+			run = {
+				[[cd 3rd/luamake && ./compile/install.sh && cd ../../ && 3rd/luamake/luamake rebuild]],
+			},
+		})
+	end
 end)
 
 require("ld.plugins.emmet")

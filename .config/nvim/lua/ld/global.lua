@@ -9,7 +9,6 @@ function global:load_variables()
 	self.backup_dir = config .. "/backup"
 	self.undo_dir = config .. "/undo"
 	self.swap_dir = config .. "/swap"
-	self.cache_dir = config .. "/cache"
 	self.data = data
 	self.plugin_installation_path = data .. "/site/pack/packer/start"
 	self.is_windows = vim.fn.has("win32") == 1
