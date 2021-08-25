@@ -18,6 +18,25 @@ function utils.get_cmd_executable(lsp_executable)
 	end
 end
 
+function utils.cmp_capababilities()
+	local capabilities = vim.lsp.protocol.make_client_capabilities()
+	capabilities.textDocument.completion.completionItem.snippetSupport = true
+	capabilities.textDocument.completion.completionItem.preselectSupport = true
+	capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
+	capabilities.textDocument.completion.completionItem.labelDetailsSupport = true
+	capabilities.textDocument.completion.completionItem.deprecatedSupport = true
+	capabilities.textDocument.completion.completionItem.commitCharactersSupport = true
+	capabilities.textDocument.completion.completionItem.tagSupport = { valueSet = { 1 } }
+	capabilities.textDocument.completion.completionItem.resolveSupport = {
+		properties = {
+			"documentation",
+			"detail",
+			"additionalTextEdits",
+		},
+	}
+	return capabilities
+end
+
 function utils.on_attach(client, bufnr)
 	--Enable completion triggered by <c-x><c-o>
 	utils.buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")

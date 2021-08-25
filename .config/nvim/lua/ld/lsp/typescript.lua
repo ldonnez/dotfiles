@@ -8,6 +8,7 @@ require("null-ls").setup({
 })
 
 lspconfig.tsserver.setup({
+	capababilities = utils.cmp_capababilities(),
 	on_attach = function(client, bufnr)
 		-- disable tsserver formatting if you plan on formatting via null-ls
 		client.resolved_capabilities.document_formatting = false

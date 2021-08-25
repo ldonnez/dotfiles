@@ -48,8 +48,9 @@ require("packer").startup(function()
 	use("kyazdani42/nvim-tree.lua")
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 	use("neovim/nvim-lspconfig")
-	use { 'ms-jpq/coq_nvim', branch = 'coq'}
-	use { 'ms-jpq/coq.artifacts', branch= 'artifacts'}
+	use({ "hrsh7th/nvim-cmp", requires = {
+		"hrsh7th/cmp-nvim-lsp",
+	} })
 end)
 
 require("ld.plugins.emmet")
@@ -65,4 +66,4 @@ require("ld.plugins.vim-dadbod-ui")
 require("ld.plugins.vim-wiki")
 require("ld.plugins.workspace")
 require("ld.plugins.polyglot")
-require("ld.plugins.coq")
+require("ld.plugins.nvim-cmp")
