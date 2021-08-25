@@ -43,6 +43,7 @@ vim.opt.undodir = global.undo_dir .. "//"
 vim.opt.backupskip = "/tmp/*"
 vim.opt.guifont = "Hack:h16"
 vim.opt.autoread = true
+vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
 if vim.fn.getenv("TERM_PROGRAM") ~= "Apple_Terminal" then
 	vim.opt.termguicolors = true
