@@ -1,4 +1,6 @@
-vim.g.colors_name = "nord"
+vim.cmd([[
+	colorscheme nord
+]])
 
 vim.g.nord_italic = 1
 vim.g.nord_bold = 1
