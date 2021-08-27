@@ -1,10 +1,10 @@
-local execute = vim.api.nvim_command
 local global = require("ld.global")
 
 local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-	execute("!git clone https://github.com/wbthomason/packer.nvim " .. install_path)
+	vim.fn.system({ "git", "clone", "https://github.com/wbthomason/packer.nvim", install_path })
+	vim.cmd("packadd packer.nvim")
 end
 
 vim.api.nvim_exec(
