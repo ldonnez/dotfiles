@@ -31,7 +31,7 @@ Expunge Both
 
 
 ### WORK ###
-IMAPAccount work 
+IMAPAccount work
 # Address to connect to
 Host imap.gmail.com
 AuthMechs LOGIN
