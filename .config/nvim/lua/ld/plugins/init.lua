@@ -52,14 +52,11 @@ require("packer").startup(function()
 	use({ "hrsh7th/nvim-cmp", requires = {
 		"hrsh7th/cmp-nvim-lsp",
 	} })
-	if global.is_unix then
-		use({
-			"sumneko/lua-language-server",
-			run = {
-				[[cd 3rd/luamake && ./compile/install.sh && cd ../../ && 3rd/luamake/luamake rebuild]],
-			},
-		})
-	end
+	use({
+		"sumneko/lua-language-server",
+		run = global.is_unix and [[cd 3rd/luamake && compile/install.sh && cd ../.. && ./3rd/luamake/luamake rebuild]]
+			or [[cd 3rd\luamake & compile\install.bat & cd ..\.. & 3rd\luamake\luamake.exe rebuild]],
+	})
 end)
 
 require("ld.plugins.emmet")
