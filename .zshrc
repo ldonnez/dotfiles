@@ -53,6 +53,10 @@ setopt PROMPT_SUBST
 PROMPT='┌%F{green}[%n] [%F{green}%m]:%f%F{blue}%B%~%b%f ${vcs_info_msg_0_}%f
 └>'
 
+if [ $(uname) = "Darwin" ]; then
+  ulimit -n 10240
+fi
+
 #*********************************************************************
 #
 #********* KEYBINDINGS ***********************************************
