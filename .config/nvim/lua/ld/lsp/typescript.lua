@@ -1,7 +1,8 @@
 local lspconfig = require("lspconfig")
 local utils = require("ld.lsp.utils")
 
-require("null-ls").setup({
+require("null-ls").config({})
+require("lspconfig")["null-ls"].setup({
 	on_attach = function(client)
 		client.resolved_capabilities.document_formatting = false
 	end,
