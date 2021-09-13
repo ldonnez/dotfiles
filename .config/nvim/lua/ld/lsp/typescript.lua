@@ -9,7 +9,7 @@ require("lspconfig")["null-ls"].setup({
 })
 
 lspconfig.tsserver.setup({
-	capababilities = utils.cmp_capababilities(),
+	capabilities = utils.cmp_capababilities(),
 	on_attach = function(client, bufnr)
 		-- disable tsserver formatting if you plan on formatting via null-ls
 		client.resolved_capabilities.document_formatting = false
@@ -39,7 +39,7 @@ lspconfig.tsserver.setup({
 			signature_help_in_parens = false,
 
 			-- update imports on file move
-			update_imports_on_move = true,
+			update_imports_on_move = false,
 			require_confirmation_on_move = true,
 			watch_dir = nil,
 		})
