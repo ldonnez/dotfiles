@@ -16,6 +16,7 @@ cmp.setup({
   sources = {
     { name = "nvim_lsp" },
     { name = "vsnip" },
+    { name = "vim-dadbod-completion" },
   },
   snippet = {
     expand = function(args)

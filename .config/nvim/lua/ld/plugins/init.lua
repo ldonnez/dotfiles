@@ -57,6 +57,7 @@ require("packer").startup(function()
     requires = {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-vsnip",
+      "kristijanhusak/vim-dadbod-completion",
     },
   })
   use({
