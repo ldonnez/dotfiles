@@ -49,10 +49,16 @@ require("packer").startup(function()
 	use("kyazdani42/nvim-tree.lua")
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 	use("neovim/nvim-lspconfig")
-	use({ "hrsh7th/nvim-cmp", requires = {
-		"hrsh7th/cmp-nvim-lsp",
-    "hrsh7th/vim-vsnip",
+	use({ "hrsh7th/vim-vsnip", requires = {
+		"rafamadriz/friendly-snippets",
 	} })
+	use({
+		"hrsh7th/nvim-cmp",
+		requires = {
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-vsnip",
+		},
+	})
 	use({
 		"sumneko/lua-language-server",
 		run = global.is_unix and [[cd 3rd/luamake && compile/install.sh && cd ../.. && ./3rd/luamake/luamake rebuild]]
@@ -74,3 +80,4 @@ require("ld.plugins.vim-wiki")
 require("ld.plugins.workspace")
 require("ld.plugins.polyglot")
 require("ld.plugins.nvim-cmp")
+require("ld.plugins.vim-vsnip")
