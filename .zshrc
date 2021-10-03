@@ -93,6 +93,14 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS"\
 " --color=fg:$nord5_term,header:$nord8_term,info:$nord10_term,pointer:$nord9_term"\
 " --color=marker:$nord9_term,fg+:$nord6_term,prompt:$nord9_term,hl+:$nord9_term"
 
+function fzf_gitbranches() {
+  git for-each-ref --sort='authordate:iso8601' --format='%(authordate:relative)%09%(refname:short)' refs/heads | fzf --tac --bind 'enter:execute(echo {} | rev | cut -f1 | rev | xargs git checkout)+abort,tab:execute-silent(echo {} | rev | cut -f1 | rev | pbcopy)+abort'
+  zle reset-prompt
+  zle redisplay
+}
+zle -N fzf_gitbranches
+bindkey "^y" fzf_gitbranches
+
 #*********************************************************************
 #
 #********* ALIASES ***************************************************
