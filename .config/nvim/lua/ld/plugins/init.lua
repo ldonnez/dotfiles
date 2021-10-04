@@ -47,7 +47,7 @@ require("packer").startup(function()
   use("jose-elias-alvarez/null-ls.nvim")
   use({ "jose-elias-alvarez/nvim-lsp-ts-utils", requires = { "nvim-lua/plenary.nvim" } })
   use("kyazdani42/nvim-tree.lua")
-  use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
+  use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate", branch = "0.5-compat" })
   use("neovim/nvim-lspconfig")
   use({ "hrsh7th/vim-vsnip", requires = {
     "rafamadriz/friendly-snippets",
