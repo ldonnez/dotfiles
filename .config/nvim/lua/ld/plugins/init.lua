@@ -66,6 +66,9 @@ require("packer").startup(function()
     run = global.is_unix and [[cd 3rd/luamake && compile/install.sh && cd ../.. && ./3rd/luamake/luamake rebuild]]
       or [[cd 3rd\luamake & compile\install.bat & cd ..\.. & 3rd\luamake\luamake.exe rebuild]],
   })
+  use({
+    "kristijanhusak/orgmode.nvim"
+  })
 end)
 
 require("ld.plugins.emmet")
@@ -83,3 +86,4 @@ require("ld.plugins.workspace")
 require("ld.plugins.polyglot")
 require("ld.plugins.nvim-cmp")
 require("ld.plugins.vim-vsnip")
+require("ld.plugins.orgmode")

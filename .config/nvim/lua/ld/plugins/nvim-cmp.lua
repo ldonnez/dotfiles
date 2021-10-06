@@ -18,6 +18,7 @@ cmp.setup({
     { name = "vsnip" },
     { name = "path" },
     { name = "vim-dadbod-completion" },
+    { name = "orgmode" },
   },
   snippet = {
     expand = function(args)
