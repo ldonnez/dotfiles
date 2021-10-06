@@ -101,6 +101,14 @@ function fzf_gitbranches() {
 zle -N fzf_gitbranches
 bindkey "^y" fzf_gitbranches
 
+if [ $(uname) = "Darwin" ]; then
+  function fzf_applications() {
+    open -a $(ls /Applications | sed s/.app//g | fzf).app
+  }
+  zle -N fzf_applications
+  bindkey "^o" fzf_applications
+fi
+
 #*********************************************************************
 #
 #********* ALIASES ***************************************************
