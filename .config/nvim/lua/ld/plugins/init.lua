@@ -67,7 +67,11 @@ require("packer").startup(function()
       or [[cd 3rd\luamake & compile\install.bat & cd ..\.. & 3rd\luamake\luamake.exe rebuild]],
   })
   use({
-    "kristijanhusak/orgmode.nvim"
+    "kristijanhusak/orgmode.nvim",
+    requires = {
+      "lukas-reineke/headlines.nvim",
+      "akinsho/org-bullets.nvim",
+    },
   })
 end)
 

@@ -1,4 +1,6 @@
 local orgDestination = "~/SynologyDrive/org"
+require("headlines").setup()
+require("org-bullets").setup({})
 require("orgmode").setup({
   org_agenda_files = { orgDestination .. "/*", orgDestination .. "/**/*" },
   org_default_notes_file = orgDestination .. "/refile.org",
@@ -14,6 +16,5 @@ require("orgmode").setup({
       template = "\n*** %<%Y-%m-%d %H:%M> \n\n%?",
       target = orgDestination .. "/braindump.org",
     },
-
   },
 })
