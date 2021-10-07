@@ -16,5 +16,10 @@ require("orgmode").setup({
       template = "\n** %U \n<%a>\n\n%?",
       target = orgDestination .. "/braindump.org",
     },
+    s = {
+      description = "Shopping list",
+      template = " + [ ] %?",
+      target = orgDestination .. "/shopping_list.org",
+    },
   },
 })
