@@ -29,3 +29,5 @@ require("orgmode").setup({
     },
   },
 })
+
+vim.api.nvim_set_keymap("n", "<leader>og", ":edit" .. orgDestination .. "/index.org | :cd %:p:h<CR>:pwd<CR>", { noremap = true, silent = true })
