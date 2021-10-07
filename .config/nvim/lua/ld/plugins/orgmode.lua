@@ -22,4 +22,10 @@ require("orgmode").setup({
       target = orgDestination .. "/shopping_list.org",
     },
   },
+  mappings = {
+    org = {
+      org_increase_date = "+",
+      org_decrease_date = "-",
+    },
+  },
 })
