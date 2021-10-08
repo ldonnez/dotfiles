@@ -7,12 +7,12 @@ require("orgmode").setup({
     t = { description = "Task", template = "\n* TODO %?\n %u", target = orgDestination .. "/todos.org" },
     j = {
       description = "Journal",
-      template = "\n** %<%Y-%m-%d> %<%A>\n**** %U\n\n%?",
+      template = "\n** %<%Y-%m-%d> %<%A>\n**** %U\n\n   %?",
       target = orgDestination .. "/journal.org",
     },
     b = {
       description = "Braindump",
-      template = "\n** %U \n<%a>\n\n%?",
+      template = "** %U\n <%a>\n\n %?",
       target = orgDestination .. "/braindump.org",
     },
     s = {
