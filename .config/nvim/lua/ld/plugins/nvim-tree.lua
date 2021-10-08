@@ -8,6 +8,7 @@ vim.g.nvim_tree_show_icons = {
 
 require("nvim-tree").setup({
   lsp_diagnostics = false,
+  disable_netrw = false,
   view = {
     auto_resize = true,
   },
