@@ -7,6 +7,9 @@ test -r "~/.dir_colors" && eval $(dircolors ~/.dir_colors)
 # Z
 source ~/.zsh/plugins/zsh-z/zsh-z.plugin.zsh
 
+# FZF TAB
+source ~/.zsh/plugins/fzf-tab/fzf-tab.plugin.zsh
+
 # RBENV
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
