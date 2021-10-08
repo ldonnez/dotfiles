@@ -35,6 +35,7 @@ vim.opt.conceallevel = 2
 vim.opt.concealcursor = 'nc'
 vim.opt.foldmethod = "syntax"
 vim.opt.foldenable = true
+vim.opt.foldlevelstart = 10
 vim.opt.undofile = true
 vim.opt.backup = true
 vim.opt.writebackup = true
