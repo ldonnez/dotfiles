@@ -8,6 +8,7 @@ vim.g.vimwiki_list = {
 }
 vim.g.vimwiki_table_mappings = 0
 vim.g.vimwiki_table_auto_fmt = 0
+vim.g.vimwiki_hl_headers = 1
 
 vim.api.nvim_set_keymap("n", "tt", "<Plug>VimwikiToggleListItem", { noremap = false })
 
