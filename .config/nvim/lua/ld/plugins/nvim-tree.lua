@@ -7,7 +7,10 @@ vim.g.nvim_tree_show_icons = {
 }
 
 require("nvim-tree").setup({
-  lsp_diagnostics = false,
+  diagnostics = {
+    enable = true,
+    icons = { hint = "H", info ="I", warning = "W", error= "E" }
+  },
   disable_netrw = false,
   view = {
     auto_resize = true,

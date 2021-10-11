@@ -23,8 +23,8 @@ require("orgmode").setup({
   },
   mappings = {
     org = {
-      org_increase_date = "+",
-      org_decrease_date = "-",
+      org_timestamp_up = "+",
+      org_timestamp_down = "-",
     },
   },
 })
