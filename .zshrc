@@ -1,8 +1,6 @@
 #********* SOURCES ***************************************************
 #
 #*********************************************************************
-#
-test -r "~/.dir_colors" && eval $(dircolors ~/.dir_colors)
 
 # Z
 source ~/.zsh/plugins/zsh-z/zsh-z.plugin.zsh
