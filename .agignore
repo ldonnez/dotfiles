@@ -38,6 +38,7 @@ tags
 .Trashes
 ehthumbs.db
 Thumbs.db
+.dotnet
 
 # Vim #
 ###############
@@ -63,6 +64,7 @@ nbproject
 tags.*
 tags
 .git
+.fzf
 
 # Rails #
 ###########
@@ -76,3 +78,8 @@ node_modules/*
 # React #
 ###########
 storybook-static/*
+
+# Rust #
+###########
+.cargo
+.rustup
