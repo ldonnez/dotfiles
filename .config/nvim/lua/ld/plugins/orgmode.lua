@@ -27,6 +27,10 @@ require("orgmode").setup({
       org_timestamp_down = "-",
     },
   },
+  notifications = {
+    enabled = true,
+    reminder_time = { 0, 5, 10, 30, 60 }
+  },
 })
 
 vim.fn.sign_define("Headline1", { linehl = "VimwikiHeader1" })
@@ -43,4 +47,3 @@ vim.api.nvim_set_keymap("n", "<leader>og", ":edit" .. orgDestination .. "/index.
   noremap = true,
   silent = true,
 })
-
