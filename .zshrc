@@ -173,6 +173,13 @@ alias gci='git commit --interactive'
 alias gb='git branch'
 alias gba='git branch -a'
 
+# DOCKER
+alias dkexec='docker exec -it'
+alias dkrmi='docker rmi'
+alias dkrm='docker rm'
+alias dkps='docker ps'
+alias dki='docker images'
+
 #*********************************************************************
 #
 #********* EXPORTS ***************************************************
