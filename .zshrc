@@ -47,24 +47,23 @@ setopt histignorespace
 #********* PROMPT ****************************************************
 
 bindkey -e
-autoload -Uz vcs_info
-precmd() { vcs_info }
-zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' unstagedstr ' *'
-zstyle ':vcs_info:*' stagedstr ' +'
-zstyle ':vcs_info:git:*' actionformats '(%b|%a%u%c)'
-zstyle ':vcs_info:git:*' formats '%F{yellow}(%b%u%c)%f'
-zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
 zstyle ':completion:*' menu select
 setopt PROMPT_SUBST
-PROMPT='┌%F{green}[%n] [%F{green}%m]:%f%F{blue}%B%~%b%f ${vcs_info_msg_0_}%f
+PROMPT='┌%F{green}[%n] [%F{green}%m]:%f%F{blue}%B%~%b%f$(git_prompt)%f
 └>'
 
-+vi-git-untracked(){
-    if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
-        git status --porcelain | grep '??' &> /dev/null ; then
-        hook_com[staged]+=' ?'
+git_prompt() {
+  local BRANCH=$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/*\(.*\)/\1/')
+
+  if [ ! -z $BRANCH ]; then
+    echo -n "%F{yellow}$BRANCH%f"
+
+    if [ ! -z "$(git status --short)" ]; then
+      echo " %F{red}✗%f"
+    else
+      echo " %F{green}✔%f"
     fi
+  fi
 }
 
 if [ $(uname) = "Darwin" ]; then
