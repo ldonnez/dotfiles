@@ -237,10 +237,10 @@ export REVIEW_BASE=develop
 # HOMEBREW
 export HOMEBREW_NO_AUTO_UPDATE=1
 
-# NVM
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# LIBPQ
+if [ $(uname) = "Darwin" ]; then
+  export PATH="/usr/local/opt/libpq/bin:$PATH"
+fi
 
 #*********************************************************************
 #
