@@ -21,34 +21,112 @@ local use = require("packer").use
 require("packer").startup(function()
   use("wbthomason/packer.nvim")
   use("tpope/vim-fugitive")
-  use("thaerkh/vim-workspace")
-  use("mattn/emmet-vim")
+  use({
+    "neovim/nvim-lspconfig",
+    config = function()
+      require("ld.lsp")
+    end,
+  })
+  use({
+    "nvim-treesitter/nvim-treesitter",
+    run = ":TSUpdate",
+    branch = "0.5-compat",
+    config = function()
+      require("ld.treesitter")
+    end,
+  })
+  use({
+    "thaerkh/vim-workspace",
+    config = function()
+      require("ld.plugins.workspace")
+    end,
+  })
+  use({
+    "mattn/emmet-vim",
+    config = function()
+      require("ld.plugins.emmet")
+    end,
+  })
   use("jiangmiao/auto-pairs")
   use("alvan/vim-closetag")
   use("tpope/vim-surround")
-  use("itchyny/lightline.vim")
-  use("vimwiki/vimwiki")
-  use("arcticicestudio/nord-vim")
-  use("sheerun/vim-polyglot")
-  use("airblade/vim-gitgutter")
-  use("lervag/vimtex")
   use({
-    "junegunn/fzf",
-    run = function()
-      vim.fn["fzf#install"]()
+    "itchyny/lightline.vim",
+    config = function()
+      require("ld.plugins.lightline")
     end,
   })
-  use("junegunn/fzf.vim")
-  use("APZelos/blamer.nvim")
+  use({
+    "vimwiki/vimwiki",
+    config = function()
+      require("ld.plugins.vim-wiki")
+    end,
+  })
+  use({
+    "arcticicestudio/nord-vim",
+    config = function()
+      require("ld.plugins.nord")
+    end,
+  })
+  use({
+    "sheerun/vim-polyglot",
+    config = function()
+      require("ld.plugins.polyglot")
+    end,
+  })
+  use({
+    "airblade/vim-gitgutter",
+    config = function()
+      require("ld.plugins.git-gutter")
+    end,
+  })
+  use({
+    "lervag/vimtex",
+    config = function()
+      require("ld.plugins.vimtex")
+    end,
+  })
+  use({
+    "junegunn/fzf.vim",
+    config = function()
+      require("ld.plugins.fzf")
+    end,
+    requires = {
+      "junegunn/fzf",
+      run = function()
+        vim.fn["fzf#install"]()
+      end,
+    },
+  })
+  use({
+    "APZelos/blamer.nvim",
+    config = function()
+      require("ld.plugins.git-blamer")
+    end,
+  })
   use("tpope/vim-dadbod")
-  use("kristijanhusak/vim-dadbod-ui")
+  use({
+    "kristijanhusak/vim-dadbod-ui",
+    config = function()
+      require("ld.plugins.vim-dadbod-ui")
+    end,
+  })
   use("pantharshit00/vim-prisma")
-  use("dhruvasagar/vim-table-mode")
+  use({
+    "dhruvasagar/vim-table-mode",
+    config = function()
+      require("ld.plugins.table-mode")
+    end,
+  })
   use("jose-elias-alvarez/null-ls.nvim")
   use({ "jose-elias-alvarez/nvim-lsp-ts-utils", requires = { "nvim-lua/plenary.nvim" } })
-  use("kyazdani42/nvim-tree.lua")
-  use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate", branch = "0.5-compat" })
-  use("neovim/nvim-lspconfig")
+  use({
+    "kyazdani42/nvim-tree.lua",
+    config = function()
+      require("ld.plugins.nvim-tree")
+    end,
+  })
+
   use({ "hrsh7th/vim-vsnip", requires = {
     "rafamadriz/friendly-snippets",
   } })
@@ -60,6 +138,10 @@ require("packer").startup(function()
       "hrsh7th/cmp-path",
       "kristijanhusak/vim-dadbod-completion",
     },
+    config = function()
+      require("ld.plugins.nvim-cmp")
+      require("ld.plugins.vim-vsnip")
+    end,
   })
   use({
     "sumneko/lua-language-server",
@@ -73,22 +155,8 @@ require("packer").startup(function()
       "lukas-reineke/headlines.nvim",
       "akinsho/org-bullets.nvim",
     },
+    config = function()
+      require("ld.plugins.orgmode")
+    end,
   })
 end)
-
-require("ld.plugins.emmet")
-require("ld.plugins.fzf")
-require("ld.plugins.git-blamer")
-require("ld.plugins.git-gutter")
-require("ld.plugins.vimtex")
-require("ld.plugins.lightline")
-require("ld.plugins.nord")
-require("ld.plugins.nvim-tree")
-require("ld.plugins.table-mode")
-require("ld.plugins.vim-dadbod-ui")
-require("ld.plugins.vim-wiki")
-require("ld.plugins.workspace")
-require("ld.plugins.polyglot")
-require("ld.plugins.nvim-cmp")
-require("ld.plugins.vim-vsnip")
-require("ld.plugins.orgmode")
