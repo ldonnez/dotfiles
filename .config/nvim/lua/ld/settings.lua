@@ -48,8 +48,9 @@ vim.opt.guifont = "Hack:h16"
 vim.opt.autoread = true
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
-if vim.fn.getenv("TERM_PROGRAM") ~= "Apple_Terminal" then
-  vim.opt.termguicolors = true
+local color_term = vim.fn.getenv("COLORTERM")
+if color_term == "truecolor" or color_term == "24bit" then
+ vim.opt.termguicolors = true
 end
 
 if vim.fn.isdirectory(global.backup_dir) ~= 1 then
