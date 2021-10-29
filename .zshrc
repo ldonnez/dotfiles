@@ -246,5 +246,3 @@ fi
 
 # LOAD AUTOCOMPLETIONS
 autoload -U compinit && compinit
-
-alias luamake=/Users/lenny/.config/nvim/cache/lua-language-server/3rd/luamake/luamake
