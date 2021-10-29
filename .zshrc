@@ -1,34 +1,16 @@
-#********* SOURCES ***************************************************
-#
-#*********************************************************************
-
-# Z
-source ~/.zsh/plugins/zsh-z/zsh-z.plugin.zsh
-
-# FZF TAB
-source ~/.zsh/plugins/fzf-tab/fzf-tab.plugin.zsh
-
-# RBENV
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
-# WSL2
-if [[ -a ~/.wslrc ]]; then
-  source ~/.wslrc
-fi
-
-# TMUX
-function update_environment_from_tmux() {
-  if [ -n "${TMUX}" ]; then
-    eval "$(tmux show-environment -s)"
-  fi
-}
-
-add-zsh-hook precmd update_environment_from_tmux
-
 #*********************************************************************
 #
-#********* HISTORY ***************************************************
+#********* SETTINGS **************************************************
 
+autoload -Uz add-zsh-hook
+
+# Load autocompletions
+autoload -U compinit && compinit
+
+# Navigate suggestions with completion menu
+zstyle ':completion:*' menu select
+
+# History
 HISTFILE=$HOME/.history
 SAVEHIST=1000
 setopt share_history
@@ -42,12 +24,36 @@ setopt hist_no_store
 setopt extended_history
 setopt histignorespace
 
+# Make sure regular keybindings persist in foreign terminal sessions (tmux & neovims term)
+bindkey -e
+
+# Too many open files!
+if [ $(uname) = "Darwin" ]; then
+  ulimit -n 10240
+fi
+
+# source specific WSL2 config
+if [[ -a ~/.wslrc ]]; then
+  source ~/.wslrc
+fi
+
+#*********************************************************************
+#
+#********* TMUX ******************************************************
+
+# sync envvariables to tmux see 'set -g update-environment' option in ~/.tmux.conf
+function update_environment_from_tmux() {
+  if [ -n "${TMUX}" ]; then
+    eval "$(tmux show-environment -s)"
+  fi
+}
+
+add-zsh-hook precmd update_environment_from_tmux
+
 #*********************************************************************
 #
 #********* PROMPT ****************************************************
 
-bindkey -e
-zstyle ':completion:*' menu select
 setopt PROMPT_SUBST
 PROMPT='┌%F{green}[%n] [%F{green}%m]:%f%F{blue}%B%~%b%f$(git_prompt)%f
 └>'
@@ -65,10 +71,6 @@ git_prompt() {
     fi
   fi
 }
-
-if [ $(uname) = "Darwin" ]; then
-  ulimit -n 10240
-fi
 
 #*********************************************************************
 #
@@ -96,22 +98,6 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS"\
 " --color=bg+:$nord1_term,bg:$nord0_term,spinner:$nord9_term,hl:$nord3_term"\
 " --color=fg:$nord5_term,header:$nord8_term,info:$nord10_term,pointer:$nord9_term"\
 " --color=marker:$nord9_term,fg+:$nord6_term,prompt:$nord9_term,hl+:$nord9_term"
-
-function fzf_gitbranches() {
-  git for-each-ref --sort='authordate:iso8601' --format='%(authordate:relative)%09%(refname:short)' refs/heads | fzf --tac --bind 'enter:execute(echo {} | rev | cut -f1 | rev | xargs git checkout)+abort,tab:execute-silent(echo {} | rev | cut -f1 | rev | pbcopy)+abort'
-  zle reset-prompt
-  zle redisplay
-}
-zle -N fzf_gitbranches
-bindkey "^y" fzf_gitbranches
-
-if [ $(uname) = "Darwin" ]; then
-  function fzf_applications() {
-    open -a $(ls /Applications | sed s/.app//g | fzf).app
-  }
-  zle -N fzf_applications
-  bindkey "^o" fzf_applications
-fi
 
 #*********************************************************************
 #
@@ -217,6 +203,7 @@ export PATH="$PATH:$HOME/.npm/bin"
 export PATH=$HOME/go/bin:$PATH
 
 # RUBY
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 export PATH="$HOME/.rbenv/bin:$PATH"
 
 # PHP
@@ -242,7 +229,16 @@ fi
 
 #*********************************************************************
 #
-#********* AUTOLOADS *************************************************
+#********* PLUGINS ***************************************************
 
-# LOAD AUTOCOMPLETIONS
-autoload -U compinit && compinit
+# Z
+if [[ ! -a ~/.zsh/plugins/zsh-z/zsh-z.plugin.zsh ]]; then
+  git clone https://github.com/agkozak/zsh-z ~/.zsh/plugins/zsh-z
+fi
+source ~/.zsh/plugins/zsh-z/zsh-z.plugin.zsh
+
+# FZF TAB
+if [[ ! -a ~/.zsh/plugins/fzf-tab/fzf-tab.plugin.zsh ]]; then
+  git clone https://github.com/Aloxaf/fzf-tab ~/.zsh/plugins/fzf-tab
+fi
+source ~/.zsh/plugins/fzf-tab/fzf-tab.plugin.zsh
