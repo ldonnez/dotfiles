@@ -1,5 +1,5 @@
 vim.cmd([[
-	colorscheme nord
+	silent! colorscheme nord
 ]])
 
 vim.g.nord_italic = 1
