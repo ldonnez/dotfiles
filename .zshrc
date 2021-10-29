@@ -214,9 +214,7 @@ export PATH=$HOME/.local/bin:$PATH
 export PATH="$PATH:$HOME/.npm/bin"
 
 # GO
-export GO111MODULE=on
-export GOPATH="$HOME/SynologyDrive/development/go"
-export PATH=$PATH:$GOPATH/bin
+export PATH=$HOME/go/bin:$PATH
 
 # RUBY
 export PATH="$HOME/.rbenv/bin:$PATH"
