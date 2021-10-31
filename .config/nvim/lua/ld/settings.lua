@@ -32,7 +32,7 @@ vim.opt.wildignore = { "*/tmp/*", "*.so", "*.swp", "*.zip", "*.jpg", "*.png", ".
 vim.opt.clipboard = { "unnamed", "unnamedplus" }
 vim.opt.cursorline = true
 vim.opt.conceallevel = 2
-vim.opt.concealcursor = 'nc'
+vim.opt.concealcursor = "nc"
 vim.opt.foldmethod = "syntax"
 vim.opt.foldenable = true
 vim.opt.foldlevelstart = 10
@@ -50,7 +50,7 @@ vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
 local color_term = vim.fn.getenv("COLORTERM")
 if color_term == "truecolor" or color_term == "24bit" then
- vim.opt.termguicolors = true
+  vim.opt.termguicolors = true
 end
 
 vim.cmd([[
