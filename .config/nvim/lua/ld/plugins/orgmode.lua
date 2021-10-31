@@ -29,7 +29,7 @@ require("orgmode").setup({
   },
   notifications = {
     enabled = true,
-    reminder_time = { 0, 5, 10, 30, 60 }
+    reminder_time = { 0, 5, 10, 30, 60 },
   },
 })
 
