@@ -24,7 +24,7 @@ function utils.cmp_capababilities()
   return capabilities
 end
 
-function utils.on_attach(client, bufnr)
+function utils.on_attach()
   --Enable completion triggered by <c-x><c-o>
   utils.buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 

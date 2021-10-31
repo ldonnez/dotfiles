@@ -21,9 +21,7 @@ table.insert(runtime_path, "lua/?/init.lua")
 
 require("lspconfig").sumneko_lua.setup({
   capabilities = utils.cmp_capababilities(),
-  on_attach = function(client)
-    utils.on_attach(client)
-  end,
+  on_attach = utils.on_attach(),
   cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
   settings = {
     Lua = {
