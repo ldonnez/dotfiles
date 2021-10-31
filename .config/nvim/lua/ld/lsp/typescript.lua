@@ -10,7 +10,7 @@ require("lspconfig")["null-ls"].setup({
 
 lspconfig.tsserver.setup({
   capabilities = utils.cmp_capababilities(),
-  on_attach = function(client, bufnr)
+  on_attach = function(client)
     -- disable tsserver formatting if you plan on formatting via null-ls
     client.resolved_capabilities.document_formatting = false
     local ts_utils = require("nvim-lsp-ts-utils")
@@ -23,8 +23,8 @@ lspconfig.tsserver.setup({
       import_all_timeout = 5000, -- ms
 
       -- eslint
-      eslint_enable_code_actions = true,
-      eslint_enable_disable_comments = true,
+      eslint_enable_code_actions = false,
+      eslint_enable_disable_comments = false,
       eslint_bin = "eslint_d",
       eslint_config_fallback = nil,
       eslint_enable_diagnostics = false,
