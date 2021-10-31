@@ -118,7 +118,12 @@ require("packer").startup(function()
       require("ld.plugins.table-mode")
     end,
   })
-  use("jose-elias-alvarez/null-ls.nvim")
+  use({
+    "jose-elias-alvarez/null-ls.nvim",
+    config = function()
+      require("ld.plugins.null-ls")
+    end,
+  })
   use({ "jose-elias-alvarez/nvim-lsp-ts-utils", requires = { "nvim-lua/plenary.nvim" } })
   use({
     "kyazdani42/nvim-tree.lua",
