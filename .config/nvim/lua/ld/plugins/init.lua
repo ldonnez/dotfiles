@@ -70,7 +70,7 @@ require("packer").startup(function()
   })
   use({
     "sheerun/vim-polyglot",
-    config = function()
+    setup = function()
       require("ld.plugins.polyglot")
     end,
   })
