@@ -4,12 +4,6 @@
 
 autoload -Uz add-zsh-hook
 
-# Load autocompletions
-autoload -U compinit && compinit
-
-# Navigate suggestions with completion menu
-zstyle ':completion:*' menu select
-
 # History
 HISTFILE=$HOME/.history
 SAVEHIST=1000
@@ -226,6 +220,16 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 if [ $(uname) = "Darwin" ]; then
   export PATH="/usr/local/opt/libpq/bin:$PATH"
 fi
+
+#*********************************************************************
+#
+#********* COMPLETIONS ***********************************************
+
+# Load autocompletions
+autoload -U compinit && compinit
+
+# Navigate suggestions with completion menu
+zstyle ':completion:*' menu select
 
 #*********************************************************************
 #
