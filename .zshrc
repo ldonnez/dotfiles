@@ -171,6 +171,9 @@ export PATH=$HOME/.local/bin:$PATH
 # NPM
 export PATH="$PATH:$HOME/.npm/bin"
 
+# YARN
+export PATH="$PATH:$HOME/.yarn/bin"
+
 # GO
 export PATH=$HOME/go/bin:$PATH
 
@@ -231,3 +234,5 @@ if [[ ! -a ~/.zsh/plugins/fzf-tab/fzf-tab.plugin.zsh ]]; then
   git clone https://github.com/Aloxaf/fzf-tab ~/.zsh/plugins/fzf-tab
 fi
 source ~/.zsh/plugins/fzf-tab/fzf-tab.plugin.zsh
+
+alias luamake=/Users/lenny/.local/share/nvim/site/pack/packer/start/lua-language-server/3rd/luamake/luamake
