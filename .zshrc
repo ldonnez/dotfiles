@@ -208,6 +208,7 @@ fi
 
 . $HOME/.asdf/asdf.sh
 fpath=(${ASDF_DIR}/completions $fpath)
+export NPM_CONFIG_PREFIX=$HOME/.npm
 
 #*********************************************************************
 #
