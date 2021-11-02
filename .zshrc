@@ -177,10 +177,6 @@ export PATH="$PATH:$HOME/.yarn/bin"
 # GO
 export PATH=$HOME/go/bin:$PATH
 
-# RUBY
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-export PATH="$HOME/.rbenv/bin:$PATH"
-
 # PHP
 export PATH=/usr/local/php/bin:$PATH
 export PATH="$PATH:$HOME/.composer/vendor/bin"
