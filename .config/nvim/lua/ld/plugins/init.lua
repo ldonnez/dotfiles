@@ -155,7 +155,6 @@ require("packer").startup(function()
   })
   use({
     "kristijanhusak/orgmode.nvim",
-    branch = "tree-sitter",
     requires = {
       "lukas-reineke/headlines.nvim",
       "akinsho/org-bullets.nvim",
