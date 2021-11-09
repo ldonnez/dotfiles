@@ -69,12 +69,6 @@ require("packer").startup(function()
     end,
   })
   use({
-    "airblade/vim-gitgutter",
-    config = function()
-      require("ld.plugins.git-gutter")
-    end,
-  })
-  use({
     "junegunn/fzf.vim",
     config = function()
       require("ld.plugins.fzf")
@@ -87,9 +81,12 @@ require("packer").startup(function()
     },
   })
   use({
-    "APZelos/blamer.nvim",
+    "lewis6991/gitsigns.nvim",
+    requires = {
+      "nvim-lua/plenary.nvim",
+    },
     config = function()
-      require("ld.plugins.git-blamer")
+      require("ld.plugins.gitsigns")
     end,
   })
   use("tpope/vim-dadbod")
