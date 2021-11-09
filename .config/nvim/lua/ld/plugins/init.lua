@@ -69,12 +69,6 @@ require("packer").startup(function()
     end,
   })
   use({
-    "sheerun/vim-polyglot",
-    setup = function()
-      require("ld.plugins.polyglot")
-    end,
-  })
-  use({
     "airblade/vim-gitgutter",
     config = function()
       require("ld.plugins.git-gutter")
