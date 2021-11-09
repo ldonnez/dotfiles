@@ -29,6 +29,7 @@ require("packer").startup(function()
   })
   use({
     "nvim-treesitter/nvim-treesitter",
+    event = "BufEnter",
     run = ":TSUpdate",
     branch = "0.5-compat",
     config = function()
@@ -52,14 +53,9 @@ require("packer").startup(function()
   use("tpope/vim-surround")
   use({
     "itchyny/lightline.vim",
+    event = "BufEnter",
     config = function()
       require("ld.plugins.lightline")
-    end,
-  })
-  use({
-    "vimwiki/vimwiki",
-    config = function()
-      require("ld.plugins.vim-wiki")
     end,
   })
   use({
@@ -89,9 +85,12 @@ require("packer").startup(function()
       require("ld.plugins.gitsigns")
     end,
   })
-  use("tpope/vim-dadbod")
   use({
     "kristijanhusak/vim-dadbod-ui",
+    cmd = { "DBUI" },
+    requires = {
+      "tpope/vim-dadbod",
+    },
     config = function()
       require("ld.plugins.vim-dadbod-ui")
     end,
