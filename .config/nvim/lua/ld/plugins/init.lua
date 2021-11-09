@@ -75,12 +75,6 @@ require("packer").startup(function()
     end,
   })
   use({
-    "lervag/vimtex",
-    config = function()
-      require("ld.plugins.vimtex")
-    end,
-  })
-  use({
     "junegunn/fzf.vim",
     config = function()
       require("ld.plugins.fzf")
