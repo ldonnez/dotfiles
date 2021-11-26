@@ -36,29 +36,36 @@ require("packer").startup(function()
     end,
   })
 
-  -- LSP
+  -- Snippets
   use({
-    "neovim/nvim-lspconfig",
+    "hrsh7th/vim-vsnip",
     config = function()
-      require("ld.lsp")
+      require("ld.plugins.vim-vsnip")
     end,
     requires = {
-      "hrsh7th/cmp-nvim-lsp",
-      after = "nvim-lspconfig",
+      "rafamadriz/friendly-snippets",
     },
   })
 
   -- Autocompletion
   use({
     "hrsh7th/nvim-cmp",
-    event = "InsertEnter",
-    after = "nvim-lspconfig",
     requires = {
+      { "hrsh7th/cmp-nvim-lsp" },
       { "hrsh7th/cmp-path", after = "nvim-cmp" },
-      { "kristijanhusak/vim-dadbod-completion", after = "nvim-cmp", ft = "sql" },
+      { "hrsh7th/cmp-vsnip", after = "nvim-cmp" },
+      { "kristijanhusak/vim-dadbod-completion", after = "nvim-cmp" },
     },
     config = function()
       require("ld.plugins.nvim-cmp")
+    end,
+  })
+
+  -- LSP
+  use({
+    "neovim/nvim-lspconfig",
+    config = function()
+      require("ld.lsp")
     end,
   })
 
