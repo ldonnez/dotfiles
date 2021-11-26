@@ -51,15 +51,27 @@ require("packer").startup(function()
   -- Autocompletion
   use({
     "hrsh7th/nvim-cmp",
-    event = "InsertEnter",
-    after = "nvim-lspconfig",
+    after = { "nvim-lspconfig" },
     requires = {
       { "hrsh7th/cmp-path", after = "nvim-cmp" },
-      { "kristijanhusak/vim-dadbod-completion", after = "nvim-cmp", ft = "sql" },
+      { "hrsh7th/cmp-vsnip", after = "nvim-cmp" },
+      { "kristijanhusak/vim-dadbod-completion", after = "nvim-cmp" },
     },
     config = function()
       require("ld.plugins.nvim-cmp")
     end,
+  })
+
+  -- Snippets
+  use({
+    "hrsh7th/vim-vsnip",
+    after = { "nvim-cmp" },
+    config = function()
+      require("ld.plugins.vim-vsnip")
+    end,
+    requires = {
+      "rafamadriz/friendly-snippets",
+    },
   })
 
   -- Highlighting
