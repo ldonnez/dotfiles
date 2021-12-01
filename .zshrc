@@ -198,13 +198,9 @@ if [ $(uname) = "Darwin" ]; then
   export PATH="/usr/local/opt/libpq/bin:$PATH"
 fi
 
-#*********************************************************************
-#
-#********* ASDF ******************************************************
-
-. $HOME/.asdf/asdf.sh
-fpath=(${ASDF_DIR}/completions $fpath)
-export NPM_CONFIG_PREFIX=$HOME/.npm
+# RUBY
+export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
+export PATH="$PATH:$GEM_HOME/bin"
 
 #*********************************************************************
 #
