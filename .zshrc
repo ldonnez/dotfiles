@@ -147,6 +147,13 @@ alias pg_restore="pg_restore -U postgres -h localhost -p 5432"
 
 #*********************************************************************
 #
+#********* ASDF ******************************************************
+
+. $HOME/.asdf/asdf.sh
+fpath=(${ASDF_DIR}/completions $fpath)
+
+#*********************************************************************
+#
 #********* EXPORTS ***************************************************
 
 # SHELL
@@ -169,6 +176,7 @@ export PATH=/usr/local/sbin:$PATH
 export PATH=$HOME/.local/bin:$PATH
 
 # NPM
+export NPM_CONFIG_PREFIX=$HOME/.npm
 export PATH="$PATH:$HOME/.npm/bin"
 
 # YARN
