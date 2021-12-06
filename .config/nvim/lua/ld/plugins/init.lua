@@ -201,7 +201,7 @@ require("packer").startup(function()
 
   -- Org mode
   use({
-    "kristijanhusak/orgmode.nvim",
+    "nvim-orgmode/orgmode",
     requires = {
       { "lukas-reineke/headlines.nvim" },
       { "akinsho/org-bullets.nvim" },
