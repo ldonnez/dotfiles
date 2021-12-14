@@ -123,7 +123,7 @@ require("packer").startup(function()
   -- Fast fuzzy searching everything
   use({
     "junegunn/fzf.vim",
-    cmd = { "Files", "Buffers", "GFiles" },
+    cmd = { "Files", "Buffers", "GFiles", "Ag" },
     keys = { { "n", "<C-p>" }, { "n", "<leader>b" }, { "n", "<leader>g" } },
     config = function()
       require("ld.plugins.fzf")
