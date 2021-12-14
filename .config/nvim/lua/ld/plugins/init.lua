@@ -72,7 +72,6 @@ require("packer").startup(function()
   -- Highlighting
   use({
     "nvim-treesitter/nvim-treesitter",
-    event = "BufEnter",
     run = ":TSUpdate",
     branch = "0.5-compat",
     config = function()
