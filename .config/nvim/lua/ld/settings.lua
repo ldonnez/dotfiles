@@ -53,10 +53,6 @@ if color_term == "truecolor" or color_term == "24bit" then
   vim.opt.termguicolors = true
 end
 
-vim.cmd([[
-	silent! colorscheme nord
-]])
-
 if vim.fn.isdirectory(global.backup_dir) ~= 1 then
   vim.fn.mkdir(global.backup_dir, "p")
 end

@@ -1,3 +1,7 @@
+vim.cmd([[
+	silent! colorscheme nord
+]])
+
 vim.g.nord_italic = 1
 vim.g.nord_bold = 1
 vim.g.nord_underline = 1
