@@ -21,6 +21,14 @@ local use = require("packer").use
 require("packer").startup(function()
   use("wbthomason/packer.nvim")
 
+  -- Theme
+  use({
+    "arcticicestudio/nord-vim",
+    config = function()
+      require("ld.plugins.nord")
+    end,
+  })
+
   -- Easy Git integration
   use({ "tpope/vim-fugitive", cmd = { "G", "Git" } })
 
@@ -102,14 +110,6 @@ require("packer").startup(function()
 
   -- Surround everything
   use({ "tpope/vim-surround", event = "BufRead" })
-
-  -- Theme
-  use({
-    "arcticicestudio/nord-vim",
-    config = function()
-      require("ld.plugins.nord")
-    end,
-  })
 
   -- Better statusline
   use({
