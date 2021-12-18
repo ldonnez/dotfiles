@@ -148,9 +148,6 @@ require("packer").startup(function()
     end,
   })
 
-  -- Prisma syntax highlighting
-  use({ "pantharshit00/vim-prisma", ft = "prisma" })
-
   -- Create tables in markdown/org
   use({
     "dhruvasagar/vim-table-mode",

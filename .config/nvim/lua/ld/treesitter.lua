@@ -24,6 +24,7 @@ require("nvim-treesitter.configs").setup({
     "jsonc",
     "yaml",
     "org",
+    "prisma",
   },
   highlight = { enable = true, disable = { "yaml" }, additional_vim_regex_highlighting = { "org" } },
 })
