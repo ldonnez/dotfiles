@@ -33,6 +33,14 @@ require("orgmode").setup({
   },
 })
 
+-- Dont wrap text in org files
+vim.cmd[[
+  augroup NoWrapLineInOrgFile
+    autocmd!
+    autocmd FileType org setlocal nowrap
+  augroup END
+]]
+
 vim.fn.sign_define("Headline1", { linehl = "VimwikiHeader1" })
 vim.fn.sign_define("Headline2", { linehl = "VimwikiHeader2" })
 
