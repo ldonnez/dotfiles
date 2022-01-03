@@ -28,10 +28,3 @@ require("nvim-treesitter.configs").setup({
   },
   highlight = { enable = true, disable = { "yaml" }, additional_vim_regex_highlighting = { "org" } },
 })
-
-vim.cmd([[
-    hi link OrgAgendaDay Directory
-    hi! link TSWarning WarningMsg
-    hi! link TSDanger ErrorMsg
-    hi clear TsNote
-  ]])
