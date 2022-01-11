@@ -3,7 +3,7 @@ local utils = require("ld.lsp.utils")
 
 lspconfig.tsserver.setup({
   capabilities = utils.cmp_capababilities(),
-  on_attach = function(client)
+  on_attach = function(client, bufnr)
     -- disable tsserver formatting if you plan on formatting via null-ls
     client.resolved_capabilities.document_formatting = false
     local ts_utils = require("nvim-lsp-ts-utils")
@@ -40,10 +40,10 @@ lspconfig.tsserver.setup({
     -- required to fix code action ranges
     ts_utils.setup_client(client)
 
-    utils.on_attach()
-    utils.buf_set_keymap("n", "gs", ":TSLspOrganize<CR>", { silent = true })
-    utils.buf_set_keymap("n", "<leader>qf", ":TSLspFixCurrent<CR>", { silent = true })
-    utils.buf_set_keymap("n", "<leader>gr", ":TSLspRenameFile<CR>", { silent = true })
-    utils.buf_set_keymap("n", "gi", ":TSLspImportAll<CR>", { silent = true })
+    utils.on_attach(client, bufnr)
+    utils.buf_set_keymap(bufnr, "n", "gs", ":TSLspOrganize<CR>", { silent = true })
+    utils.buf_set_keymap(bufnr, "n", "<leader>qf", ":TSLspFixCurrent<CR>", { silent = true })
+    utils.buf_set_keymap(bufnr, "n", "<leader>gr", ":TSLspRenameFile<CR>", { silent = true })
+    utils.buf_set_keymap(bufnr, "n", "gi", ":TSLspImportAll<CR>", { silent = true })
   end,
 })
