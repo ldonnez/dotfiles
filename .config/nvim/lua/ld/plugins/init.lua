@@ -44,6 +44,17 @@ require("packer").startup(function()
     end,
   })
 
+  -- Git history of commits and file history view
+  use({
+    "sindrets/diffview.nvim",
+    requires = "nvim-lua/plenary.nvim",
+    cmd = { "DiffviewOpen", "DiffviewFileHistory" },
+    keys = { { "n", "<leader>dvf" } },
+    config = function()
+      require("ld.plugins.diffview")
+    end,
+  })
+
   -- Snippets
   use({
     "hrsh7th/vim-vsnip",
