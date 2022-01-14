@@ -7,16 +7,6 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
   vim.cmd("packadd packer.nvim")
 end
 
-vim.api.nvim_exec(
-  [[
-  augroup Packer
-    autocmd!
-    autocmd BufWritePost init.lua PackerCompile
-  augroup end
-]],
-  false
-)
-
 local use = require("packer").use
 require("packer").startup(function()
   use("wbthomason/packer.nvim")
