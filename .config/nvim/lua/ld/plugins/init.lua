@@ -76,6 +76,14 @@ require("packer").startup(function()
     config = function()
       require("ld.lsp")
     end,
+    requires = {
+      {
+        "ray-x/lsp_signature.nvim",
+        config = function()
+          require("ld.plugins.lsp_signature")
+        end,
+      },
+    },
   })
 
   -- Highlighting
