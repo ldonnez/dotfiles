@@ -34,22 +34,13 @@ require("orgmode").setup({
 })
 
 -- Dont wrap text in org files
-vim.cmd[[
+vim.cmd([[
   augroup NoWrapLineInOrgFile
     autocmd!
     autocmd FileType org setlocal nowrap
   augroup END
-]]
+]])
 
-vim.fn.sign_define("Headline1", { linehl = "VimwikiHeader1" })
-vim.fn.sign_define("Headline2", { linehl = "VimwikiHeader2" })
-
-require("headlines").setup({
-  org = {
-    headline_signs = { "Headline1", "Headline2" },
-  },
-})
-require("org-bullets").setup({})
 
 vim.api.nvim_set_keymap("n", "<leader>og", ":edit" .. orgDestination .. "/index.org | :cd %:p:h<CR>:pwd<CR>", {
   noremap = true,

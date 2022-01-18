@@ -206,10 +206,6 @@ require("packer").startup(function()
   -- Org mode
   use({
     "nvim-orgmode/orgmode",
-    requires = {
-      { "lukas-reineke/headlines.nvim" },
-      { "akinsho/org-bullets.nvim" },
-    },
     config = function()
       require("ld.plugins.orgmode")
     end,
