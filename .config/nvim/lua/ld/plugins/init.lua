@@ -70,6 +70,15 @@ require("packer").startup(function()
     end,
   })
 
+  use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
+  use({
+    "nvim-telescope/telescope.nvim",
+    requires = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope-file-browser.nvim" },
+    config = function()
+      require("ld.plugins.telescope")
+    end,
+  })
+
   -- LSP
   use({
     "neovim/nvim-lspconfig",
@@ -130,20 +139,20 @@ require("packer").startup(function()
   })
 
   -- Fast fuzzy searching everything
-  use({
-    "junegunn/fzf.vim",
-    cmd = { "Files", "Buffers", "GFiles", "Ag" },
-    keys = { { "n", "<C-p>" }, { "n", "<leader>b" }, { "n", "<leader>g" } },
-    config = function()
-      require("ld.plugins.fzf")
-    end,
-    requires = {
-      "junegunn/fzf",
-      run = function()
-        vim.fn["fzf#install"]()
-      end,
-    },
-  })
+  -- use({
+  --   "junegunn/fzf.vim",
+  --   cmd = { "Files", "Buffers", "GFiles", "Ag" },
+  --   keys = { { "n", "<C-p>" }, { "n", "<leader>b" }, { "n", "<leader>g" } },
+  --   config = function()
+  --     require("ld.plugins.fzf")
+  --   end,
+  --   requires = {
+  --     "junegunn/fzf",
+  --     run = function()
+  --       vim.fn["fzf#install"]()
+  --     end,
+  --   },
+  -- })
 
   -- Nice database UI
   use({
