@@ -1,5 +1,10 @@
 local orgDestination = "~/SynologyDrive/org"
 
+-- https://github.com/nvim-orgmode/orgmode/blob/master/lua/orgmode/colors/highlights.lua
+-- highlights
+vim.cmd([[autocmd ColorScheme * highlight OrgTSHeadlineLevel1 ctermfg=6 cterm=bold gui=bold]])
+vim.cmd([[autocmd ColorScheme * highlight OrgTSHeadlineLevel2 ctermfg=6]])
+
 require("orgmode").setup({
   org_agenda_files = { orgDestination .. "/*", orgDestination .. "/**/*" },
   org_default_notes_file = orgDestination .. "/refile.org",
@@ -33,6 +38,10 @@ require("orgmode").setup({
   },
 })
 
+require("org-bullets").setup({
+  symbols = { "◉", "○", "✸", "✿" },
+})
+
 -- Dont wrap text in org files
 vim.cmd([[
   augroup NoWrapLineInOrgFile
@@ -40,7 +49,6 @@ vim.cmd([[
     autocmd FileType org setlocal nowrap
   augroup END
 ]])
-
 
 vim.api.nvim_set_keymap("n", "<leader>og", ":edit" .. orgDestination .. "/index.org | :cd %:p:h<CR>:pwd<CR>", {
   noremap = true,
