@@ -151,22 +151,6 @@ require("packer").startup(function()
     end,
   })
 
-  -- Fast fuzzy searching everything
-  -- use({
-  --   "junegunn/fzf.vim",
-  --   cmd = { "Files", "Buffers", "GFiles", "Ag" },
-  --   keys = { { "n", "<C-p>" }, { "n", "<leader>b" }, { "n", "<leader>g" } },
-  --   config = function()
-  --     require("ld.plugins.fzf")
-  --   end,
-  --   requires = {
-  --     "junegunn/fzf",
-  --     run = function()
-  --       vim.fn["fzf#install"]()
-  --     end,
-  --   },
-  -- })
-
   -- Nice database UI
   use({
     "kristijanhusak/vim-dadbod-ui",
@@ -231,5 +215,8 @@ require("packer").startup(function()
     config = function()
       require("ld.plugins.orgmode")
     end,
+    requires = {
+      "akinsho/org-bullets.nvim",
+    },
   })
 end)
