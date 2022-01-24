@@ -67,6 +67,7 @@ require("packer").startup(function()
     end,
   })
 
+  -- Fuzzy searching/grepping through files
   use({
     "nvim-telescope/telescope.nvim",
     requires = {
