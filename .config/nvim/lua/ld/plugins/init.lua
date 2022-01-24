@@ -25,10 +25,7 @@ require("packer").startup(function()
   -- Git signs on the left side of the numbers
   use({
     "lewis6991/gitsigns.nvim",
-    event = "BufRead",
-    requires = {
-      "nvim-lua/plenary.nvim",
-    },
+    tag = "release",
     config = function()
       require("ld.plugins.gitsigns")
     end,
