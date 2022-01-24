@@ -19,6 +19,12 @@ require("packer").startup(function()
     end,
   })
 
+  -- Plenary a plugin that is used by a lot of plugins
+  use({
+    "nvim-lua/plenary.nvim",
+    module = "plenary",
+  })
+
   -- Easy Git integration
   use({ "tpope/vim-fugitive", cmd = { "G", "Git" } })
 
@@ -34,7 +40,6 @@ require("packer").startup(function()
   -- Git history of commits and file history view
   use({
     "sindrets/diffview.nvim",
-    requires = "nvim-lua/plenary.nvim",
     cmd = { "DiffviewOpen", "DiffviewFileHistory" },
     keys = { { "n", "<leader>dvf" } },
     config = function()
@@ -71,7 +76,6 @@ require("packer").startup(function()
   use({
     "nvim-telescope/telescope.nvim",
     requires = {
-      { "nvim-lua/plenary.nvim" },
       { "nvim-telescope/telescope-file-browser.nvim" },
       { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
     },
@@ -96,14 +100,15 @@ require("packer").startup(function()
     config = function()
       require("ld.lsp")
     end,
-    requires = {
-      {
-        "ray-x/lsp_signature.nvim",
-        config = function()
-          require("ld.plugins.lsp_signature")
-        end,
-      },
-    },
+  })
+
+  -- LSP better signature support
+  use({
+    "ray-x/lsp_signature.nvim",
+    module = "lsp_signature",
+    config = function()
+      require("ld.plugins.lsp_signature")
+    end,
   })
 
   -- Highlighting
@@ -184,15 +189,14 @@ require("packer").startup(function()
   -- Improves typescripts language server enables supports file renames and auto imports
   use({
     "jose-elias-alvarez/nvim-lsp-ts-utils",
+    module = "nvim-lsp-ts-utils",
     ft = { "typescript", "javascript", "javascriptreact", "typescriptreact" },
-    after = "nvim-lspconfig",
-    requires = { "nvim-lua/plenary.nvim" },
   })
 
   -- File tree
   use({
     "kyazdani42/nvim-tree.lua",
-    event = "BufEnter",
+    cmd = { "NvimTreeToggle", "NvimTreeFindFile" },
     keys = { { "n", "<C-e>" }, { "n", "<leader>n" } },
     config = function()
       require("ld.plugins.nvim-tree")
