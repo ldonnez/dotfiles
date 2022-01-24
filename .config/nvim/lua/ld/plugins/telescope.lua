@@ -10,6 +10,7 @@ require("telescope").setup({
       "--with-filename",
       "--smart-case",
       "--trim",
+      "--no-ignore-vcs",
       "--hidden",
     },
     initial_mode = "insert",
@@ -31,9 +32,8 @@ require("telescope").setup({
   },
   pickers = {
     find_files = {
-      hidden = true,
+      find_command = { "fd", "--hidden", "--no-ignore-vcs", "--type", "f" },
     },
-    live_grep = {},
     buffers = {
       mappings = {
         i = {
