@@ -69,15 +69,15 @@ tags
 # Rails #
 ###########
 .ruby-version
-tmp/*
+tmp
 
 # Node #
 ###########
-node_modules/*
+node_modules
 
 # React #
 ###########
-storybook-static/*
+storybook-static
 
 # Rust #
 ###########
