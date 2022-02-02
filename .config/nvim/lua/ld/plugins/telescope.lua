@@ -19,6 +19,7 @@ require("telescope").setup({
         ["<C-k>"] = actions.move_selection_previous,
         ["<C-j>"] = actions.move_selection_next,
         ["<C-[>"] = actions.close,
+        ["<C-a>"] = actions.select_all,
       },
       n = {
         ["<C-[>"] = actions.close,
