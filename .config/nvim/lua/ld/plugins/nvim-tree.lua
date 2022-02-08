@@ -15,6 +15,14 @@ require("nvim-tree").setup({
   view = {
     auto_resize = true,
   },
+  filters = {
+    dotfiles = false
+  },
+  git = {
+    enable = true,
+    ignore = false,
+    timeout = 500,
+  },
 })
 
 vim.api.nvim_set_keymap("n", "<C-e>", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
