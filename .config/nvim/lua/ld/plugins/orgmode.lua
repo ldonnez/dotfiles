@@ -5,6 +5,7 @@ local orgDestination = "~/SynologyDrive/org"
 vim.cmd([[autocmd ColorScheme * highlight OrgTSHeadlineLevel1 ctermfg=6 cterm=bold gui=bold]])
 vim.cmd([[autocmd ColorScheme * highlight OrgTSHeadlineLevel2 ctermfg=6]])
 
+require('orgmode').setup_ts_grammar()
 require("orgmode").setup({
   org_agenda_files = { orgDestination .. "/*", orgDestination .. "/**/*" },
   org_default_notes_file = orgDestination .. "/refile.org",
