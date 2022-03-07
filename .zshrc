@@ -147,13 +147,6 @@ alias pg_restore="pg_restore -U postgres -h localhost -p 5432"
 
 #*********************************************************************
 #
-#********* ASDF ******************************************************
-
-. $HOME/.asdf/asdf.sh
-fpath=(${ASDF_DIR}/completions $fpath)
-
-#*********************************************************************
-#
 #********* EXPORTS ***************************************************
 
 # SHELL
@@ -206,10 +199,6 @@ if [ $(uname) = "Darwin" ]; then
   export PATH="/usr/local/opt/libpq/bin:$PATH"
 fi
 
-# RUBY
-export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
-export PATH="$PATH:$GEM_HOME/bin"
-
 #*********************************************************************
 #
 #********* COMPLETIONS ***********************************************
@@ -237,3 +226,10 @@ fi
 source ~/.zsh/plugins/fzf-tab/fzf-tab.plugin.zsh
 
 alias luamake=/Users/lenny/.local/share/nvim/site/pack/packer/start/lua-language-server/3rd/luamake/luamake
+
+#*********************************************************************
+#
+#********* ASDF ******************************************************
+
+. $HOME/.asdf/asdf.sh
+fpath=(${ASDF_DIR}/completions $fpath)
