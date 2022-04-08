@@ -96,4 +96,4 @@ require("diffview").setup({
   },
 })
 
-vim.api.nvim_set_keymap("n", "<leader>dvf", ":DiffviewFileHistory<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>dvf", ":DiffviewFileHistory<CR>", { noremap = true, silent = true })
