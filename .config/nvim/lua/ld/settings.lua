@@ -44,7 +44,8 @@ if vim.fn.isdirectory(global.backup_dir) ~= 1 then
   vim.fn.mkdir(global.backup_dir, "p")
 end
 
-vim.cmd([[au TermOpen * setlocal nonumber list]])
-vim.cmd([[
-  autocmd FileType mail set noautoindent | setlocal nosmartindent | setlocal textwidth=72 | setlocal nonumber
-]])
+vim.api.nvim_create_autocmd({ "TermOpen" }, { pattern = "*", command = "setlocal nonumber list" })
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  pattern = "mail",
+  command = "set noautoindent | setlocal nosmartindent | setlocal textwidth=72 | setlocal nonumber",
+})
