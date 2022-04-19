@@ -34,6 +34,7 @@ vim.opt.undodir = global.undo_dir .. "//"
 vim.opt.backupskip = "/tmp/*"
 vim.opt.guifont = "Hack:h16"
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
+vim.opt.laststatus = 3
 
 local color_term = vim.fn.getenv("COLORTERM")
 if color_term == "truecolor" or color_term == "24bit" then
