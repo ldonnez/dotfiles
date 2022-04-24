@@ -122,10 +122,10 @@ require("packer").startup(function()
 
   -- Save sessions & restore buffers for projects
   use({
-    "thaerkh/vim-workspace",
-    event = "BufEnter",
+    "olimorris/persisted.nvim",
+    after = "nord-vim",
     config = function()
-      require("ld.plugins.workspace")
+      require("ld.plugins.persisted")
     end,
   })
 
