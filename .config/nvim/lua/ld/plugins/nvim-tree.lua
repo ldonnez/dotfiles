@@ -13,7 +13,6 @@ require("nvim-tree").setup({
   },
   disable_netrw = false,
   view = {
-    auto_resize = true,
     mappings = {
       list = {
         { key = "<C-e>", action = "" },
