@@ -140,7 +140,12 @@ require("packer").startup(function()
   })
 
   -- Auto pair parentheses, brackets, quotes...
-  use({ "jiangmiao/auto-pairs", event = "BufRead" })
+  use({
+    "windwp/nvim-autopairs",
+    config = function()
+      require("ld.plugins.autopairs")
+    end,
+  })
 
   -- Surround everything
   use({ "tpope/vim-surround", event = "BufRead" })
