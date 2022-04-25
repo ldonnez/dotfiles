@@ -159,10 +159,9 @@ require("packer").startup(function()
 
   -- Better statusline
   use({
-    "itchyny/lightline.vim",
-    after = "nord-vim",
+    "nvim-lualine/lualine.nvim",
     config = function()
-      require("ld.plugins.lightline")
+      require("ld.plugins.lualine")
     end,
   })
 
