@@ -1,15 +1,14 @@
 vim.g.nvim_tree_git_hl = 1
 vim.g.nvim_tree_show_icons = {
   ["git"] = 1,
-  ["folders"] = 0,
-  ["files"] = 0,
-  ["folder_arrows"] = 0,
+  ["folders"] = 1,
+  ["files"] = 1,
+  ["folder_arrows"] = 1,
 }
 
 require("nvim-tree").setup({
   diagnostics = {
     enable = true,
-    icons = { hint = "H", info = "I", warning = "W", error = "E" },
   },
   disable_netrw = false,
   view = {

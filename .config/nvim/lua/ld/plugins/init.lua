@@ -19,6 +19,13 @@ require("packer").startup(function()
     end,
   })
 
+  -- Icons
+  use({
+    "kyazdani42/nvim-web-devicons",
+    module = "nvim-web-devicons",
+    opt = true,
+  })
+
   -- Plenary a plugin that is used by a lot of plugins
   use({
     "nvim-lua/plenary.nvim",
