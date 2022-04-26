@@ -8,6 +8,7 @@ cmp.setup({
     { name = "vim-dadbod-completion" },
     { name = "orgmode" },
     { name = "nvim_lsp_signature_help" },
+    { name = "buffer" },
   },
   window = {
     completion = cmp.config.window.bordered(),

@@ -72,6 +72,7 @@ require("packer").startup(function()
       { "hrsh7th/cmp-nvim-lsp" },
       { "hrsh7th/cmp-path", after = "nvim-cmp" },
       { "hrsh7th/cmp-vsnip", after = "nvim-cmp" },
+      { "hrsh7th/cmp-buffer", after = "nvim-cmp" },
       { "kristijanhusak/vim-dadbod-completion", after = "nvim-cmp" },
       { "hrsh7th/cmp-nvim-lsp-signature-help", after = "nvim-cmp" },
     },
