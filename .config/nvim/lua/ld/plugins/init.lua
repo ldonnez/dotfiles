@@ -73,6 +73,7 @@ require("packer").startup(function()
       { "hrsh7th/cmp-path", after = "nvim-cmp" },
       { "hrsh7th/cmp-vsnip", after = "nvim-cmp" },
       { "kristijanhusak/vim-dadbod-completion", after = "nvim-cmp" },
+      { "hrsh7th/cmp-nvim-lsp-signature-help", after = "nvim-cmp" },
     },
     config = function()
       require("ld.plugins.nvim-cmp")
@@ -106,15 +107,6 @@ require("packer").startup(function()
     "neovim/nvim-lspconfig",
     config = function()
       require("ld.lsp")
-    end,
-  })
-
-  -- LSP better signature support
-  use({
-    "ray-x/lsp_signature.nvim",
-    module = "lsp_signature",
-    config = function()
-      require("ld.plugins.lsp_signature")
     end,
   })
 

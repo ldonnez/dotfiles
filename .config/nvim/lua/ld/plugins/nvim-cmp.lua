@@ -7,6 +7,7 @@ cmp.setup({
     { name = "path" },
     { name = "vim-dadbod-completion" },
     { name = "orgmode" },
+    { name = "nvim_lsp_signature_help" },
   },
   window = {
     completion = cmp.config.window.bordered(),
