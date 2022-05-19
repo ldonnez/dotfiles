@@ -292,7 +292,7 @@ let g:lightline = {
       \
       \ },
       \ 'component_function': {
-      \   'gitbranch': 'fugitive#head',
+      \   'gitbranch': 'FugitiveHead',
       \   'cocstatus': 'StatusDiagnostic'
       \ },
       \ }
