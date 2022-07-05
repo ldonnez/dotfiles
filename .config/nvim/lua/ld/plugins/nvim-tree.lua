@@ -1,11 +1,3 @@
-vim.g.nvim_tree_git_hl = 1
-vim.g.nvim_tree_show_icons = {
-  ["git"] = 1,
-  ["folders"] = 1,
-  ["files"] = 1,
-  ["folder_arrows"] = 1,
-}
-
 require("nvim-tree").setup({
   diagnostics = {
     enable = true,
@@ -21,9 +13,25 @@ require("nvim-tree").setup({
   filters = {
     dotfiles = false,
   },
+  renderer = {
+    highlight_git = true,
+    icons = {
+      webdev_colors = true,
+      git_placement = "before",
+      padding = " ",
+      symlink_arrow = " ➛ ",
+      show = {
+        file = true,
+        folder = true,
+        folder_arrow = true,
+        git = true,
+      },
+    },
+  },
   git = {
     enable = true,
     ignore = false,
+    show_on_dirs = true,
     timeout = 500,
   },
 })
