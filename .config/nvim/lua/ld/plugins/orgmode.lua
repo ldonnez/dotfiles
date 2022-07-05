@@ -42,9 +42,7 @@ require("orgmode").setup({
   },
 })
 
-require("org-bullets").setup({
-  symbols = { "◉", "○", "✸", "✿" },
-})
+require("org-bullets").setup()
 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "org",
