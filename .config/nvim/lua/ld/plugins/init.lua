@@ -148,7 +148,13 @@ require("packer").startup(function()
   })
 
   -- Surround everything
-  use({ "tpope/vim-surround", event = "BufRead" })
+  use({
+    "kylechui/nvim-surround",
+    event = "BufRead",
+    config = function()
+      require("ld.plugins.surround")
+    end,
+  })
 
   -- Better statusline
   use({
