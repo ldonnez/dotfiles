@@ -199,6 +199,11 @@ if [ $(uname) = "Darwin" ]; then
   export PATH="/usr/local/opt/libpq/bin:$PATH"
 fi
 
+# ANDROID
+export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
+export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
+
 #*********************************************************************
 #
 #********* COMPLETIONS ***********************************************
