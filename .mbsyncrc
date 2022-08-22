@@ -4,7 +4,7 @@ IMAPAccount gmail
 Host imap.gmail.com
 AuthMechs LOGIN
 User lenny.donnez@gmail.com
-PassCmd "gpg -q --no-tty --for-your-eyes-only -d ~/.secrets/lenny.donnez@gmail.com.gpg"
+PassCmd "gpg -q --no-tty --for-your-eyes-only -d ~/.secrets/lenny.donnez@gmail.com-app-password.gpg"
 #
 # Use SSL
 SSLType IMAPS
@@ -20,9 +20,9 @@ Path ~/.mail/gmail/
 Inbox ~/.mail/gmail/Inbox
 
 Channel gmail
-Master :gmail-remote:
-Slave :gmail-local:
-Patterns * ![Gmail]* "[Gmail]/Sent Mail" "[Gmail]/Drafts" "[Gmail]/Bin" "[Gmail]/All mail"
+Far :gmail-remote:
+Near :gmail-local:
+Patterns *
 # Automatically create missing mailboxes, both locally and on the server
 Create Both
 # Save the synchronization state files in the relevant directory
@@ -52,9 +52,9 @@ Path ~/.mail/work/
 Inbox ~/.mail/work/Inbox
 
 Channel work
-Master :work-remote:
-Slave :work-local:
-Patterns * ![Gmail]* "[Gmail]/Sent Mail" "[Gmail]/Drafts" "[Gmail]/Bin" "[Gmail]/All mail"
+Far :work-remote:
+Near :work-local:
+Patterns *
 # Automatically create missing mailboxes, both locally and on the server
 Create Both
 # Save the synchronization state files in the relevant directory
@@ -81,11 +81,11 @@ MaildirStore hotmail-local
 Subfolders Verbatim
 # The trailing "/" is important
 Path ~/.mail/hotmail/
-Inbox ~/.mail/hotmail/Inbox/
+Inbox ~/.mail/hotmail/Inbox
 
 Channel hotmail
-Master :hotmail-remote:
-Slave :hotmail-local:
+Far :hotmail-remote:
+Near :hotmail-local:
 Patterns *
 # Automatically create missing mailboxes, both locally and on the server
 Create Both
