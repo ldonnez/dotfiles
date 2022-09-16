@@ -1,3 +1,3 @@
 require("lualine").setup({
-  options = { theme = "nord", globalstatus = true },
+  options = { theme = "catppuccin", globalstatus = true },
 })

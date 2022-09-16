@@ -13,9 +13,10 @@ require("packer").startup(function()
 
   -- Theme
   use({
-    "arcticicestudio/nord-vim",
+    "catppuccin/nvim",
+    as = "catppuccin",
     config = function()
-      require("ld.plugins.nord")
+      require("ld.plugins.catppuccin")
     end,
   })
 
@@ -123,7 +124,6 @@ require("packer").startup(function()
   -- Save sessions & restore buffers for projects
   use({
     "olimorris/persisted.nvim",
-    after = "nord-vim",
     config = function()
       require("ld.plugins.persisted")
     end,
