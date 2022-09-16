@@ -227,8 +227,5 @@ require("packer").startup(function()
     config = function()
       require("ld.plugins.orgmode")
     end,
-    requires = {
-      "akinsho/org-bullets.nvim",
-    },
   })
 end)
