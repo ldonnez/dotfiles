@@ -28,6 +28,7 @@ vim.opt.conceallevel = 2
 vim.opt.concealcursor = "nc"
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldlevelstart = 20
 vim.opt.undofile = true
 vim.opt.backup = true
 vim.opt.writebackup = true
