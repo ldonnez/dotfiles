@@ -34,6 +34,7 @@ require("orgmode").setup({
     reminder_time = { 0, 5, 10, 30, 60 },
   },
 })
+require("org-bullets").setup()
 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "org",
