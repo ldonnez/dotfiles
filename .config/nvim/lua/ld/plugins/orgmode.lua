@@ -1,12 +1,5 @@
 local orgDestination = "~/SynologyDrive/org"
 
--- https://github.com/nvim-orgmode/orgmode/blob/master/lua/orgmode/colors/highlights.lua
--- highlights
--- vim.api.nvim_create_autocmd(
---   { "colorscheme" },
---   { pattern = "*", command = [[highlight orgtsheadlinelevel1 ctermfg=6 cterm=bold gui=bold]] }
--- )
--- vim.api.nvim_create_autocmd({ "ColorScheme" }, { pattern = "*", command = [[highlight OrgTSHeadlineLevel2 ctermfg=6]] })
 
 require("orgmode").setup_ts_grammar()
 require("orgmode").setup({
