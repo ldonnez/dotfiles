@@ -25,7 +25,6 @@ vim.opt.wildignore = { "*/tmp/*", "*.so", "*.swp", "*.zip", "*.jpg", "*.png", ".
 vim.opt.clipboard = { "unnamed", "unnamedplus" }
 vim.opt.cursorline = true
 vim.opt.conceallevel = 2
-vim.opt.concealcursor = "nc"
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldlevelstart = 20
