@@ -196,13 +196,6 @@ require("packer").startup(function()
     end,
   })
 
-  -- Improves typescripts language server enables supports file renames and auto imports
-  use({
-    "jose-elias-alvarez/nvim-lsp-ts-utils",
-    module = "nvim-lsp-ts-utils",
-    ft = { "typescript", "javascript", "javascriptreact", "typescriptreact" },
-  })
-
   -- File tree
   use({
     "kyazdani42/nvim-tree.lua",
