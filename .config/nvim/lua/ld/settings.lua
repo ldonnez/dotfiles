@@ -1,8 +1,5 @@
 local global = require("ld.global")
 
-vim.g.did_load_filetypes = 0
-vim.g.do_filetype_lua = 1
-
 vim.opt.number = true
 vim.opt.path = "+=**"
 vim.opt.expandtab = true
