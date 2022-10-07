@@ -1,10 +1,7 @@
 vim.g.catppuccin_flavour = "frappe"
 
 require("catppuccin").setup({
-  compile = {
-    enabled = true,
-    path = vim.fn.stdpath("cache") .. "/catppuccin",
-  },
+  compile_path = vim.fn.stdpath("cache") .. "/catppuccin",
   integrations = {
     treesitter = true,
     native_lsp = {
@@ -70,7 +67,4 @@ require("catppuccin").setup({
     treesitter_context = false,
   },
 })
-
-vim.cmd([[
-  silent! colorscheme catppuccin
-]])
+vim.api.nvim_command("colorscheme catppuccin")
