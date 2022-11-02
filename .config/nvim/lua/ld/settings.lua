@@ -32,7 +32,6 @@ vim.opt.backupdir = global.backup_dir .. "//"
 vim.opt.directory = global.swap_dir .. "//"
 vim.opt.undodir = global.undo_dir .. "//"
 vim.opt.backupskip = "/tmp/*"
-vim.opt.guifont = "Hack Nerd Font:h16"
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 vim.opt.laststatus = 3
 vim.opt.sessionoptions = "buffers,curdir,folds,winpos,winsize"
