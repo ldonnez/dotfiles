@@ -2,7 +2,11 @@ set mouse=a
 
 " Set Editor Font
 if exists(':GuiFont')
-    GuiFont! Hack Nerd Font:h14
+  if has('win32') || has('win64')
+    GuiFont! Hack Nerd Font:h14:w1
+  else
+    GuiFont! Hack Nerd Font:h16:w1
+  endif
 endif
 
 " Disable GUI Tabline
