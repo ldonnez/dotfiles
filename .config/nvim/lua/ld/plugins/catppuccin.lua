@@ -1,6 +1,5 @@
-vim.g.catppuccin_flavour = "frappe"
-
 require("catppuccin").setup({
+  flavour = "frappe",
   compile_path = vim.fn.stdpath("cache") .. "/catppuccin",
   integrations = {
     treesitter = true,
@@ -67,4 +66,5 @@ require("catppuccin").setup({
     treesitter_context = false,
   },
 })
+
 vim.api.nvim_command("colorscheme catppuccin")
