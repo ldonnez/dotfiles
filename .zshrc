@@ -170,20 +170,20 @@ export PATH=$HOME/.local/bin:$PATH
 
 # NPM
 export NPM_CONFIG_PREFIX=$HOME/.npm
-export PATH="$PATH:$HOME/.npm/bin"
+export PATH=$HOME/.npm/bin:$PATH
 
 # YARN
-export PATH="$PATH:$HOME/.yarn/bin"
+export PATH=$HOME/.yarn/bin:$PATH
 
 # GO
 export PATH=$HOME/go/bin:$PATH
 
 # PHP
 export PATH=/usr/local/php/bin:$PATH
-export PATH="$PATH:$HOME/.composer/vendor/bin"
+export PATH=$HOME/.composer/vendor/bin:$PATH
 
 # RUST
-export PATH="$PATH:$HOME/.cargo/bin"
+export PATH=$HOME/.cargo/bin:$PATH
 
 # GPG
 GPG_CONFIG_FILE="~/.gnupg/gpg-agent.conf"
