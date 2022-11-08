@@ -16,11 +16,11 @@ set certificate_file =~/.mutt/certificates/work
 set sort = reverse-threads
 set sort_aux = last-date-received
 
-macro index,pager S "<save-message>=[Gmail]/Spam<enter><enter>" "Report spam"
-macro index,pager d "<save-message>=[Gmail]/Bin<enter>" "Deleted"
+macro index,pager S "<save-message>=[Gmail].Spam<enter><enter>" "Report spam"
+macro index,pager d "<save-message>=[Gmail].Bin<enter>" "Deleted"
 
 mailboxes +Inbox \
-          +"[Gmail]/Drafts" \
-          +"[Gmail]/Sent Mail" \
-          +"[Gmail]/Bin" \
-          +"[Gmail]/All mail"
+          +"[Gmail].Drafts" \
+          +"[Gmail].Sent Mail" \
+          +"[Gmail].Bin" \
+          +"[Gmail].All mail"

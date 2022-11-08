@@ -5,9 +5,9 @@ set folder = ~/.mail/gmail
 
 set spoolfile = +Inbox
 set mbox = +Inbox
-set postponed ="+[Gmail]/Drafts"
-set record = "+[Gmail]/Sent Mail"
-set trash  = "+[Gmail]/Deleted"
+set postponed ="+[Gmail].Drafts"
+set record = "+[Gmail].Sent Mail"
+set trash  = "+[Gmail].Deleted"
 
 set header_cache =~/.mutt/cache/headers/gmail
 set message_cachedir =~/.mutt/cache/bodies/gmail
@@ -16,13 +16,13 @@ set certificate_file =~/.mutt/certificates/gmail
 set sort = reverse-threads
 set sort_aux = last-date-received
 
-macro index,pager S "<save-message>=[Gmail]/Spam<enter><enter>" "Report spam"
-macro index,pager d "<save-message>=[Gmail]/Bin<enter>" "Deleted"
+macro index,pager S "<save-message>=[Gmail].Spam<enter><enter>" "Report spam"
+macro index,pager d "<save-message>=[Gmail].Bin<enter>" "Deleted"
 
 mailboxes  +Inbox \
            +GitHub \
            +"Code climate"\
-           +"[Gmail]/Sent Mail" \
-           +"[Gmail]/Drafts" \
-           +"[Gmail]/Bin" \
-           +"[Gmail]/All Mail"
+           +"[Gmail].Sent Mail" \
+           +"[Gmail].Drafts" \
+           +"[Gmail].Bin" \
+           +"[Gmail].All Mail"
