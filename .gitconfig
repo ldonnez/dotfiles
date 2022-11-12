@@ -10,3 +10,5 @@
 	reviewone = !nvim -p +\"tabdo Gdiff $REVIEW_BASE\" +\"let g:gitgutter_diff_base = '$REVIEW_BASE'\"
 [gpg]
 	program = gpg2
+[safe]
+	directory = *
