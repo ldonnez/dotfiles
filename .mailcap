@@ -1,20 +1,19 @@
 # MS Word documents
-application/msword; ~/.mutt/view_attachment.sh %s "-" '/Applications/Pages.app'
-application/octet-stream; ~/.mutt/view_attachment.sh %s "-" '/Applications/Pages.app'
-application/vnd.openxmlformats-officedocument.wordprocessingml.document; ~/.mutt/view_attachment.sh %s "-" '/Applications/Pages.app'
+application/msword; open %s;
+application/octet-stream; open %s;
+application/vnd.openxmlformats-officedocument.wordprocessingml.document; open %s;
 
 # Images
-image/jpeg; ~/.mutt/view_attachment.sh %s jpg
-image/pjpeg; ~/.mutt/view_attachment.sh %s jpg
-image/png; ~/.mutt/view_attachment.sh %s png
-image/gif; ~/.mutt/view_attachment.sh %s gif
+image/jpeg; open %s
+image/pjpeg; open %s
+image/png; open %s
+image/gif; open %s
 
 # PDF
-application/pdf; ~/.mutt/view_attachment.sh %s pdf
+application/pdf;                open %s;
 
 # HTML
-text/html;                      links %s; nametemplate=%s.html
-text/html;                      links -dump %s; nametemplate=%s.html; copiousoutput
+text/html;                      open %s; nametemplate=%s.html
 
 # Text
 text/plain;                     nvim %s; nametemplate=%s.text;
