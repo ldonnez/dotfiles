@@ -20,7 +20,6 @@ macro pager b '<enter-command>toggle sidebar_visible<enter><redraw-screen>'
 macro pager \cb <pipe-entry>'urlview'<enter> 'Follow links with urlview'
 bind pager <up> previous-line #scroll inside the message rather than the index
 bind pager <down> next-line
-macro index O "!mbsync -a^M" "Update through mbsync"
 macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all messages as read"
 bind index gg       first-entry
 bind index G        last-entry
