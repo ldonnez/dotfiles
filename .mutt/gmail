@@ -20,8 +20,6 @@ macro index,pager S "<save-message>=[Gmail].Spam<enter><enter>" "Report spam"
 macro index,pager d "<save-message>=[Gmail].Bin<enter>" "Deleted"
 
 mailboxes  +Inbox \
-           +GitHub \
-           +"Code climate"\
            +"[Gmail].Sent Mail" \
            +"[Gmail].Drafts" \
            +"[Gmail].Bin" \
