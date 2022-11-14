@@ -18,6 +18,7 @@ set sort_aux              = last-date-received
 
 macro index,pager         S "<save-message>=[Gmail].Spam<enter><enter>" "Report spam"
 macro index               O "!mbsync work<return>" "Update through mbsync"
+macro index               y "<save-message>=[Gmail].All Mail<enter>" "Archive"
 
 mailboxes                 +Inbox \
                           +"[Gmail].Drafts" \

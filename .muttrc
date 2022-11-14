@@ -10,6 +10,7 @@ source ~/.mutt-alias
 # Rebind for neomutt
 bind index                c           noop
 bind index                g           noop
+bind editor               <space>     noop
 
 #Key mappings
 macro index               <f2>        '<sync-mailbox><enter-command>source ~/.mutt/gmail<enter><change-folder>!<enter>'
