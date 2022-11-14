@@ -8,13 +8,13 @@ require("orgmode").setup({
     t = "Todo",
     tp = {
       description = "Personal",
-      template = "* TODO %?\n %u",
+      template = "** TODO %?\n %u",
       target = orgDestination .. "/todos.org",
       headline = "Personal",
     },
     tw = {
       description = "Work",
-      template = "* TODO %?\n %u",
+      template = "** TODO %?\n %u",
       target = orgDestination .. "/todos.org",
       headline = "Work",
     },
