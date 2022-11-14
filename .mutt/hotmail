@@ -7,6 +7,7 @@ set spoolfile = +Inbox
 set mbox = +Inbox
 set postponed =+Drafts
 set record =+Sent
+set trash = "+Deleted"
 
 set header_cache =~/.mutt/cache/headers/hotmail
 set message_cachedir =~/.mutt/cache/bodies/hotmail
@@ -16,7 +17,6 @@ set sort = reverse-threads
 set sort_aux = last-date-received
 
 macro index,pager S "<save-message>=Junk<enter><enter>" "Report spam"
-macro index,pager d "<save-message>=Deleted<enter>" "Deleted"
 macro index,pager y "<save-message>=Archive<enter>" "Archive"
 
 mailboxes +Inbox \

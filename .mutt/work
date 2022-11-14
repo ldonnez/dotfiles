@@ -5,9 +5,9 @@ set sendmail = "msmtp -a work"
 set folder = ~/.mail/work
 set spoolfile = +Inbox
 set mbox = +Inbox
-set postponed = "+[Gmail]/Drafts"
-set record = "+[Gmail]/Sent Mail"
-set trash  = "+[Gmail]/Deleted"
+set postponed = "+[Gmail].Drafts"
+set record = "+[Gmail].Sent Mail"
+set trash  = "+[Gmail].Bin"
 
 set header_cache =~/.mutt/cache/headers/work
 set message_cachedir =~/.mutt/cache/bodies/work
@@ -17,8 +17,6 @@ set sort = reverse-threads
 set sort_aux = last-date-received
 
 macro index,pager S "<save-message>=[Gmail].Spam<enter><enter>" "Report spam"
-macro index,pager d "<save-message>=[Gmail].Bin<enter>" "Deleted"
-
 mailboxes +Inbox \
           +"[Gmail].Drafts" \
           +"[Gmail].Sent Mail" \
