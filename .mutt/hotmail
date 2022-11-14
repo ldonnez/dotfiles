@@ -1,28 +1,28 @@
-set from = "lenny_donnez@hotmail.com"
-set realname = "Lenny"
-set sendmail = "msmtp -a hotmail"
+set from                  = "lenny_donnez@hotmail.com"
+set realname              = "Lenny"
+set sendmail              = "msmtp -a hotmail"
 
-set folder = ~/.mail/hotmail
-set spoolfile = +Inbox
-set mbox = +Inbox
-set postponed =+Drafts
-set record =+Sent
-set trash = "+Deleted"
+set folder                = ~/.mail/hotmail
+set spoolfile             = +Inbox
+set mbox                  = +Inbox
+set postponed             = +Drafts
+set record                = +Sent
+set trash                 = "+Deleted"
 
-set header_cache =~/.mutt/cache/headers/hotmail
-set message_cachedir =~/.mutt/cache/bodies/hotmail
-set certificate_file =~/.mutt/certificates/hotmail
+set header_cache          = ~/.mutt/cache/headers/hotmail
+set message_cachedir      = ~/.mutt/cache/bodies/hotmail
+set certificate_file      = ~/.mutt/certificates/hotmail
 
-set sort = reverse-threads
-set sort_aux = last-date-received
+set sort                  = reverse-threads
+set sort_aux              = last-date-received
 
-macro index,pager S "<save-message>=Junk<enter><enter>" "Report spam"
-macro index,pager y "<save-message>=Archive<enter>" "Archive"
-macro index O "!mbsync hotmail<return>" "Update through mbsync"
+macro index,pager         S "<save-message>=Junk<enter><enter>" "Report spam"
+macro index,pager         y "<save-message>=Archive<enter>" "Archive"
+macro index               O "!mbsync hotmail<return>" "Update through mbsync"
 
-mailboxes +Inbox \
-          +Outbox \
-          +Sent \
-          +Drafts \
-          +Junk \
-          +Deleted
+mailboxes                 +Inbox \
+                          +Outbox \
+                          +Sent \
+                          +Drafts \
+                          +Junk \
+                          +Deleted

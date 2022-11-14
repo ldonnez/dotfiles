@@ -8,37 +8,35 @@ source ~/.mutt/gmail
 source ~/.mutt-alias
 
 # Rebind for neomutt
-bind index c noop
-bind index g noop
+bind index                c           noop
+bind index                g           noop
 
 #Key mappings
-macro index <f2> '<sync-mailbox><enter-command>source ~/.mutt/gmail<enter><change-folder>!<enter>'
-macro index <f3> '<sync-mailbox><enter-command>source ~/.mutt/work<enter><change-folder>!<enter>'
-macro index <f4> '<sync-mailbox><enter-command>source ~/.mutt/hotmail<enter><change-folder>!<enter>'
-macro index b '<enter-command>toggle sidebar_visible<enter><refresh>'
-macro pager b '<enter-command>toggle sidebar_visible<enter><redraw-screen>'
-macro pager \cb <pipe-entry>'urlview'<enter> 'Follow links with urlview'
-bind pager <up> previous-line #scroll inside the message rather than the index
-bind pager <down> next-line
-macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all messages as read"
-bind index gg       first-entry
-bind index G        last-entry
-bind index gr    group-reply          # reply to all recipients
-bind attach <return>    view-mailcap
-macro index,pager A "<pipe-message>abook --add-email-quiet<return>" "add the sender address to abook"
-#bind editor <Tab> complete-query
-bind index,pager \CP sidebar-prev
-bind index,pager \CN sidebar-next
-bind index,pager \CI sidebar-open
+macro index               <f2>        '<sync-mailbox><enter-command>source ~/.mutt/gmail<enter><change-folder>!<enter>'
+macro index               <f3>        '<sync-mailbox><enter-command>source ~/.mutt/work<enter><change-folder>!<enter>'
+macro index               <f4>        '<sync-mailbox><enter-command>source ~/.mutt/hotmail<enter><change-folder>!<enter>'
+macro index               b           '<enter-command>toggle sidebar_visible<enter><refresh>'
+macro pager               b           '<enter-command>toggle sidebar_visible<enter><redraw-screen>'
+macro pager               \cb         <pipe-entry>'urlview'<enter> 'Follow links with urlview'
+bind pager                <up>        previous-line #scroll inside the message rather than the index
+bind pager                <down>      next-line
+macro index               \Cr         "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all messages as read"
+bind index                gg          first-entry
+bind index                G           last-entry
+bind index                gr          group-reply          # reply to all recipients
+bind attach               <return>    view-mailcap
+macro index,pager         d           "<delete-message>"
+macro index,pager         A           "<pipe-message>abook --add-email-quiet<return>" "add the sender address to abook"
+
+bind index,pager          \CP         sidebar-prev
+bind index,pager          \CN         sidebar-next
+bind index,pager          \CI         sidebar-open
+
 set menu_scroll
 
 # Not much
-macro index <F8> \
-      "<enter-command>unset wait_key<enter><shell-escape>notmuch-mutt --prompt search<enter><change-folder-readonly>~/.cache/notmuch/mutt/results<enter>" \
-      "search mail (using notmuch)"
-macro index <F9> \
-          "<enter-command>unset wait_key<enter><pipe-message>notmuch-mutt  thread<enter><change-folder-readonly>~/.cache/notmuch/mutt/results<enter><enter-command>set wait_key<enter>" \
-          "search and reconstruct owning thread (using notmuch)"
+macro index               <F8>        "<enter-command>unset wait_key<enter><shell-escape>notmuch-mutt --prompt search<enter><change-folder-readonly>~/.cache/notmuch/mutt/results<enter>" "search mail (using notmuch)"
+macro index               <F9>        "<enter-command>unset wait_key<enter><pipe-message>notmuch-mutt  thread<enter><change-folder-readonly>~/.cache/notmuch/mutt/results<enter><enter-command>set wait_key<enter>" "search and reconstruct owning thread (using notmuch)"
 
 # Basic Options
 set wait_key = no        # shut up, mutt

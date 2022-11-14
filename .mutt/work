@@ -1,26 +1,26 @@
-set from = "lenny@pau.be"
-set realname = "Lenny"
-set sendmail = "msmtp -a work"
+set from                  = "lenny@pau.be"
+set realname              = "Lenny"
+set sendmail              = "msmtp -a work"
 
-set folder = ~/.mail/work
-set spoolfile = +Inbox
-set mbox = +Inbox
-set postponed = "+[Gmail].Drafts"
-set record = "+[Gmail].Sent Mail"
-set trash  = "+[Gmail].Bin"
+set folder                = ~/.mail/work
+set spoolfile             = +Inbox
+set mbox                  = +Inbox
+set postponed             = "+[Gmail].Drafts"
+set record                = "+[Gmail].Sent Mail"
+set trash                 = "+[Gmail].Bin"
 
-set header_cache =~/.mutt/cache/headers/work
-set message_cachedir =~/.mutt/cache/bodies/work
-set certificate_file =~/.mutt/certificates/work
+set header_cache          = ~/.mutt/cache/headers/work
+set message_cachedir      = ~/.mutt/cache/bodies/work
+set certificate_file      = ~/.mutt/certificates/work
 
-set sort = reverse-threads
-set sort_aux = last-date-received
+set sort                  = reverse-threads
+set sort_aux              = last-date-received
 
-macro index,pager S "<save-message>=[Gmail].Spam<enter><enter>" "Report spam"
-macro index O "!mbsync work<return>" "Update through mbsync"
+macro index,pager         S "<save-message>=[Gmail].Spam<enter><enter>" "Report spam"
+macro index               O "!mbsync work<return>" "Update through mbsync"
 
-mailboxes +Inbox \
-          +"[Gmail].Drafts" \
-          +"[Gmail].Sent Mail" \
-          +"[Gmail].Bin" \
-          +"[Gmail].All mail"
+mailboxes                 +Inbox \
+                          +"[Gmail].Drafts" \
+                          +"[Gmail].Sent Mail" \
+                          +"[Gmail].Bin" \
+                          +"[Gmail].All mail"
