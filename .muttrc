@@ -36,8 +36,10 @@ bind index,pager          \CI      sidebar-open
 set menu_scroll
 
 # Not much
-macro index               <F8>        "<enter-command>unset wait_key<enter><shell-escape>notmuch-mutt --prompt search<enter><change-folder-readonly>~/.cache/notmuch/mutt/results<enter>" "search mail (using notmuch)"
-macro index               <F9>        "<enter-command>unset wait_key<enter><pipe-message>notmuch-mutt  thread<enter><change-folder-readonly>~/.cache/notmuch/mutt/results<enter><enter-command>set wait_key<enter>" "search and reconstruct owning thread (using notmuch)"
+set nm_default_url        =        "notmuch:///$HOME/.mail"
+macro index,pager         <F8>     "<vfolder-from-query>" "show only messages matching a notmuch pattern"
+macro index,pager         <F9>     "<entire-thread>" "show current thread"
+
 # abook
 set query_command         =        "abook --mutt-query '%s'"
 
@@ -67,47 +69,43 @@ set thorough_search                                # strip headers and eval mime
 
 auto_view text/html
 alternative_order text/plain text/enriched text/html
-set query_command= "abook --mutt-query '%s'"
-set editor = "nvim"
-set alias_file=~/.mutt-alias
-set pager_index_lines = 10
-set sendmail_wait = 0 # no please don't silently fail, email is important
-unset record
-unset markers # no ugly plus signs
 
 # Index View Options
-set date_format = "%d/%m"
-set index_format = "[%Z]  %D  %-20.20F  %s"
-set sort = "threads"                         # like gmail
-set strict_threads = "yes"
-set sort_aux = "reverse-last-date-received"  # like gmail
-set uncollapse_jump                        # don't collapse on an unread message
-set sort_re                                # thread based on regex
-set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
-set pipe_decode          # strip headers and eval mimes when piping
-set thorough_search      # strip headers and eval mimes before searching
 unset collapse_unread
 
+set date_format           =        "%d/%m"
+set index_format          =        "[%Z]  %D  %-20.20F  %s"
+set sort                  =        "threads"                                         # like gmail
+set strict_threads        =        "yes"
+set sort_aux              =        "reverse-last-date-received"                      # like gmail
+set reply_regexp          =        "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
+set uncollapse_jump                                   # don't collapse on an unread message
+set sort_re                                           # thread based on regex
+set pipe_decode                                       # strip headers and eval mimes when piping
+set thorough_search                                   # strip headers and eval mimes before searching
+
 #Compos options
-set envelope_from                    # which from?
-set sig_dashes                       # dashes before sig
-set edit_headers                     # show headers when composing
-set fast_reply                       # skip to compose when replying
-set askcc                            # ask for CC:
-set fcc_attach                       # save attachments with the body
-unset mime_forward                   # forward attachments as part of body
-set forward_format = "Fwd: %s"       # format of subject when forwarding
-set forward_decode                   # decode when forwarding
-set attribution = "On %d, %n wrote:" # format of quoting header
-set reply_to                         # reply to Reply to: field
-set reverse_name                     # reply as whomever it was to
-set include                          # include message in replies
-set forward_quote                    # include message in forwards
+unset mime_forward                                    # forward attachments as part of body
+
+set envelope_from                                     # which from?
+set sig_dashes                                        # dashes before sig
+set edit_headers                                      # show headers when composing
+set fast_reply                                        # skip to compose when replying
+set askcc                                             # ask for CC:
+set fcc_attach                                        # save attachments with the body
+set forward_decode                                    # decode when forwarding
+set reply_to                                          # reply to Reply to: field
+set reverse_name                                      # reply as whomever it was to
+set include                                           # include message in replies
+set forward_quote                                     # include message in forwards
+set forward_format        =        "Fwd: %s"          # format of subject when forwarding
+set attribution           =        "On %d, %n wrote:" # format of quoting header
 
 #Sidebar patch
-set sidebar_width=30
-set sidebar_visible=yes
-set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
+set sidebar_width         =        30
+set sidebar_visible       =        yes
+set sidebar_format        =        "%B%?F? [%F]?%* %?N?%N/?%S"
+
 set sidebar_short_path
 set mail_check_stats
 
