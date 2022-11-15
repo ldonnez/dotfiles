@@ -17,7 +17,7 @@ set sort                  = reverse-threads
 set sort_aux              = last-date-received
 
 macro index,pager         S "<save-message>=[Gmail].Spam<enter>" "Report spam"
-macro index               O "!mbsync gmail<return>" "Update through mbsync"
+macro index               O "<shell-escape>mbsync gmail; notmuch new<enter>" "Update through mbsync"
 macro index               y "<save-message>=[Gmail].All Mail<enter>" "Archive"
 
 mailboxes                 +Inbox \

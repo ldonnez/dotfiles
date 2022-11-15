@@ -19,6 +19,7 @@ set sort_aux              = last-date-received
 macro index,pager         S "<save-message>=Junk<enter><enter>" "Report spam"
 macro index,pager         y "<save-message>=Archive<enter>" "Archive"
 macro index               O "!mbsync hotmail<return>" "Update through mbsync"
+macro index               O "<shell-escape>mbsync hotmail; notmuch new<enter>" "Update through mbsync"
 
 mailboxes                 +Inbox \
                           +Outbox \
