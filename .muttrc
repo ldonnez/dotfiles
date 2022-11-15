@@ -8,51 +8,63 @@ source ~/.mutt/gmail
 source ~/.mutt-alias
 
 # Rebind for neomutt
-bind index                c           noop
-bind index                g           noop
-bind editor               <space>     noop
+bind index                c         noop
+bind index                g         noop
+bind editor               <space>   noop
 
 #Key mappings
-macro index               <f2>        '<sync-mailbox><enter-command>source ~/.mutt/gmail<enter><change-folder>!<enter>'
-macro index               <f3>        '<sync-mailbox><enter-command>source ~/.mutt/work<enter><change-folder>!<enter>'
-macro index               <f4>        '<sync-mailbox><enter-command>source ~/.mutt/hotmail<enter><change-folder>!<enter>'
-macro index               b           '<enter-command>toggle sidebar_visible<enter><refresh>'
-macro pager               b           '<enter-command>toggle sidebar_visible<enter><redraw-screen>'
-macro pager               \cb         <pipe-entry>'urlview'<enter> 'Follow links with urlview'
-bind pager                <up>        previous-line #scroll inside the message rather than the index
-bind pager                <down>      next-line
-macro index               \Cr         "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all messages as read"
-bind index                gg          first-entry
-bind index                G           last-entry
-bind index                gr          group-reply          # reply to all recipients
-bind attach               <return>    view-mailcap
-macro index,pager         d           "<delete-message>"
-macro index,pager         A           "<pipe-message>abook --add-email-quiet<return>" "add the sender address to abook"
+macro index               <f2>     '<sync-mailbox><enter-command>source ~/.mutt/gmail<enter><change-folder>!<enter>'
+macro index               <f3>     '<sync-mailbox><enter-command>source ~/.mutt/work<enter><change-folder>!<enter>'
+macro index               <f4>     '<sync-mailbox><enter-command>source ~/.mutt/hotmail<enter><change-folder>!<enter>'
+macro index               b        '<enter-command>toggle sidebar_visible<enter><refresh>'
+macro pager               b        '<enter-command>toggle sidebar_visible<enter><redraw-screen>'
+macro pager               \cb      <pipe-entry>'urlview'<enter> 'Follow links with urlview'
+bind pager                <up>     previous-line        # scroll inside the message rather than the index
+bind pager                <down>   next-line
+macro index               \Cr      "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all messages as read"
+bind index                gg       first-entry
+bind index                G        last-entry
+bind index                gr       group-reply          # reply to all recipients
+bind attach               <return> view-mailcap
+macro index,pager         d        "<delete-message>"
+macro index,pager         A        "<pipe-message>abook --add-email-quiet<return>" "add the sender address to abook"
 
-bind index,pager          \CP         sidebar-prev
-bind index,pager          \CN         sidebar-next
-bind index,pager          \CI         sidebar-open
+bind index,pager          \CP      sidebar-prev
+bind index,pager          \CN      sidebar-next
+bind index,pager          \CI      sidebar-open
 
 set menu_scroll
 
 # Not much
 macro index               <F8>        "<enter-command>unset wait_key<enter><shell-escape>notmuch-mutt --prompt search<enter><change-folder-readonly>~/.cache/notmuch/mutt/results<enter>" "search mail (using notmuch)"
 macro index               <F9>        "<enter-command>unset wait_key<enter><pipe-message>notmuch-mutt  thread<enter><change-folder-readonly>~/.cache/notmuch/mutt/results<enter><enter-command>set wait_key<enter>" "search and reconstruct owning thread (using notmuch)"
+# abook
+set query_command         =        "abook --mutt-query '%s'"
 
 # Basic Options
-set wait_key = no        # shut up, mutt
-set mbox_type = Maildir  # mailbox type
-set timeout = 3          # idle time before scanning
-set mail_check = 0       # minimum time between scans
-unset move               # gmail does that
-set delete               # don't ask, just do
-unset confirmappend      # don't ask, just do!
-set quit                 # don't ask, just do!!
-unset mark_old           # read/new is good enough for me
-set beep_new             # bell on new mails
-set pipe_decode          # strip headers and eval mimes when piping
-set thorough_search # strip headers and eval mimes before searching
-set sleep_time = 0 # be fast
+unset move                                         # gmail does that
+unset confirmappend                                # don't ask, just do!
+unset mark_old                                     # read/new is good enough for me
+unset record
+unset markers                                      # no ugly plus signs
+
+set delete                                         # don't ask, just do
+set quit                                           # don't ask, just do!!
+
+set wait_key              =        no              # shut up, mutt
+set mbox_type             =        Maildir         # mailbox type
+set timeout               =        3               # idle time before scanning
+set mail_check            =        0               # minimum time between scans
+set editor                =        "nvim"
+set alias_file            =        ~/.mutt-alias
+set pager_index_lines     =        10
+set sendmail_wait         =        0               # no please don't silently fail, email is important
+set sleep_time            =        0               # be fast
+
+set beep_new                                       # bell on new mails
+set pipe_decode                                    # strip headers and eval mimes when piping
+set thorough_search                                # strip headers and eval mimes before searching
+
 auto_view text/html
 alternative_order text/plain text/enriched text/html
 set query_command= "abook --mutt-query '%s'"
@@ -100,27 +112,27 @@ set sidebar_short_path
 set mail_check_stats
 
 # Colors
-color normal		default default                                                        # default colours
-color index		brightblue default ~N                                                    # new messages
-color index		red default ~F                                                           # flagged messages
-color index		blue default ~T                                                          # tagged messages
-color index		brightred default ~D                                                     # deleted messages
-color body		brightgreen default         (https?|ftp)://[\-\.+,/%~_:?&=\#a-zA-Z0-9]+  # links
-color body		brightgreen default         [\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+          # email-addresses
-color attachment	magenta default                                                      # attachments
-color signature		brightwhite default                                                  # sigs
-color search		brightred black                                                        # highlight results
-color indicator		black cyan                                                           # currently highlighted message
-color error		red default                                                              # error messages
-color status		white brightblack                                                      # status line
-color tree		white default                                                            # thread tree arrows
-color tilde		cyan default                                                             # blank line padding
-color hdrdefault	brightblue default                                                   # default headers
-color header		cyan default "^From:"
-color header	 	cyan default "^Subject:"
-color quoted		cyan default                                                           # quote colours
-color quoted1		brightcyan default
-color quoted2		blue default
-color quoted3		green default
-color quoted4		yellow default
-color quoted5		red default
+color normal      default default                                                          # default colours
+color index       brightblue default ~N                                                    # new messages
+color index       red default ~F                                                           # flagged messages
+color index       blue default ~T                                                          # tagged messages
+color index       brightred default ~D                                                     # deleted messages
+color body        brightgreen default         (https?|ftp)://[\-\.+,/%~_:?&=\#a-zA-Z0-9]+  # links
+color body        brightgreen default         [\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+          # email-addresses
+color attachment  magenta default                                                          # attachments
+color signature   brightwhite default                                                      # sigs
+color search      brightred black                                                          # highlight results
+color indicator   black cyan                                                               # currently highlighted message
+color error       red default                                                              # error messages
+color status      white brightblack                                                        # status line
+color tree        white default                                                            # thread tree arrows
+color tilde       cyan default                                                             # blank line padding
+color hdrdefault  brightblue default                                                       # default headers
+color header      cyan default "^From:"
+color header      cyan default "^Subject:"
+color quoted      cyan default                                                             # quote colours
+color quoted1     brightcyan default
+color quoted2     blue default
+color quoted3     green default
+color quoted4     yellow default
+color quoted5     red default
