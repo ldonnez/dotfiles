@@ -36,5 +36,5 @@ require("nvim-tree").setup({
   },
 })
 
-vim.keymap.set("n", "<C-e>", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>n", ":NvimTreeFindFile<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<C-e>", ":NvimTreeToggle <CR>", { desc = "Open tree" })
+vim.keymap.set("n", "<leader>n", ":NvimTreeFindFile<CR>", { desc = "Go to current file in tree" })

@@ -21,6 +21,13 @@ require("packer").startup(function()
     end,
   })
 
+  use({
+    "folke/which-key.nvim",
+    config = function()
+      require("ld.plugins.which-key")
+    end,
+  })
+
   -- Icons
   use({
     "kyazdani42/nvim-web-devicons",
@@ -49,7 +56,12 @@ require("packer").startup(function()
   use({
     "sindrets/diffview.nvim",
     cmd = { "DiffviewOpen", "DiffviewFileHistory" },
-    keys = { { "n", "<leader>dvf" } },
+    keys = {
+      { "n", "<leader>dvf" },
+      { "n", "<leader>dvo" },
+      { "n", "<leader>dvb" },
+      { "n", "<leader>dvc" },
+    },
     config = function()
       require("ld.plugins.diffview")
     end,

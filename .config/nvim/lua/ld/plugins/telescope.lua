@@ -85,24 +85,24 @@ require("telescope").load_extension("file_browser")
 
 vim.keymap.set("n", "<C-p>", function()
   require("telescope.builtin").find_files()
-end, { noremap = true, silent = true })
+end, { silent = true, desc = "Find files" })
 
 vim.keymap.set("n", "<leader>b", function()
   require("telescope.builtin").buffers()
-end, { noremap = true, silent = true })
+end, { silent = true, desc = "Find buffers" })
 
 vim.keymap.set("n", "<leader>lg", function()
   require("telescope.builtin").live_grep()
-end, { noremap = true, silent = true })
+end, { silent = true, desc = "Live grep" })
 
 vim.keymap.set("n", "<leader>g", function()
-  return require("telescope.builtin").git_status()
-end, { noremap = true, silent = true })
+  require("telescope.builtin").git_status()
+end, { desc = "Show changed files (git)" })
 
 vim.keymap.set("n", "<leader>tl", function()
   require("telescope.builtin").builtin()
-end, { noremap = true, silent = true })
+end, { desc = "Show all telescope pickers" })
 
 vim.keymap.set("n", "<leader>fb", function()
-  require("telescope").extensions.file_browser.file_browser()
-end, { noremap = true })
+  require("telescope.builtin").file_browser()
+end, { desc = "Open file browser" })
