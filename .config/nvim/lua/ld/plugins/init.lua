@@ -220,6 +220,13 @@ require("packer").startup(function()
     end,
   })
 
+  -- Better completion for nvim lua api
+  use({
+    "folke/neodev.nvim",
+    module = "neodev",
+    ft = { "lua", "luau" },
+  })
+
   -- Lua language server
   use({
     "sumneko/lua-language-server",
