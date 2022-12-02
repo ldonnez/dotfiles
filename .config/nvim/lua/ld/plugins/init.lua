@@ -87,6 +87,7 @@ require("packer").startup(function()
     "nvim-telescope/telescope.nvim",
     requires = {
       { "nvim-telescope/telescope-file-browser.nvim" },
+      { "nvim-telescope/telescope-ui-select.nvim" },
       { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
     },
     module = "telescope",
@@ -94,6 +95,7 @@ require("packer").startup(function()
     keys = {
       { "n", "<C-p>" },
       { "n", "<leader>b" },
+      { "n", "<leader>ca" },
       { "n", "<leader>lg" },
       { "n", "<leader>g" },
       { "n", "<leader>tl" },

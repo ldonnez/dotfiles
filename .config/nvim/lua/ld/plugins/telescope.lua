@@ -1,6 +1,15 @@
 local actions = require("telescope.actions")
 local fb_actions = require("telescope").extensions.file_browser.actions
 
+local layout_config = {
+  mirror = true,
+  prompt_position = "top",
+}
+
+local dropdown_layout_config = {
+  prompt_position = "top",
+}
+
 require("telescope").setup({
   defaults = {
     vimgrep_arguments = {
@@ -25,17 +34,15 @@ require("telescope").setup({
         ["<C-[>"] = actions.close,
       },
     },
-    layout_config = {
-      mirror = true,
-      prompt_position = "top",
-    },
     layout_strategy = "vertical",
   },
   pickers = {
     find_files = {
+      layout_config = layout_config,
       find_command = { "fd", "--hidden", "--no-ignore-vcs", "--type", "f" },
     },
     buffers = {
+      layout_config = layout_config,
       mappings = {
         i = {
           ["<C-d>"] = actions.delete_buffer,
@@ -52,6 +59,11 @@ require("telescope").setup({
       case_mode = "smart_case", -- or "ignore_case" or "respect_case"
       -- the default case_mode is "smart_case"
     },
+    ["ui-select"] = {
+      require("telescope.themes").get_cursor({
+        layout_config = dropdown_layout_config,
+      }),
+    },
     file_browser = {
       dir_icon = "",
       mappings = {
@@ -67,6 +79,7 @@ require("telescope").setup({
 })
 -- To get fzf loaded and working with telescope, you need to call
 -- load_extension, somewhere after setup function:
+require("telescope").load_extension("ui-select")
 require("telescope").load_extension("fzf")
 require("telescope").load_extension("file_browser")
 
