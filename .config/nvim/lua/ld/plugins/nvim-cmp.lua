@@ -1,4 +1,5 @@
 local cmp = require("cmp")
+local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 
 local cmp_kinds = {
   Text = "",
@@ -61,3 +62,5 @@ cmp.setup({
     end,
   },
 })
+
+cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
