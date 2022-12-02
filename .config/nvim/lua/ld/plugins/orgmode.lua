@@ -84,8 +84,3 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = "org",
   command = "setlocal nowrap",
 })
-
-vim.keymap.set("n", "<leader>og", ":edit" .. orgDestination .. "/index.org | :cd %:p:h<CR>:pwd<CR>", {
-  noremap = true,
-  silent = true,
-})
