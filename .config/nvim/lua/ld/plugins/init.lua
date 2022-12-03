@@ -69,9 +69,10 @@ require("packer").startup(function()
 
   -- Snippets
   use({
-    "hrsh7th/vim-vsnip",
+    "L3MON4D3/LuaSnip",
+    tag = "v1.1.0",
     config = function()
-      require("ld.plugins.vim-vsnip")
+      require("ld.plugins.luasnip")
     end,
     requires = {
       "rafamadriz/friendly-snippets",
@@ -84,7 +85,7 @@ require("packer").startup(function()
     requires = {
       { "hrsh7th/cmp-nvim-lsp" },
       { "hrsh7th/cmp-path", after = "nvim-cmp" },
-      { "hrsh7th/cmp-vsnip", after = "nvim-cmp" },
+      { "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" },
       { "hrsh7th/cmp-buffer", after = "nvim-cmp" },
       { "kristijanhusak/vim-dadbod-completion", after = "nvim-cmp" },
       { "hrsh7th/cmp-nvim-lsp-signature-help", after = "nvim-cmp" },
