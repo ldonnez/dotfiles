@@ -210,6 +210,13 @@ require("packer").startup(function()
     end,
   })
 
+  -- Improved typescript lsp features
+  use({
+    "jose-elias-alvarez/typescript.nvim",
+    module = "typescript",
+    ft = { "typescript", "typescriptreact" },
+  })
+
   -- File tree
   use({
     "kyazdani42/nvim-tree.lua",
