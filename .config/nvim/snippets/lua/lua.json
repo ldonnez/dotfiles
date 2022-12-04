@@ -1,0 +1,12 @@
+{
+  "usePacker": {
+    "prefix": "use",
+    "body": [
+      "use({\"${1}\", config = function()",
+      "\trequire(\"${0}\")",
+      "end,",
+      "})"
+    ],
+    "description": "Creates use function decleration for installing a new packer neovim plugin with config option"
+  }
+}

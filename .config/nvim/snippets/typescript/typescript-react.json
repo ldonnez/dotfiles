@@ -1,0 +1,16 @@
+{
+  "tsReactFunctionComponent": {
+    "prefix": "trfc",
+    "body": [
+      "import React from \"react\"\n",
+      "type Props {",
+      "}\n",
+      "export const ${1:${TM_FILENAME_BASE}} = ({}: Props) => {\n",
+      "\treturn (",
+      "\t\t${0}",
+      "\t)",
+      "}"
+    ],
+    "description": "Creates a React functional component with base Props type "
+  }
+}

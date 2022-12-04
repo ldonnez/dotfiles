@@ -1,0 +1,35 @@
+{
+  "name": "snippets",
+  "contributes": {
+    "snippets": [
+      {
+        "language": [
+          "typescriptreact"
+        ],
+        "path": "./typescript/typescript-react.json"
+      },
+      {
+        "language": [
+          "typescriptreact",
+          "javascript",
+          "typescript"
+        ],
+        "path": "./javascript/jest.json"
+      },
+      {
+        "language": [
+          "javascript",
+          "typescript",
+          "typescriptreact"
+        ],
+        "path": "./javascript/react-native.json"
+      },
+      {
+        "language": [
+          "lua"
+        ],
+        "path": "./lua/lua.json"
+      }
+    ]
+  }
+}
