@@ -15,7 +15,7 @@ require("packer").startup(function()
   use({
     "catppuccin/nvim",
     as = "catppuccin",
-    tag = "v0.2.6",
+    tag = "v0.2.7",
     config = function()
       require("ld.plugins.catppuccin")
     end,
