@@ -1,5 +1,6 @@
-local ok, _ = pcall(require, "neodev")
+local ok, neodev = pcall(require, "neodev")
 if not ok then
+  vim.notify("neodev not found")
   return
 end
 
@@ -10,7 +11,7 @@ local sumneko_root_path = global.plugin_installation_opt_path .. "/lua-language-
 local sumneko_binary = sumneko_root_path .. "/bin/lua-language-server"
 
 local runtime_path = vim.split(package.path, ";", {})
-require("neodev").setup({})
+neodev.setup({})
 require("lspconfig").sumneko_lua.setup({
   capabilities = utils.cmp_capababilities(),
   on_attach = utils.on_attach,

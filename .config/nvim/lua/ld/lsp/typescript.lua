@@ -1,11 +1,12 @@
-local ok, _ = pcall(require, "typescript")
+local ok, typescript = pcall(require, "typescript")
 if not ok then
+  vim.notify("typescript.nvim not found")
   return
 end
 
 local utils = require("ld.lsp.utils")
 
-require("typescript").setup({
+typescript.setup({
   disable_commands = false,
   debug = false,
   go_to_source_definition = {

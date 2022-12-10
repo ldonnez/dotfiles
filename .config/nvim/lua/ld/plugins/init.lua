@@ -23,6 +23,7 @@ require("packer").startup(function()
 
   use({
     "folke/which-key.nvim",
+    event = { "BufRead" },
     config = function()
       require("ld.plugins.which-key")
     end,
@@ -31,6 +32,7 @@ require("packer").startup(function()
   -- Icons
   use({
     "kyazdani42/nvim-web-devicons",
+    module_pattern = { "nvim-web-devicons*" },
     module = "nvim-web-devicons",
     opt = true,
   })
@@ -47,6 +49,9 @@ require("packer").startup(function()
   -- Git signs on the left side of the numbers
   use({
     "lewis6991/gitsigns.nvim",
+    module = "gitsigns",
+    cmd = { "Gitsigns" },
+    event = { "BufRead" },
     config = function()
       require("ld.plugins.gitsigns")
     end,
@@ -67,23 +72,22 @@ require("packer").startup(function()
     end,
   })
 
-  -- Snippets
-  use({
-    "L3MON4D3/LuaSnip",
-    tag = "v1.1.0",
-    config = function()
-      require("ld.plugins.luasnip")
-    end,
-    requires = {
-      "rafamadriz/friendly-snippets",
-    },
-  })
-
   -- Autocompletion
   use({
     "hrsh7th/nvim-cmp",
+    module = { "nvim-cmp", "cmp" },
+    event = "InsertEnter *",
     requires = {
-      { "hrsh7th/cmp-nvim-lsp" },
+      {
+        "L3MON4D3/LuaSnip",
+        config = function()
+          require("ld.plugins.luasnip")
+        end,
+        tag = "v1.1.0",
+        module = { "luasnip", "LuaSnip" },
+      },
+      { "rafamadriz/friendly-snippets", after = "LuaSnip" },
+      { "hrsh7th/cmp-nvim-lsp", module_pattern = { "cmp_nvim_lsp" } },
       { "hrsh7th/cmp-path", after = "nvim-cmp" },
       { "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" },
       { "hrsh7th/cmp-buffer", after = "nvim-cmp" },
@@ -98,6 +102,7 @@ require("packer").startup(function()
   -- Fuzzy searching/grepping through files
   use({
     "nvim-telescope/telescope.nvim",
+    module_pattern = "telescope.*",
     requires = {
       { "nvim-telescope/telescope-file-browser.nvim" },
       { "nvim-telescope/telescope-ui-select.nvim" },
@@ -122,6 +127,8 @@ require("packer").startup(function()
   -- LSP
   use({
     "neovim/nvim-lspconfig",
+    module_pattern = { "lspconfig.*" },
+    event = { "InsertEnter", "CursorMoved" },
     config = function()
       require("ld.lsp")
     end,
@@ -130,6 +137,8 @@ require("packer").startup(function()
   -- Highlighting
   use({
     "nvim-treesitter/nvim-treesitter",
+    module_pattern = { "treesitter" },
+    event = { "InsertEnter", "CursorMoved", "WinScrolled" },
     run = ":TSUpdate",
     config = function()
       require("ld.treesitter")
@@ -157,6 +166,7 @@ require("packer").startup(function()
   -- Auto pair parentheses, brackets, quotes...
   use({
     "windwp/nvim-autopairs",
+    after = { "nvim-cmp" },
     config = function()
       require("ld.plugins.autopairs")
     end,
@@ -166,6 +176,11 @@ require("packer").startup(function()
   use({
     "kylechui/nvim-surround",
     event = "BufRead",
+    keys = {
+      { "n", "cs" },
+      { "n", "ds" },
+      { "n", "ys" },
+    },
     config = function()
       require("ld.plugins.surround")
     end,
@@ -174,6 +189,8 @@ require("packer").startup(function()
   -- Better statusline
   use({
     "nvim-lualine/lualine.nvim",
+    module = "lualine",
+    event = { "BufRead" },
     config = function()
       require("ld.plugins.lualine")
     end,
@@ -205,6 +222,7 @@ require("packer").startup(function()
   use({
     "jose-elias-alvarez/null-ls.nvim",
     keys = { "n", "<Leader>f" },
+    after = "nvim-lspconfig",
     ft = { "lua", "typescript", "typescriptreact", "javascript", "javascriptreact", "json", "yaml" },
     config = function()
       require("ld.plugins.null-ls")
