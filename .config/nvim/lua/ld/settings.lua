@@ -37,6 +37,9 @@ vim.opt.laststatus = 3
 vim.opt.sessionoptions = "buffers,curdir,folds,winpos,winsize"
 vim.opt.timeoutlen = 300
 
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 local color_term = vim.fn.getenv("COLORTERM")
 if color_term == "truecolor" or color_term == "24bit" then
   vim.opt.termguicolors = true
