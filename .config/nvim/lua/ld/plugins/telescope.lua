@@ -41,6 +41,9 @@ require("telescope").setup({
       layout_config = layout_config,
       find_command = { "fd", "--hidden", "--no-ignore-vcs", "--type", "f" },
     },
+    live_grep = {
+      layout_config = layout_config,
+    },
     buffers = {
       layout_config = layout_config,
       mappings = {
