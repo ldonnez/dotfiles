@@ -111,5 +111,5 @@ vim.keymap.set("n", "<leader>tl", function()
 end, { desc = "Show all telescope pickers" })
 
 vim.keymap.set("n", "<leader>fb", function()
-  require("telescope.builtin").file_browser()
+  require("telescope").extensions.file_browser.file_browser()
 end, { desc = "Open file browser" })
