@@ -44,6 +44,10 @@ require("telescope").setup({
     live_grep = {
       layout_config = layout_config,
     },
+    lsp_references = {
+      layout_config = layout_config,
+      show_line = false,
+    },
     buffers = {
       layout_config = layout_config,
       mappings = {
