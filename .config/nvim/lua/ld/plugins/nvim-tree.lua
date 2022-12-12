@@ -2,7 +2,7 @@ require("nvim-tree").setup({
   diagnostics = {
     enable = true,
   },
-  disable_netrw = false,
+  hijack_netrw = true,
   view = {
     mappings = {
       list = {
