@@ -89,6 +89,7 @@ require("telescope").setup({
 require("telescope").load_extension("ui-select")
 require("telescope").load_extension("fzf")
 require("telescope").load_extension("file_browser")
+require("telescope").load_extension("persisted")
 
 vim.keymap.set("n", "<C-p>", function()
   require("telescope.builtin").find_files()
@@ -113,3 +114,7 @@ end, { desc = "Show all telescope pickers" })
 vim.keymap.set("n", "<leader>fb", function()
   require("telescope").extensions.file_browser.file_browser()
 end, { desc = "Open file browser" })
+
+vim.keymap.set("n", "<leader>tp", function()
+  require("telescope").extensions.persisted.persisted()
+end, { desc = "Show sessions from persisted" })
