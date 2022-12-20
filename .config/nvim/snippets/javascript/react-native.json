@@ -5,7 +5,7 @@
       "import { StyleSheet } from \"react-native\"\n",
       "export const styles = StyleSheet.create({",
       "\t${0}",
-      "}"
+      "})"
     ],
     "description": "Creates styles const from StyleSheet.create"
   }
