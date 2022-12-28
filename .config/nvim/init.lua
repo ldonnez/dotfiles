@@ -1,3 +1,3 @@
-require("ld/settings")
-require("ld/mappings")
-require("ld/plugins")
+require("config/settings")
+require("config/mappings")
+require("config/lazy")

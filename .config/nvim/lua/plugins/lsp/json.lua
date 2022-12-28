@@ -1,5 +1,5 @@
 local lspconfig = require("lspconfig")
-local utils = require("ld.lsp.utils")
+local utils = require("plugins.lsp.utils")
 
 lspconfig.jsonls.setup({
   cmd = utils.get_cmd_executable("vscode-json-language-server"),

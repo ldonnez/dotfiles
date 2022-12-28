@@ -1,14 +1,6 @@
-local global = require("ld.global")
+local global = require("config.global")
 
 local utils = {}
-
-function utils.buf_set_keymap(bufnr, ...)
-  vim.api.nvim_buf_set_keymap(bufnr, ...)
-end
-
-function utils.buf_set_option(bufnr, ...)
-  vim.api.nvim_buf_set_option(bufnr, ...)
-end
 
 function utils.get_cmd_executable(lsp_executable)
   if global.is_windows then
