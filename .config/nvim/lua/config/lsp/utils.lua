@@ -1,4 +1,4 @@
-local global = require("ld.global")
+local global = require("config.global")
 
 local utils = {}
 

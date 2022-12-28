@@ -4,7 +4,7 @@ if not ok then
   return
 end
 
-local utils = require("ld.lsp.utils")
+local utils = require("config.lsp.utils")
 
 typescript.setup({
   disable_commands = false,

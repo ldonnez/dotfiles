@@ -1,4 +1,4 @@
-local global = require("ld.global")
+local global = require("config.global")
 
 vim.opt.number = true
 vim.opt.path = "+=**"

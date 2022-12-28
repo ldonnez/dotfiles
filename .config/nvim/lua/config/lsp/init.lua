@@ -1,0 +1,7 @@
+require("config.lsp.typescript")
+require("config.lsp.json")
+require("config.lsp.lua")
+require("config.lsp.eslint")
+require("config.lsp.html")
+require("config.lsp.css")
+require("config.lsp.yaml")
