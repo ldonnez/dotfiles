@@ -7,7 +7,7 @@ return {
       on_attach = function(bufnr)
         local gs = package.loaded.gitsigns
 
-        vim.keymap.set({ "n", "v" }, "<leader>hr", ":Gitsigns stage_hunk<CR>", { buffer = bufnr, desc = "Reset hunk" })
+        vim.keymap.set({ "n", "v" }, "<leader>hr", ":Gitsigns reset_hunk<CR>", { buffer = bufnr, desc = "Reset hunk" })
         vim.keymap.set({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>", { buffer = bufnr, desc = "Stage hunk" })
         vim.keymap.set("n", "<leader>hS", gs.stage_buffer, { buffer = bufnr, desc = "Stage buffer" })
         vim.keymap.set("n", "<leader>hu", gs.undo_stage_hunk, { buffer = bufnr, desc = "Undo stage hunk" })
