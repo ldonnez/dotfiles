@@ -123,7 +123,6 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'alvan/vim-closetag'
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-surround'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'vimwiki/vimwiki'
 Plug 'arcticicestudio/nord-vim'
