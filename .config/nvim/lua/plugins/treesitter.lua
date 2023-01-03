@@ -14,6 +14,7 @@ return {
         "html",
         "css",
         "tsx",
+        "vim",
         "lua",
         "json",
         "jsonc",
