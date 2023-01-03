@@ -3,6 +3,7 @@ return {
   dependencies = {
     { "nvim-telescope/telescope-file-browser.nvim" },
     { "nvim-telescope/telescope-ui-select.nvim" },
+    { "joaomsa/telescope-orgmode.nvim" },
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
   },
   cmd = { "Telescope" },
@@ -55,6 +56,13 @@ return {
         require("telescope").extensions.persisted.persisted()
       end,
       desc = "Show sessions from persisted",
+    },
+    {
+      "<leader>os",
+      function()
+        require("telescope").extensions.orgmode.search_headings()
+      end,
+      desc = "Search org headings",
     },
   },
   config = function()
@@ -150,5 +158,6 @@ return {
     require("telescope").load_extension("fzf")
     require("telescope").load_extension("file_browser")
     require("telescope").load_extension("persisted")
+    require("telescope").load_extension("orgmode")
   end,
 }

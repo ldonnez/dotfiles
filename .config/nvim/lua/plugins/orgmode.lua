@@ -76,6 +76,7 @@ return {
         org = {
           org_timestamp_up = "+",
           org_timestamp_down = "-",
+          org_refile = false,
         },
       },
       notifications = {
@@ -88,6 +89,20 @@ return {
     vim.api.nvim_create_autocmd("FileType", {
       pattern = "org",
       command = "setlocal nowrap",
+    })
+
+    -- Replace refile prompt with telescope
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = "org",
+      group = vim.api.nvim_create_augroup("orgmode_telescope_nvim", { clear = true }),
+      callback = function()
+        vim.keymap.set(
+          "n",
+          "<leader>or",
+          require("telescope").extensions.orgmode.refile_heading,
+          { desc = "org refile" }
+        )
+      end,
     })
   end,
   dependencies = {
