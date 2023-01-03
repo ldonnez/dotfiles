@@ -10,28 +10,22 @@ return {
       org_agenda_files = { orgDestination .. "/*", orgDestination .. "/**/*" },
       org_default_notes_file = orgDestination .. "/refile.org",
       org_agenda_templates = {
-        t = "Todo",
-        tp = {
-          description = "Personal",
+        i = "INBOX",
+        it = {
+          description = "Todo",
           template = "** TODO %?\n %u",
-          target = orgDestination .. "/todos.org",
-          headline = "Personal",
+          target = orgDestination .. "/INBOX.org",
+          headline = "TODO's",
         },
-        tw = {
-          description = "Work",
-          template = "** TODO %?\n %u",
-          target = orgDestination .. "/todos.org",
-          headline = "Work",
+        ib = {
+          description = "Braindump",
+          template = "** %U %?\n <%a>\n\n ",
+          target = orgDestination .. "/INBOX.org",
         },
         j = {
           description = "Journal",
           template = "* %<%Y-%m-%d> %<%A>\n**** %U\n\n   %?",
           target = orgDestination .. "/journal.org",
-        },
-        b = {
-          description = "Braindump",
-          template = "* %U\n <%a>\n\n %?",
-          target = orgDestination .. "/braindump.org",
         },
         s = "Shopping",
         sd = {
