@@ -44,13 +44,7 @@ set undofile
 set backup
 set cursorline
 set diffopt+=hiddenoff
-
-if has("nvim")
-  set clipboard=unnamedplus
-  set inccommand=split
-else
-  set clipboard=unnamed
-endif
+set clipboard=unnamed
 
 if !isdirectory($HOME . "/.vim/backup")
   call mkdir($HOME . "/.vim/backup", "p")
@@ -113,18 +107,10 @@ if has("unix")
 endif
 
 if has('win32') || has('win64')
-  if has('nvim')
-    if empty(glob('$HOME\AppData\Local\nvim\autoload\plug.vim'))
-      silent ! powershell (md "$env:USERPROFILE\AppData\Local\nvim\autoload")
-      silent ! powershell (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim', $env:USERPROFILE + '\AppData\Local\nvim\autoload\plug.vim')
-      autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-    endif
-  else
-    if empty(glob('$HOME\vimfiles\autoload\plug.vim'))
-      silent ! powershell (md "$env:USERPROFILE\vimfiles\autoload")
-      silent ! powershell (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim', $env:USERPROFILE + '\vimfiles\autoload\plug.vim')
-      autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-    endif
+  if empty(glob('$HOME\vimfiles\autoload\plug.vim'))
+    silent ! powershell (md "$env:USERPROFILE\vimfiles\autoload")
+    silent ! powershell (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim', $env:USERPROFILE + '\vimfiles\autoload\plug.vim')
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
   endif
 endif
 
@@ -150,28 +136,9 @@ Plug 'APZelos/blamer.nvim'
 Plug 'tpope/vim-dadbod'
 Plug 'kristijanhusak/vim-dadbod-ui'
 Plug 'pantharshit00/vim-prisma'
-if !has("nvim")
-  Plug 'voldikss/vim-floaterm'
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
-endif
-if has("nvim")
-  Plug 'neovim/nvim-lspconfig'
-  Plug 'hrsh7th/nvim-compe'
-  Plug 'nvim-lua/plenary.nvim'
-  Plug 'jose-elias-alvarez/null-ls.nvim'
-  Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
-  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-  Plug 'kyazdani42/nvim-tree.lua'
-endif
+Plug 'voldikss/vim-floaterm'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
-
-"*******************************************************************************
-"
-"********* TERMINAL ************************************************************
-
-if has('nvim')
-  au TermOpen * setlocal nonumber list
-endif
 
 "*******************************************************************************
 "
@@ -179,43 +146,23 @@ endif
 " URL: https://github.com/voldikss/vim-floaterm
 " Plugin: voldikss/vim-floaterm
 
-if !has('nvim')
-  function s:floatermSettings()
-      tnoremap <silent> <buffer> <C-[> <C-\><C-n>:FloatermKill!<CR>
-  endfunction
+function s:floatermSettings()
+    tnoremap <silent> <buffer> <C-[> <C-\><C-n>:FloatermKill!<CR>
+endfunction
 
-  let g:floaterm_autoclose = 2
-  let g:floaterm_autohide = 0
-  let g:floaterm_title = ""
-  let g:floaterm_width = 0.7
-  let g:floaterm_opener = "vsplit"
+let g:floaterm_autoclose = 2
+let g:floaterm_autohide = 0
+let g:floaterm_title = ""
+let g:floaterm_width = 0.7
+let g:floaterm_opener = "vsplit"
 
-  autocmd FileType floaterm call s:floatermSettings()
-endif
+autocmd FileType floaterm call s:floatermSettings()
 
 "*******************************************************************************
 "
 "********* VIFM ****************************************************************
-if !has("nvim")
-  nnoremap <silent> <C-e> :FloatermNew vifm <CR>
-endif
+nnoremap <silent> <C-e> :FloatermNew vifm <CR>
 
-"*******************************************************************************
-"
-"********* NVIM-TREE ************************************************************
-" URL: https://github.com/kyazdani42/nvim-tree.lua
-" Plugin: kyazdani42/nvim-tree.lua
-
-if has("nvim")
-  nnoremap <silent> <C-e> :NvimTreeToggle<CR>
-  nnoremap <leader>n :NvimTreeFindFile<CR>
-  let g:nvim_tree_show_icons = {
-    \ 'git': 0,
-    \ 'folders': 0,
-    \ 'files': 0,
-    \ 'folder_arrows': 0,
-    \ }
-endif
 "*******************************************************************************
 "
 "********* GIT GUTTER **********************************************************
@@ -240,10 +187,6 @@ endif
 "********* THEMING *************************************************************
 " URL: https://github.com/arcticicestudio/nord-vim
 " Plugin: arcticicestudio/nord-vim
-
-if (has("nvim"))
- let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-endif
 
 if ($TERM_PROGRAM != 'Apple_Terminal')
  set termguicolors
@@ -338,52 +281,50 @@ let g:fzf_colors =
 " URL: https://github.com/neoclide/coc.nvim
 " Plugin: neoclide/coc.nvim
 
-if !has('nvim')
-  let g:coc_global_extensions = [
-      \ 'coc-json',
-      \ 'coc-tsserver',
-      \ 'coc-html',
-      \ 'coc-emmet',
-      \ 'coc-eslint',
-      \ 'coc-prettier',
-      \ 'coc-css'
-  \ ]
+let g:coc_global_extensions = [
+    \ 'coc-json',
+    \ 'coc-tsserver',
+    \ 'coc-html',
+    \ 'coc-emmet',
+    \ 'coc-eslint',
+    \ 'coc-prettier',
+    \ 'coc-css'
+\ ]
 
-  autocmd CursorHold * silent call CocActionAsync('highlight')
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
-  command! -nargs=0 Prettier :CocCommand prettier.formatFile
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
-  nmap <leader>qf  <Plug>(coc-fix-current)
-  nmap <silent> gd <Plug>(coc-definition)
-  nmap <leader>rn <Plug>(coc-rename)
-  nmap <silent> gr <Plug>(coc-references)
-  nnoremap <silent> <leader>cR  :<C-u>CocRestart<CR>
-  nnoremap <silent> <leader>cc  :<C-u>CocList commands<cr>
-  nnoremap <silent> K :call <SID>show_documentation()<CR>
-  nmap <leader>a  <Plug>(coc-codeaction-selected)
-  nmap <leader>ac  <Plug>(coc-codeaction)
+nmap <leader>qf  <Plug>(coc-fix-current)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <leader>rn <Plug>(coc-rename)
+nmap <silent> gr <Plug>(coc-references)
+nnoremap <silent> <leader>cR  :<C-u>CocRestart<CR>
+nnoremap <silent> <leader>cc  :<C-u>CocList commands<cr>
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>ac  <Plug>(coc-codeaction)
 
-  function! StatusDiagnostic() abort
-    let info = get(b:, 'coc_diagnostic_info', {})
-    if empty(info) | return '' | endif
-    let msgs = []
-    if get(info, 'error', 0)
-      call add(msgs, 'E' . info['error'])
-    endif
-    if get(info, 'warning', 0)
-      call add(msgs, 'W' . info['warning'])
-    endif
-    return join(msgs, ' '). ' ' . get(g:, 'coc_status', '')
-  endfunction
+function! StatusDiagnostic() abort
+  let info = get(b:, 'coc_diagnostic_info', {})
+  if empty(info) | return '' | endif
+  let msgs = []
+  if get(info, 'error', 0)
+    call add(msgs, 'E' . info['error'])
+  endif
+  if get(info, 'warning', 0)
+    call add(msgs, 'W' . info['warning'])
+  endif
+  return join(msgs, ' '). ' ' . get(g:, 'coc_status', '')
+endfunction
 
-  function! s:show_documentation()
-    if (index(['vim','help'], &filetype) >= 0)
-      execute 'h '.expand('<cword>')
-    else
-      call CocAction('doHover')
-    endif
-  endfunction
-endif
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
 
 "*******************************************************************************
 "
@@ -465,10 +406,3 @@ autocmd FileType mail set noautoindent |
       \ setlocal textwidth=72 |
       \ setlocal nonumber |
       \ setlocal spell spelllang=nl,en_us
-
-if has("nvim")
-lua << EOF
-  require"ld/lsp"
-  require"ld/treesitter"
-EOF
-endif
