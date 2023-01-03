@@ -191,7 +191,7 @@ if ($TERM_PROGRAM != 'Apple_Terminal')
  set termguicolors
 endif
 
-colorscheme nord
+silent! colorscheme nord
 
 let g:nord_italic = 1
 let g:nord_bold = 1
