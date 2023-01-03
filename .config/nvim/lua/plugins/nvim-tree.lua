@@ -1,4 +1,5 @@
 return {
+  enabled = false,
   "kyazdani42/nvim-tree.lua",
   cmd = { "NvimTreeToggle", "NvimTreeFindFile" },
   keys = {
