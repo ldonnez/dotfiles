@@ -1,3 +1,5 @@
+local global = require("config.global")
+
 return {
   "hrsh7th/nvim-cmp",
   event = "InsertEnter",
@@ -94,7 +96,9 @@ return {
       }),
       formatting = {
         format = function(_, vim_item)
-          vim_item.kind = (cmp_kinds[vim_item.kind] or "")
+          if global.is_unix then
+            vim_item.kind = (cmp_kinds[vim_item.kind] or "")
+          end
           return vim_item
         end,
       },
