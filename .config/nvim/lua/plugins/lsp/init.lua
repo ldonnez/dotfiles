@@ -1,15 +1,19 @@
 local global = require("config.global")
+local keymaps = require("plugins.lsp.keymaps")
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 return {
   {
     "neovim/nvim-lspconfig",
     event = { "BufReadPost" },
     config = function()
-      require("plugins.lsp.json")
-      require("plugins.lsp.eslint")
-      require("plugins.lsp.html")
-      require("plugins.lsp.css")
-      require("plugins.lsp.yaml")
+      local servers = require("plugins.lsp.setup")
+
+      for server, opts in pairs(servers) do
+        opts.capabilities = capabilities
+        opts.on_attach = keymaps.on_attach
+        require("lspconfig")[server].setup(opts)
+      end
     end,
   },
   {
@@ -23,7 +27,7 @@ return {
         require("typescript.extensions.null-ls.code-actions"),
       }
 
-      require("null-ls").setup({
+      null_ls.setup({
         sources = sources,
       })
     end,
@@ -38,15 +42,21 @@ return {
   {
     "folke/neodev.nvim",
     ft = { "lua", "luau" },
-    config = function()
-      require("plugins.lsp.lua")
-    end,
+    config = true,
   },
   {
     "jose-elias-alvarez/typescript.nvim",
     ft = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
-    config = function()
-      require("plugins.lsp.typescript")
-    end,
+    config = {
+      disable_commands = false,
+      debug = false,
+      go_to_source_definition = {
+        fallback = true,
+      },
+      server = {
+        capabilities = capabilities,
+        on_attach = keymaps.on_attach,
+      },
+    },
   },
 }

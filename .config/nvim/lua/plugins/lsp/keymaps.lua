@@ -1,10 +1,16 @@
 local M = {}
 
-function M.capabilities()
-  return require("cmp_nvim_lsp").default_capabilities()
-end
+vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { silent = true, desc = "Open diagnostic" })
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { silent = true, desc = "Go to previous diagnostic" })
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { silent = true, desc = "Go to next diagnostic" })
+vim.keymap.set(
+  "n",
+  "<leader>q",
+  vim.diagnostic.setloclist,
+  { silent = true, desc = "Set diagnostics in location list" }
+)
 
-function M.on_attach(_, bufnr)
+function M.on_attach(client, bufnr)
   local function buf_set_option(...)
     vim.api.nvim_buf_set_option(bufnr, ...)
   end
@@ -52,28 +58,19 @@ function M.on_attach(_, bufnr)
     vim.lsp.buf.references,
     { silent = true, buffer = bufnr, desc = "Show references in quick fix list" }
   )
-  vim.keymap.set(
-    "n",
-    "<leader>e",
-    vim.diagnostic.open_float,
-    { silent = true, buffer = bufnr, desc = "Open diagnostic" }
-  )
-  vim.keymap.set(
-    "n",
-    "[d",
-    vim.diagnostic.goto_prev,
-    { silent = true, buffer = bufnr, desc = "Go to previous diagnostic" }
-  )
-  vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { silent = true, buffer = bufnr, desc = "Go to next diagnostic" })
-  vim.keymap.set(
-    "n",
-    "<leader>q",
-    vim.diagnostic.setloclist,
-    { silent = true, buffer = bufnr, desc = "Set diagnostics in location list" }
-  )
   vim.keymap.set("n", "<leader>f", function()
     vim.lsp.buf.format({ async = true })
   end, { silent = true, buffer = bufnr, desc = "Format" })
+
+  if client.name == "tsserver" then
+    vim.keymap.set("n", "gR", ":TypescriptRenameFile <CR>", { buffer = bufnr, desc = "Rename file" })
+    vim.keymap.set(
+      "n",
+      "gd",
+      ":TypescriptGoToSourceDefinition <CR>",
+      { buffer = bufnr, desc = "Go to source definition" }
+    )
+  end
 end
 
 return M
