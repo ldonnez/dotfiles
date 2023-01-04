@@ -188,7 +188,7 @@ endif
 " Plugin: arcticicestudio/nord-vim
 
 if ($TERM_PROGRAM != 'Apple_Terminal')
- set termguicolors
+  silent! set termguicolors
 endif
 
 silent! colorscheme nord
