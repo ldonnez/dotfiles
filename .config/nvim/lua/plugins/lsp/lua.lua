@@ -5,7 +5,9 @@ if not ok then
 end
 
 local global = require("config.global")
-local utils = require("plugins.lsp.utils")
+
+local on_attach = require("plugins.lsp.utils").on_attach
+local capabilities = require("plugins.lsp.utils").capabilities()
 
 local sumneko_root_path = global.plugin_installation_path .. "/lua-language-server"
 local sumneko_binary = sumneko_root_path .. "/bin/lua-language-server"
@@ -13,8 +15,8 @@ local sumneko_binary = sumneko_root_path .. "/bin/lua-language-server"
 local runtime_path = vim.split(package.path, ";", {})
 neodev.setup({})
 require("lspconfig").sumneko_lua.setup({
-  capabilities = utils.cmp_capababilities(),
-  on_attach = utils.on_attach,
+  capabilities = capabilities,
+  on_attach = on_attach,
   cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
   settings = {
     Lua = {

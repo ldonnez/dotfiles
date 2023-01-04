@@ -1,22 +1,10 @@
-local global = require("config.global")
+local M = {}
 
-local utils = {}
-
-function utils.get_cmd_executable(lsp_executable)
-  if global.is_windows then
-    return { lsp_executable .. ".cmd", "--stdio" }
-  else
-    return { lsp_executable, "--stdio" }
-  end
+function M.capabilities()
+  return require("cmp_nvim_lsp").default_capabilities()
 end
 
-function utils.cmp_capababilities()
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
-  capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
-  return capabilities
-end
-
-function utils.on_attach(_, bufnr)
+function M.on_attach(_, bufnr)
   local function buf_set_option(...)
     vim.api.nvim_buf_set_option(bufnr, ...)
   end
@@ -88,4 +76,4 @@ function utils.on_attach(_, bufnr)
   end, { silent = true, buffer = bufnr, desc = "Format" })
 end
 
-return utils
+return M

@@ -1,5 +1,7 @@
-local utils = require("plugins.lsp.utils")
+local capabilities = require("plugins.lsp.utils").capabilities()
+local on_attach = require("plugins.lsp.utils").on_attach
 
 require("lspconfig").yamlls.setup({
-  cmd = utils.get_cmd_executable("yaml-language-server"),
+  capabilities = capabilities,
+  on_attach = on_attach,
 })

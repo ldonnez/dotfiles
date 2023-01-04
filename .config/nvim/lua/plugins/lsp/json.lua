@@ -1,8 +1,10 @@
 local lspconfig = require("lspconfig")
-local utils = require("plugins.lsp.utils")
+local capabilities = require("plugins.lsp.utils").capabilities()
+local on_attach = require("plugins.lsp.utils").on_attach
 
 lspconfig.jsonls.setup({
-  cmd = utils.get_cmd_executable("vscode-json-language-server"),
+  capabilities = capabilities,
+  on_attach = on_attach,
   commands = {
     Format = {
       function()

@@ -16,7 +16,6 @@ return {
     "jose-elias-alvarez/null-ls.nvim",
     ft = { "typescript", "typescriptreact", "javascript", "javascriptreact", "lua", "json", "yaml" },
     config = function()
-      local utils = require("plugins.lsp.utils")
       local null_ls = require("null-ls")
       local sources = {
         null_ls.builtins.formatting.stylua,
@@ -26,7 +25,6 @@ return {
 
       require("null-ls").setup({
         sources = sources,
-        on_attach = utils.on_attach,
       })
     end,
   },

@@ -1,9 +1,7 @@
-local utils = require("plugins.lsp.utils")
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
+local capabilities = require("plugins.lsp.utils").capabilities()
+local on_attach = require("plugins.lsp.utils").on_attach
 
 require("lspconfig").cssls.setup({
-  cmd = utils.get_cmd_executable("vscode-css-language-server"),
   capabilities = capabilities,
+  on_attach = on_attach,
 })
