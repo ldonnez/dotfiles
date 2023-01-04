@@ -28,12 +28,10 @@ set ruler
 set list
 set winwidth=79
 set listchars=tab:>.,trail:~,extends:>,precedes:<,nbsp:␣
-set modifiable
 set laststatus=2
 set updatetime=300
 set wildmenu
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.jpg,*.png,.git/*,node_modules/*
-set signcolumn=auto
 set incsearch
 set hlsearch
 set shortmess+=aT
@@ -43,7 +41,6 @@ set undodir=$HOME/.vim/undo//
 set undofile
 set backup
 set cursorline
-set diffopt+=hiddenoff
 set clipboard=unnamed
 
 if !isdirectory($HOME . "/.vim/backup")
