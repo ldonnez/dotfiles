@@ -31,8 +31,7 @@ opt.writebackup = true
 opt.backupdir = global.backup_dir .. "//"
 opt.directory = global.swap_dir .. "//"
 opt.undodir = global.undo_dir .. "//"
-opt.completeopt = { "menu", "menuone", "noselect" }
-opt.laststatus = 3
+opt.completeopt = { "menu", "menuone", "noselect", "preview" }
 opt.sessionoptions = "buffers,curdir,folds,winpos,winsize"
 opt.timeoutlen = 300
 
