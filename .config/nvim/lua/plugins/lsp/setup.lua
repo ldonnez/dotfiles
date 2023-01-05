@@ -1,4 +1,4 @@
-local global = require("config.global")
+local global = require("global")
 
 local sumneko_root_path = global.plugin_installation_path .. "/lua-language-server"
 local sumneko_binary = sumneko_root_path .. "/bin/lua-language-server"

@@ -1,4 +1,4 @@
-local global = require("config.global")
+local global = require("global")
 
 return {
   "hrsh7th/nvim-cmp",
