@@ -94,7 +94,7 @@ return {
           "n",
           "<leader>or",
           require("telescope").extensions.orgmode.refile_heading,
-          { desc = "org refile" }
+          { silent = true, desc = "org refile" }
         )
       end,
     })

@@ -2,8 +2,8 @@ return {
   "nvim-neo-tree/neo-tree.nvim",
   cmd = "Neotree",
   keys = {
-    { "<C-e>", "<cmd>Neotree toggle<CR>", desc = "Open neotree" },
-    { "<leader>n", "<cmd>Neotree filesystem reveal left<CR>", desc = "Open neotree current file" },
+    { "<C-e>", "<cmd>Neotree toggle<CR>", silent = true, desc = "Open neotree" },
+    { "<leader>n", "<cmd>Neotree filesystem reveal left<CR>", silent = true, desc = "Open neotree current file" },
   },
   version = "*",
   dependencies = {
