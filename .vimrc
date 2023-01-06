@@ -201,14 +201,6 @@ call matchadd('ColorColumn', '\%81v', 100) "show when line goes over 80 lines
 
 "*******************************************************************************
 "
-"********* POLYGOT *************************************************************
-" URL: https://github.com/sheerun/vim-polyglot
-" Plugin: sheerun/vim-polyglot
-
-"let g:polyglot_disabled = ['latex', 'typescript', 'typescriptreact']
-
-"*******************************************************************************
-"
 "********* LIGHTLINE ***********************************************************
 " URL: https://github.com/itchyny/lightline.vim
 " Plugin: itchyny/lightline.vim
