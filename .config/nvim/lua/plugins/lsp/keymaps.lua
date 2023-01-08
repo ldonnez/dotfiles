@@ -10,14 +10,6 @@ keymap.set("n", "<leader>q", diagnostic.setloclist, { silent = true, desc = "Set
 
 function M.on_attach(client, bufnr)
   local lsp = vim.lsp
-  local api = vim.api
-
-  local function buf_set_option(...)
-    api.nvim_buf_set_option(bufnr, ...)
-  end
-
-  --Enable completion triggered by <c-x><c-o>
-  buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   keymap.set("n", "gD", lsp.buf.declaration, { silent = true, buffer = bufnr, desc = "Go to declaration" })
