@@ -11,7 +11,7 @@ local M = {
     {
       "s1n7ax/nvim-window-picker",
       version = "*",
-      config = {
+      opts = {
         autoselect_one = true,
         include_current = false,
         filter_rules = {

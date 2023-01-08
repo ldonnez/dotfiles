@@ -5,7 +5,7 @@ return {
   {
     "nvim-lualine/lualine.nvim",
     event = { "VeryLazy" },
-    config = {
+    opts = {
       options = { theme = "catppuccin", globalstatus = true },
     },
   },
@@ -64,7 +64,7 @@ return {
   {
     "olimorris/persisted.nvim",
     event = "VeryLazy",
-    config = {
+    opts = {
       autoload = true,
       branch_separator = "_",
       allowed_dirs = {

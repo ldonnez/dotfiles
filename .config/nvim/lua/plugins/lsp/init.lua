@@ -47,7 +47,7 @@ return {
   {
     "jose-elias-alvarez/typescript.nvim",
     ft = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
-    config = {
+    opts = {
       disable_commands = false,
       debug = false,
       go_to_source_definition = {
