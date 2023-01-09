@@ -3,7 +3,7 @@
     "prefix": "trfc",
     "body": [
       "import React from \"react\"\n",
-      "type Props {",
+      "type Props = {",
       "}\n",
       "export const ${1:${TM_FILENAME_BASE}} = ({}: Props) => {\n",
       "\treturn (",
