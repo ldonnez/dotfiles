@@ -47,6 +47,13 @@ function M.config()
         ["<C-x>"] = "split_with_window_picker",
         ["<C-v>"] = "vsplit_with_window_picker",
         ["<C-t>"] = "open_tabnew",
+        ["Y"] = function(state)
+          local node = state.tree:get_node()
+          local content = node.path:gsub(state.path, ""):sub(2)
+          vim.fn.setreg('"', content)
+          vim.fn.setreg("1", content)
+          vim.fn.setreg("+", content)
+        end,
       },
     },
   })
