@@ -3,18 +3,6 @@ return {
   "nvim-lua/plenary.nvim",
   "nvim-tree/nvim-web-devicons",
   {
-    "nvim-lualine/lualine.nvim",
-    event = { "VeryLazy" },
-    opts = {
-      options = {
-        theme = "catppuccin",
-        globalstatus = true,
-        section_separators = "",
-        component_separators = "",
-      },
-    },
-  },
-  {
     "folke/which-key.nvim",
     event = "VeryLazy",
     config = true,
