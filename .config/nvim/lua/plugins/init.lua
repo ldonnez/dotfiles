@@ -6,7 +6,12 @@ return {
     "nvim-lualine/lualine.nvim",
     event = { "VeryLazy" },
     opts = {
-      options = { theme = "catppuccin", globalstatus = true },
+      options = {
+        theme = "catppuccin",
+        globalstatus = true,
+        section_separators = "",
+        component_separators = "",
+      },
     },
   },
   {
