@@ -1,4 +1,5 @@
 local M = {
+  enabled = false,
   "nvim-lualine/lualine.nvim",
   event = { "VeryLazy" },
 }
