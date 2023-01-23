@@ -10,6 +10,7 @@ local M = {
 
 function M.config()
   local keymap = vim.keymap
+  local api = vim.api
   local orgDestination = "~/org"
 
   require("orgmode").setup_ts_grammar()
@@ -87,17 +88,17 @@ function M.config()
   })
   require("org-bullets").setup()
 
-  vim.api.nvim_create_autocmd("FileType", {
+  api.nvim_create_autocmd("FileType", {
     pattern = "org",
     command = "setlocal nowrap",
   })
 
   -- Replace refile prompt with telescope
-  vim.api.nvim_create_autocmd("FileType", {
+  api.nvim_create_autocmd("FileType", {
     pattern = "org",
-    group = vim.api.nvim_create_augroup("orgmode_telescope_nvim", { clear = true }),
+    group = api.nvim_create_augroup("orgmode_telescope_nvim", { clear = true }),
     callback = function()
-      vim.keymap.set(
+      keymap.set(
         "n",
         "<leader>or",
         require("telescope").extensions.orgmode.refile_heading,
