@@ -9,6 +9,7 @@ local M = {
 }
 
 function M.config()
+  local keymap = vim.keymap
   local orgDestination = "~/org"
 
   require("orgmode").setup_ts_grammar()
@@ -104,6 +105,13 @@ function M.config()
       )
     end,
   })
+
+  keymap.set(
+    "n",
+    "<leader>og",
+    ":tabe " .. orgDestination .. "/index.org<CR>",
+    { silent = true, desc = "Open org index file in new tab" }
+  )
 end
 
 return M
