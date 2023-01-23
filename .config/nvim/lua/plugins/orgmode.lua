@@ -13,7 +13,7 @@ function M.config()
 
   require("orgmode").setup_ts_grammar()
   require("orgmode").setup({
-    org_agenda_files = { orgDestination .. "/*", orgDestination .. "/**/*" },
+    org_agenda_files = { orgDestination .. "/**/*" },
     org_default_notes_file = orgDestination .. "/refile.org",
     org_agenda_templates = {
       i = "INBOX",
