@@ -1,7 +1,7 @@
 local global = require("global")
 
-local sumneko_root_path = global.plugin_installation_path .. "/lua-language-server"
-local sumneko_binary = sumneko_root_path .. "/bin/lua-language-server"
+local lua_ls_root_path = global.plugin_installation_path .. "/lua-language-server"
+local lua_ls_binary = lua_ls_root_path .. "/bin/lua-language-server"
 
 local servers = {
   cssls = {},
@@ -9,8 +9,8 @@ local servers = {
   html = {},
   jsonls = {},
   yamlls = {},
-  sumneko_lua = {
-    cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
+  lua_ls = {
+    cmd = { lua_ls_binary, "-E", lua_ls_root_path .. "/main.lua" },
     settings = {
       Lua = {
         runtime = {

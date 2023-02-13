@@ -33,7 +33,7 @@ return {
     end,
   },
   {
-    "sumneko/lua-language-server",
+    "luals/lua-language-server",
     cond = false,
     version = "*",
     build = global.is_unix and [[cd 3rd/luamake && compile/install.sh && cd ../.. && ./3rd/luamake/luamake rebuild]]
