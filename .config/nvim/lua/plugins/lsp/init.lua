@@ -36,8 +36,7 @@ return {
     "luals/lua-language-server",
     cond = false,
     version = "*",
-    build = global.is_unix and [[cd 3rd/luamake && compile/install.sh && cd ../.. && ./3rd/luamake/luamake rebuild]]
-      or [[cd 3rd\luamake & compile\install.bat & cd ..\.. & 3rd\luamake\luamake.exe rebuild]],
+    build = global.is_unix and [[./make.sh]] or [[.\make.bat]],
   },
   {
     "folke/neodev.nvim",
