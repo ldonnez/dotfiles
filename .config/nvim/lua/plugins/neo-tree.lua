@@ -49,7 +49,7 @@ function M.config()
         ["<C-t>"] = "open_tabnew",
         ["Y"] = function(state)
           local node = state.tree:get_node()
-          local content = node.path:gsub(state.path, ""):sub(2)
+          local content = node.path:gsub(state.path:gsub("[%-_^$.*+-?]", "%%%0"), ""):sub(2)
           vim.fn.setreg('"', content)
           vim.fn.setreg("1", content)
           vim.fn.setreg("+", content)
