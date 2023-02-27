@@ -9,6 +9,7 @@ local servers = {
   html = {},
   jsonls = {},
   yamlls = {},
+  tailwindcss = {},
   lua_ls = {
     cmd = { lua_ls_binary, "-E", lua_ls_root_path .. "/main.lua" },
     settings = {
