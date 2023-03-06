@@ -56,10 +56,10 @@ return {
   },
   {
     "olimorris/persisted.nvim",
-    event = "VeryLazy",
+    lazy = false,
+    priority = 2000,
     opts = {
       autoload = true,
-      branch_separator = "_",
       allowed_dirs = {
         "~/projects",
         "~/config",
