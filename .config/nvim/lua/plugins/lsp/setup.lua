@@ -10,6 +10,7 @@ local servers = {
   jsonls = {},
   yamlls = {},
   tailwindcss = {},
+  prismals = {},
   lua_ls = {
     cmd = { lua_ls_binary, "-E", lua_ls_root_path .. "/main.lua" },
     settings = {
