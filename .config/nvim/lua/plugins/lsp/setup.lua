@@ -8,7 +8,15 @@ local servers = {
   eslint = {},
   html = {},
   jsonls = {},
-  yamlls = {},
+  yamlls = {
+    settings = {
+      yaml = {
+        schemas = {
+          ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+        },
+      },
+    },
+  },
   tailwindcss = {},
   prismals = {},
   lua_ls = {
