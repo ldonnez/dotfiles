@@ -67,10 +67,11 @@ git_prompt() {
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export FZF_DEFAULT_OPTS=" \
-  --color=bg+:#414559,bg:#303446,spinner:#f2d5cf,hl:#e78284 \
-  --color=fg:#c6d0f5,header:#e78284,info:#ca9ee6,pointer:#f2d5cf \
-  --color=marker:#f2d5cf,fg+:#c6d0f5,prompt:#ca9ee6,hl+:#e78284"
+export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
+ --color=fg:#cdd9e5,bg:#22272e,hl:#6cb6ff
+ --color=fg+:#f47067,bg+:#262626,hl+:#f47067
+ --color=info:#539bf5,prompt:#ff938a,pointer:#6cb6ff
+ --color=marker:#6cb6ff,spinner:#ff938a,header:#636e7b'
 
 #*********************************************************************
 #
