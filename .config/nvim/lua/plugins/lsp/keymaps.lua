@@ -8,7 +8,7 @@ keymap.set("n", "[d", diagnostic.goto_prev, { silent = true, desc = "Go to previ
 keymap.set("n", "]d", diagnostic.goto_next, { silent = true, desc = "Go to next diagnostic" })
 keymap.set("n", "<leader>q", diagnostic.setloclist, { silent = true, desc = "Set diagnostics in location list" })
 
-function M.on_attach(client, bufnr)
+function M.on_attach(_, bufnr)
   local lsp = vim.lsp
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
@@ -49,16 +49,6 @@ function M.on_attach(client, bufnr)
   keymap.set("n", "<leader>f", function()
     lsp.buf.format({ async = true })
   end, { silent = true, buffer = bufnr, desc = "Format" })
-
-  if client.name == "tsserver" then
-    keymap.set("n", "gR", ":TypescriptRenameFile <CR>", { silent = true, buffer = bufnr, desc = "Rename file" })
-    keymap.set(
-      "n",
-      "gd",
-      ":TypescriptGoToSourceDefinition <CR>",
-      { silent = true, buffer = bufnr, desc = "Go to source definition" }
-    )
-  end
 end
 
 return M
