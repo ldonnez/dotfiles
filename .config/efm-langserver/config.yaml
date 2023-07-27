@@ -1,0 +1,39 @@
+version: 2
+log-file: "/Users/lenny/.local/state/nvim/efm.log"
+log-level: 0
+root-markers:
+  - package.json
+  - .git/
+
+tools:
+  prettier: &prettier
+    format-command: "prettierd ${INPUT}"
+    format-stdin: true
+
+  stylua: &stylua
+    format-command: "stylua -"
+    format-stdin: true
+
+languages:
+  javascript:
+    - <<: *prettier
+  typescript:
+    - <<: *prettier
+  javascriptreact:
+    - <<: *prettier
+  typescriptreact:
+    - <<: *prettier
+  yaml:
+    - <<: *prettier
+  json:
+    - <<: *prettier
+  html:
+    - <<: *prettier
+  scss:
+    - <<: *prettier
+  css:
+    - <<: *prettier
+  markdown:
+    - <<: *prettier
+  lua:
+    - <<: *stylua

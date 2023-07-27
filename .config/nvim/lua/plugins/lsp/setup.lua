@@ -45,6 +45,13 @@ local servers = {
       },
     },
   },
+  efm = {
+    init_options = {
+      documentFormatting = true,
+      documentRangeFormatting = true,
+      codeAction = true,
+    },
+  },
 }
 
 return servers

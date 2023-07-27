@@ -17,22 +17,6 @@ return {
     end,
   },
   {
-    "jose-elias-alvarez/null-ls.nvim",
-    ft = { "typescript", "typescriptreact", "javascript", "javascriptreact", "lua", "json", "yaml" },
-    config = function()
-      local null_ls = require("null-ls")
-      local sources = {
-        null_ls.builtins.formatting.stylua,
-        null_ls.builtins.formatting.prettierd,
-        require("typescript.extensions.null-ls.code-actions"),
-      }
-
-      null_ls.setup({
-        sources = sources,
-      })
-    end,
-  },
-  {
     "luals/lua-language-server",
     cond = false,
     version = "*",
