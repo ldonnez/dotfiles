@@ -44,18 +44,22 @@ return {
     config = true,
   },
   {
-    "jose-elias-alvarez/typescript.nvim",
-    ft = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
+    "pmizio/typescript-tools.nvim",
+    ft = { "typescript", "typescriptreact", "javascript", "javascriptreact", "json" },
     opts = {
-      disable_commands = false,
-      debug = false,
-      go_to_source_definition = {
-        fallback = true,
-      },
-      server = {
-        capabilities = capabilities,
-        on_attach = keymaps.on_attach,
-      },
+      on_attach = function(client, bufnr)
+        keymaps.on_attach(client, bufnr)
+        client.server_capabilities.documentFormattingProvider = false
+        client.server_capabilities.documentRangeFormattingProvider = false
+
+        local keymap = vim.keymap
+        keymap.set(
+          "n",
+          "gd",
+          ":TSToolsGoToSourceDefinition <CR>",
+          { silent = true, buffer = bufnr, desc = "Go to source definition" }
+        )
+      end,
     },
   },
 }
