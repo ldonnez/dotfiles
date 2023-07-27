@@ -36,6 +36,9 @@ local servers = {
             [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
           },
         },
+        format = {
+          enable = false,
+        },
         telemetry = {
           enable = false,
         },
