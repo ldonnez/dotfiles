@@ -20,7 +20,6 @@ local M = {
             buftype = { "terminal", "quickfix" },
           },
         },
-        other_win_hl_color = "#54AEFF",
       },
     },
   },
