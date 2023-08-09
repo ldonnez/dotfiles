@@ -11,7 +11,6 @@
   "friendly-snippets": { "branch": "main", "commit": "bc38057e513458cb2486b6cd82d365fa294ee398" },
   "gitsigns.nvim": { "branch": "main", "commit": "287fffb410ce82d19da2d503a1f1570adf7b7874" },
   "lazy.nvim": { "branch": "main", "commit": "3ad55ae678876516156cca2f361c51f7952a924b" },
-  "lua-language-server": { "branch": "master", "commit": "666a23e85707b73c22e02f620ad40607b18c4676" },
   "lualine.nvim": { "branch": "master", "commit": "45e27ca739c7be6c49e5496d14fcf45a303c3a63" },
   "neo-tree.nvim": { "branch": "v2.x", "commit": "7951701fd21291ac473ea92d3fd57ec5c8bf10bb" },
   "neodev.nvim": { "branch": "main", "commit": "9f0205a08757711f57589a1dffa8abf525f4a23b" },
