@@ -1,5 +1,4 @@
 version: 2
-log-file: "/Users/lenny/.local/state/nvim/efm.log"
 log-level: 0
 root-markers:
   - package.json
