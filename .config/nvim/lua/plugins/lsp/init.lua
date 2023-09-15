@@ -18,7 +18,6 @@ return {
   },
   {
     "luals/lua-language-server",
-    cond = false,
     version = "*",
     build = global.is_unix and [[./make.sh]] or [[.\make.bat]],
   },
