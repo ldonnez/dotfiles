@@ -1,5 +1,4 @@
 #Folder hooks
-folder-hook work 'source ~/.mutt/work'
 folder-hook gmail 'source ~/.mutt/gmail'
 folder-hook hotmail 'source ~/.mutt/hotmail'
 
@@ -14,8 +13,7 @@ bind editor               <space>   noop
 
 #Key mappings
 macro index               <f2>     '<sync-mailbox><enter-command>source ~/.mutt/gmail<enter><change-folder>!<enter>'
-macro index               <f3>     '<sync-mailbox><enter-command>source ~/.mutt/work<enter><change-folder>!<enter>'
-macro index               <f4>     '<sync-mailbox><enter-command>source ~/.mutt/hotmail<enter><change-folder>!<enter>'
+macro index               <f3>     '<sync-mailbox><enter-command>source ~/.mutt/hotmail<enter><change-folder>!<enter>'
 macro index               b        '<enter-command>toggle sidebar_visible<enter><refresh>'
 macro pager               b        '<enter-command>toggle sidebar_visible<enter><redraw-screen>'
 macro pager               \cb      <pipe-entry>'urlview'<enter> 'Follow links with urlview'

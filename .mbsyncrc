@@ -30,39 +30,6 @@ Create Both
 SyncState *
 Expunge Both
 
-
-### WORK ###
-IMAPAccount work
-# Address to connect to
-Host imap.gmail.com
-AuthMechs LOGIN
-User lenny@pau.be
-PassCmd "gpg -q --no-tty --for-your-eyes-only -d ~/.secrets/lenny@pau.be.gpg"
-#
-# Use SSL
-SSLType IMAPS
-SSLVersions TLSv1.2
-
-IMAPStore work-remote
-Account work
-
-MaildirStore work-local
-Subfolders Verbatim
-# The trailing "/" is important
-Path ~/.mail/work/
-Inbox ~/.mail/work/Inbox
-Flatten .
-
-Channel work
-Far :work-remote:
-Near :work-local:
-Patterns *
-# Automatically create missing mailboxes, both locally and on the server
-Create Both
-# Save the synchronization state files in the relevant directory
-SyncState *
-Expunge Both
-
 ### HOTMAIL ###
 IMAPAccount hotmail
 # Address to connect to
