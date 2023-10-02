@@ -23,6 +23,7 @@ function M.config()
       "yaml",
       "org",
       "prisma",
+      "graphql",
     },
     highlight = { enable = true, disable = { "yaml" }, additional_vim_regex_highlighting = { "org" } },
   })
