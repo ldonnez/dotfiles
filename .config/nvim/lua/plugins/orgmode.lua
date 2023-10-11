@@ -1,5 +1,6 @@
 local M = {
   "nvim-orgmode/orgmode",
+  enabled = false,
   ft = "org",
   event = "VeryLazy",
   dependencies = {
