@@ -42,6 +42,7 @@ return {
           ":TSToolsGoToSourceDefinition <CR>",
           { silent = true, buffer = bufnr, desc = "Go to source definition" }
         )
+        keymap.set("n", "grn", ":TSToolsRenameFile <CR>", { silent = true, buffer = bufnr, desc = "Rename file" })
       end,
     },
   },
