@@ -27,6 +27,10 @@ return {
     config = true,
   },
   {
+    "mfussenegger/nvim-ansible",
+    ft = { "yaml" },
+  },
+  {
     "pmizio/typescript-tools.nvim",
     ft = { "typescript", "typescriptreact", "javascript", "javascriptreact", "json" },
     opts = {

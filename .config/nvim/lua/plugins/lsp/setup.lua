@@ -8,6 +8,7 @@ local servers = {
   eslint = {},
   html = {},
   jsonls = {},
+  ansiblels = {},
   graphql = {},
   yamlls = {
     settings = {
