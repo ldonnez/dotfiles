@@ -46,9 +46,9 @@ function M.on_attach(_, bufnr)
     lsp.buf.references,
     { silent = true, buffer = bufnr, desc = "Show references in quick fix list" }
   )
-  keymap.set("n", "<leader>f", function()
-    lsp.buf.format({ async = true })
-  end, { silent = true, buffer = bufnr, desc = "Format" })
+  --keymap.set("n", "<leader>f", function()
+  --  lsp.buf.format({ async = true })
+  --end, { silent = true, buffer = bufnr, desc = "Format" })
 end
 
 return M
