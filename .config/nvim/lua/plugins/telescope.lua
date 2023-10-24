@@ -43,11 +43,21 @@ local M = {
       desc = "Show all telescope pickers",
     },
     {
-      "<leader>fb",
+      "<C-e>",
       function()
         require("telescope").extensions.file_browser.file_browser()
       end,
       desc = "Open file browser",
+    },
+    {
+      "<leader>n",
+      function()
+        require("telescope").extensions.file_browser.file_browser({
+          path = "%:p:h",
+          select_buffer = true,
+        })
+      end,
+      desc = "Open file browser current file",
     },
     {
       "<leader>tp",
@@ -91,6 +101,17 @@ function M.config()
           ["<C-j>"] = actions.move_selection_next,
           ["<C-[>"] = actions.close,
           ["<C-a>"] = actions.select_all,
+          ["<C-y>"] = function(_)
+            local entry = require("telescope.actions.state").get_selected_entry()
+            if entry ~= nil then
+              local content = entry.path
+              local relative_path = vim.fn.fnamemodify(content, ":~:.")
+
+              vim.fn.setreg("+", relative_path)
+
+              print("Copied to clipboard: " .. relative_path)
+            end
+          end,
         },
         n = {
           ["<C-[>"] = actions.close,
@@ -134,13 +155,16 @@ function M.config()
         }),
       },
       file_browser = {
-        dir_icon = "",
+        layout_config = layout_config,
+        hidden = true,
+        auto_depth = true,
         mappings = {
           i = {
-            ["<C-y>"] = fb_actions.create,
+            ["<C-h>"] = fb_actions.goto_home_dir,
+            ["<C-x>"] = fb_actions.move,
+            ["<C-c>"] = fb_actions.copy,
             ["<C-d>"] = fb_actions.remove,
             ["<C-r>"] = fb_actions.rename,
-            ["<C-o>"] = fb_actions.copy,
           },
         },
       },

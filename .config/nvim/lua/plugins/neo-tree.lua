@@ -1,6 +1,7 @@
 local M = {
   "nvim-neo-tree/neo-tree.nvim",
   cmd = "Neotree",
+  enabled = false,
   keys = {
     { "<C-e>", "<cmd>Neotree toggle<CR>", silent = true, desc = "Open neotree" },
     { "<leader>n", "<cmd>Neotree filesystem reveal left<CR>", silent = true, desc = "Open neotree current file" },
