@@ -94,7 +94,7 @@ return {
       {
         "<leader>f",
         function()
-          require("conform").format()
+          require("conform").format({ lsp_fallback = true })
         end,
         mode = { "n", "v" },
         desc = "Format",
