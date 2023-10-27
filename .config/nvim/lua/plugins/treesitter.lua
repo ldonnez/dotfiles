@@ -24,6 +24,7 @@ function M.config()
       "org",
       "prisma",
       "graphql",
+      "http",
     },
     highlight = { enable = true, disable = { "yaml" }, additional_vim_regex_highlighting = { "org" } },
   })
