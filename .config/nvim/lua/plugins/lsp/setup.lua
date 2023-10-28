@@ -10,6 +10,9 @@ local servers = {
   jsonls = {},
   ansiblels = {},
   graphql = {},
+  hls = {
+    filetypes = { "haskell", "lhaskell", "cabal" },
+  },
   yamlls = {
     settings = {
       yaml = {

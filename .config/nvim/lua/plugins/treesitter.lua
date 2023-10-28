@@ -26,6 +26,7 @@ function M.config()
       "graphql",
       "http",
       "markdown",
+      "haskell",
     },
     highlight = { enable = true, disable = { "yaml" }, additional_vim_regex_highlighting = { "org" } },
   })
