@@ -10,9 +10,7 @@ local servers = {
   jsonls = {},
   ansiblels = {},
   graphql = {},
-  hls = {
-    filetypes = { "haskell", "lhaskell", "cabal" },
-  },
+  hls = global.is_unix and { filetypes = { "haskell", "lhaskell", "cabal" } } or nil,
   yamlls = {
     settings = {
       yaml = {
