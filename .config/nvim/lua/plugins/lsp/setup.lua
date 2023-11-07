@@ -8,7 +8,7 @@ local servers = {
   eslint = {},
   html = {},
   jsonls = {},
-  ansiblels = {},
+  ansiblels = global.is_unix and {} or nil,
   graphql = {},
   hls = global.is_unix and { filetypes = { "haskell", "lhaskell", "cabal" } } or nil,
   yamlls = {
