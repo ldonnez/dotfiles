@@ -155,7 +155,10 @@ function M.config()
         }),
       },
       file_browser = {
-        layout_config = layout_config,
+        theme = "ivy",
+        layout_config = {
+          prompt_position = "bottom",
+        },
         hijack_netrw = true,
         hidden = true,
         auto_depth = true,
