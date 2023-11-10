@@ -23,3 +23,8 @@ autocmd({ "FileType" }, {
   pattern = "mail",
   command = "set noautoindent | setlocal nosmartindent | setlocal textwidth=72 | setlocal nonumber",
 })
+
+autocmd({ "FileType" }, {
+  pattern = "markdown",
+  command = "setlocal spell spelllang=en,nl",
+})
