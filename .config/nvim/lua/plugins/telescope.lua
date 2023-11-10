@@ -156,6 +156,7 @@ function M.config()
       },
       file_browser = {
         layout_config = layout_config,
+        hijack_netrw = true,
         hidden = true,
         auto_depth = true,
         respect_gitignore = false,
