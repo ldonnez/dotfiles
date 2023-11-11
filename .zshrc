@@ -190,6 +190,7 @@ export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
 
 # HASKELL
 [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
+export PATH=$HOME/.cabal/bin:$PATH
 
 #*********************************************************************
 #
