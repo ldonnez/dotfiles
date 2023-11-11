@@ -42,7 +42,7 @@ return {
         local keymap = vim.keymap
         keymap.set(
           "n",
-          "gd",
+          "gD",
           ":TSToolsGoToSourceDefinition <CR>",
           { silent = true, buffer = bufnr, desc = "Go to source definition" }
         )
