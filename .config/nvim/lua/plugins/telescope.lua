@@ -160,6 +160,7 @@ function M.config()
           prompt_position = "bottom",
         },
         hijack_netrw = true,
+        no_ignore = true,
         hidden = true,
         auto_depth = true,
         respect_gitignore = false,
