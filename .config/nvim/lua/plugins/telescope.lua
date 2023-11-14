@@ -166,13 +166,11 @@ function M.config()
         respect_gitignore = false,
         mappings = {
           i = {
-            ["<C-h>"] = fb_actions.goto_home_dir,
             ["<C-x>"] = fb_actions.move,
-            ["<C-c>"] = fb_actions.copy,
+            ["<C-p>"] = fb_actions.copy,
             ["<C-d>"] = fb_actions.remove,
             ["<C-r>"] = fb_actions.rename,
-            ["<C-w>"] = fb_actions.create,
-            ["<C-e>"] = actions.close,
+            ["<C-c>"] = fb_actions.create,
           },
         },
       },
