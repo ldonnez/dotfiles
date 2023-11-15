@@ -43,14 +43,14 @@ local M = {
       desc = "Show all telescope pickers",
     },
     {
-      "<C-e>",
+      "<leader>tb",
       function()
         require("telescope").extensions.file_browser.file_browser()
       end,
       desc = "Open file browser",
     },
     {
-      "<leader>n",
+      "<leader>tn",
       function()
         require("telescope").extensions.file_browser.file_browser({
           path = "%:p:h",
