@@ -27,6 +27,7 @@ function M.config()
       "http",
       "markdown",
       "haskell",
+      "sql",
     },
     highlight = { enable = true, disable = { "yaml" }, additional_vim_regex_highlighting = { "org" } },
   })
