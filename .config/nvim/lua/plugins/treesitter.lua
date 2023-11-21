@@ -26,6 +26,7 @@ function M.config()
       "graphql",
       "http",
       "markdown",
+      "markdown_inline",
       "haskell",
       "sql",
     },
