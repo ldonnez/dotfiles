@@ -133,6 +133,9 @@ function M.config()
       },
       buffers = {
         layout_config = layout_config,
+        sort_mru = true,
+        ignore_current_buffer = true,
+        cwd_only = true,
         mappings = {
           i = {
             ["<C-d>"] = actions.delete_buffer,
