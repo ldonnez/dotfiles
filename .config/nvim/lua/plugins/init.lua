@@ -31,6 +31,9 @@ return {
     dependencies = {
       { "tpope/vim-dadbod" },
     },
+    init = function()
+      vim.g.db_ui_use_nerd_fonts = 1
+    end,
     config = function()
       vim.g.db_ui_save_location = "~/SynologyDrive/development/saved_queries"
     end,
