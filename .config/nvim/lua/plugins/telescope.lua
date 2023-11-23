@@ -99,7 +99,6 @@ function M.config()
         i = {
           ["<C-k>"] = actions.move_selection_previous,
           ["<C-j>"] = actions.move_selection_next,
-          ["<C-[>"] = actions.close,
           ["<C-a>"] = actions.select_all,
           ["<C-y>"] = function(_)
             local entry = require("telescope.actions.state").get_selected_entry()
@@ -112,9 +111,6 @@ function M.config()
               print("Copied to clipboard: " .. relative_path)
             end
           end,
-        },
-        n = {
-          ["<C-[>"] = actions.close,
         },
       },
       layout_strategy = "vertical",
