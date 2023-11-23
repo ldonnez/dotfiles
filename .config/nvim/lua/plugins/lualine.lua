@@ -1,6 +1,6 @@
 local M = {
   "nvim-lualine/lualine.nvim",
-  event = { "VeryLazy" },
+  event = { "BufReadPre", "BufNewFile" },
 }
 
 function M.config()
@@ -29,7 +29,7 @@ function M.config()
         },
       },
     },
-    extensions = { "neo-tree", "fugitive" },
+    extensions = { "fugitive" },
   })
 
   -- lualine overrides this option; makes sure tabline only shows when there are atleast 2 tabpages

@@ -4,7 +4,7 @@ return {
   "nvim-tree/nvim-web-devicons",
   {
     "folke/which-key.nvim",
-    event = "VeryLazy",
+    event = { "BufReadPre", "BufNewFile" },
     config = true,
   },
   {
@@ -72,7 +72,7 @@ return {
   },
   {
     "brenoprata10/nvim-highlight-colors",
-    event = "VeryLazy",
+    event = "BufReadPre",
     config = true,
   },
 }

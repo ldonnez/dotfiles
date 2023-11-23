@@ -5,7 +5,7 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 return {
   {
     "neovim/nvim-lspconfig",
-    event = { "BufReadPost" },
+    event = { "BufReadPre" },
     config = function()
       local servers = require("plugins.lsp.setup")
 

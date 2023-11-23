@@ -1,7 +1,7 @@
 local M = {
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",
-  event = "BufReadPost",
+  event = { "BufReadPre", "BufNewFile" },
 }
 
 function M.config()
