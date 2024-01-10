@@ -144,6 +144,7 @@ call plug#end()
 
 function s:floatermSettings()
     tnoremap <silent> <buffer> <C-[> <C-\><C-n>:FloatermKill!<CR>
+    tnoremap <silent> <buffer> <C-c> <C-\><C-n>:FloatermKill!<CR>
 endfunction
 
 let g:floaterm_autoclose = 2
