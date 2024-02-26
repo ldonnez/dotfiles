@@ -14,6 +14,7 @@ return {
       scss = { { "prettierd", "prettier" } },
       css = { { "prettierd", "prettier" } },
       markdown = { { "prettierd", "prettier" } },
+      sql = { "sqlfmt" },
     },
   },
   keys = {
