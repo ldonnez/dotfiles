@@ -1,6 +1,6 @@
 return {
   "rest-nvim/rest.nvim",
-  ft = { "http", "json" },
+  ft = { "http" },
   version = "v1.2.1",
   keys = {
     { "<leader>rr", "<Plug>RestNvim <CR>", desc = "Run HTTP Request under cursor" },
