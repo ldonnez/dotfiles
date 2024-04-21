@@ -202,6 +202,10 @@ autoload -U compinit && compinit
 # Navigate suggestions with completion menu
 zstyle ':completion:*' menu select
 
+# Terraform
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/terraform terraform
+
 #*********************************************************************
 #
 #********* PLUGINS ***************************************************
@@ -226,3 +230,4 @@ alias luamake=/Users/lenny/.local/share/nvim/site/pack/packer/start/lua-language
 
 . $HOME/.asdf/asdf.sh
 fpath=(${ASDF_DIR}/completions $fpath)
+
