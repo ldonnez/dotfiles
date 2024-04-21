@@ -104,6 +104,15 @@ function M.config()
         return vim_item
       end,
     },
+    sorting = {
+      comparators = {
+        cmp.config.compare.offset,
+        cmp.config.compare.exact,
+        cmp.config.compare.score,
+        cmp.config.compare.recently_used,
+        cmp.config.compare.kind,
+      },
+    },
   })
 end
 
