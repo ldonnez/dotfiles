@@ -15,6 +15,7 @@ return {
       css = { { "prettierd", "prettier" } },
       markdown = { { "prettierd", "prettier" } },
       sql = { "sqlfmt" },
+      terraform = { "terraform_fmt" },
     },
   },
   keys = {
