@@ -48,6 +48,7 @@ local servers = {
       },
     },
   },
+  terraformls = {},
 }
 
 return servers
