@@ -204,8 +204,9 @@ autoload -U +X compinit && compinit
 zstyle ':completion:*' menu select
 
 # Terraform
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/local/bin/terraform terraform
+if [[ ! -a /usr/local/bin/terraform ]]; then
+  complete -o nospace -C /usr/local/bin/terraform terraform
+fi
 
 #*********************************************************************
 #
