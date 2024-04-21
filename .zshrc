@@ -197,7 +197,8 @@ export PATH=$HOME/.cabal/bin:$PATH
 #********* COMPLETIONS ***********************************************
 
 # Load autocompletions
-autoload -U compinit && compinit
+autoload -U +X bashcompinit && bashcompinit
+autoload -U +X compinit && compinit
 
 # Navigate suggestions with completion menu
 zstyle ':completion:*' menu select
