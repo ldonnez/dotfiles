@@ -172,6 +172,7 @@ export REVIEW_BASE=develop
 
 # HOMEBREW
 export HOMEBREW_NO_AUTO_UPDATE=1
+export HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK=1
 export HOMEBREW_NO_ANALYTICS=1
 
 if [[ $(uname -m) == 'arm64' ]] && [[ $(uname) = "Darwin" ]]; then
