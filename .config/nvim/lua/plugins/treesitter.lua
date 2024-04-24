@@ -29,6 +29,7 @@ function M.config()
       "markdown_inline",
       "haskell",
       "sql",
+      "terraform",
     },
     highlight = { enable = true, disable = { "yaml" }, additional_vim_regex_highlighting = { "org" } },
   })
