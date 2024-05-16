@@ -4,8 +4,6 @@ local keymap = vim.keymap
 local diagnostic = vim.diagnostic
 
 keymap.set("n", "<leader>e", diagnostic.open_float, { silent = true, desc = "Open diagnostic" })
-keymap.set("n", "[d", diagnostic.goto_prev, { silent = true, desc = "Go to previous diagnostic" })
-keymap.set("n", "]d", diagnostic.goto_next, { silent = true, desc = "Go to next diagnostic" })
 keymap.set("n", "<leader>q", diagnostic.setloclist, { silent = true, desc = "Set diagnostics in location list" })
 
 function M.on_attach(_, bufnr)
@@ -14,7 +12,6 @@ function M.on_attach(_, bufnr)
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   keymap.set("n", "gD", lsp.buf.declaration, { silent = true, buffer = bufnr, desc = "Go to declaration" })
   keymap.set("n", "gd", lsp.buf.definition, { silent = true, buffer = bufnr, desc = "Go to definition" })
-  keymap.set("n", "K", lsp.buf.hover, { silent = true, buffer = bufnr, desc = "Show type information (hover)" })
   keymap.set("n", "gi", lsp.buf.implementation, { silent = true, buffer = bufnr, desc = "Go to implementation" })
   keymap.set("n", "<C-k>", lsp.buf.signature_help, { silent = true, buffer = bufnr, desc = "Show signature" })
   keymap.set(
