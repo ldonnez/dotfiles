@@ -1,7 +1,6 @@
 local global = require("global")
 
 local opt = vim.opt
-local fn = vim.fn
 local g = vim.g
 
 g.loaded_perl_provider = 0
@@ -39,8 +38,3 @@ opt.undodir = global.undo_dir .. "//"
 opt.completeopt = { "menu", "menuone", "noselect", "preview" }
 opt.sessionoptions = "buffers,curdir,folds,globals,tabpages,winpos,winsize"
 opt.timeoutlen = 300
-
-local color_term = fn.getenv("COLORTERM")
-if color_term == "truecolor" or color_term == "24bit" then
-  opt.termguicolors = true
-end
