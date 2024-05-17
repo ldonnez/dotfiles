@@ -13,7 +13,6 @@ return {
         gitsigns = true,
         telescope = true,
         dashboard = false,
-        nvimtree = true,
         neotree = true,
         which_key = true,
         indent_blankline = {
