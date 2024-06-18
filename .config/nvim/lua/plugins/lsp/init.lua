@@ -33,6 +33,7 @@ return {
   {
     "pmizio/typescript-tools.nvim",
     ft = { "typescript", "typescriptreact", "javascript", "javascriptreact", "json" },
+    enabled = false,
     opts = {
       on_attach = function(client, bufnr)
         keymaps.on_attach(client, bufnr)
