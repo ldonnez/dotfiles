@@ -33,6 +33,7 @@ return {
   {
     "pmizio/typescript-tools.nvim",
     ft = { "typescript", "typescriptreact", "javascript", "javascriptreact", "json" },
+    enabled = false,
     opts = {
       on_attach = function(client, bufnr)
         keymaps.on_attach(client, bufnr)
@@ -47,6 +48,31 @@ return {
           { silent = true, buffer = bufnr, desc = "Go to source definition" }
         )
         keymap.set("n", "grn", ":TSToolsRenameFile <CR>", { silent = true, buffer = bufnr, desc = "Rename file" })
+      end,
+    },
+  },
+  {
+    "yioneko/nvim-vtsls",
+    keys = {
+      {
+        "gS",
+        function()
+          require("vtsls").commands.goto_source_definition()
+        end,
+        mode = { "n" },
+        desc = "Go to source definition Typescript",
+      },
+    },
+    ft = {
+      "typescript",
+      "typescriptreact",
+      "javascript",
+      "javascriptreact",
+      "json",
+      config = function()
+        require("vtsls").config({
+          refactor_auto_rename = true,
+        })
       end,
     },
   },
