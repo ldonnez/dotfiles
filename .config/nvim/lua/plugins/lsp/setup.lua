@@ -49,6 +49,14 @@ local servers = {
     },
   },
   terraformls = {},
+  vtsls = {
+    settings = {
+      typescript = {
+        updateImportsOnFileMove = "always",
+        autoUseWorkspaceTsdk = true,
+      },
+    },
+  },
 }
 
 return servers
