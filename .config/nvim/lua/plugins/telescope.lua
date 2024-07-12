@@ -118,7 +118,7 @@ function M.config()
     pickers = {
       find_files = {
         layout_config = layout_config,
-        find_command = { "fd", "--hidden", "--no-ignore-vcs", "--type", "f" },
+        find_command = { "fd", "--hidden", "--no-ignore-vcs", "--follow", "--type", "f" },
       },
       live_grep = {
         layout_config = layout_config,
