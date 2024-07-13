@@ -22,9 +22,8 @@ return {
     build = global.is_unix and [[./make.sh]] or [[.\make.bat]],
   },
   {
-    "folke/neodev.nvim",
-    ft = { "lua", "luau" },
-    config = true,
+    "folke/lazydev.nvim",
+    ft = "lua",
   },
   {
     "mfussenegger/nvim-ansible",
