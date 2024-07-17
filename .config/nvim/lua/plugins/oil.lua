@@ -36,7 +36,7 @@ function M.config()
       ["<C-v>"] = "actions.select_vsplit",
       ["<C-s>"] = "actions.select_split",
       ["<C-t>"] = "actions.select_tab",
-      ["<C-p>"] = "actions.preview",
+      ["<C-p>"] = false,
       ["Y"] = function()
         local file_path = get_selected_file_path()
         if file_path then
