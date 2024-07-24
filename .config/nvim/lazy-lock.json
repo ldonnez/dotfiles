@@ -12,7 +12,7 @@
   "friendly-snippets": { "branch": "main", "commit": "00ebcaa159e817150bd83bfe2d51fa3b3377d5c4" },
   "gitsigns.nvim": { "branch": "main", "commit": "b29cb58126663569f6f34401fab513c2375e95d3" },
   "lazy.nvim": { "branch": "main", "commit": "4496b4cad69a862199bb3ad452d3c4988bb925a1" },
-  "lazydev.nvim": { "branch": "main", "commit": "399299ca570aa82c13ee4fb1bd1304ce6baf7f05" },
+  "lazydev.nvim": { "branch": "main", "commit": "3ef372f649b9edf983606398907f103fca436b2a" },
   "lua-language-server": { "branch": "master", "commit": "2dfb12ad3759acb7ff47b4c5c54ad0a62c598b22" },
   "lualine.nvim": { "branch": "master", "commit": "544dd1583f9bb27b393f598475c89809c4d5e86b" },
   "nvim-ansible": { "branch": "main", "commit": "7b1b994e4267b4c99045ef2798f7c12f326c2247" },

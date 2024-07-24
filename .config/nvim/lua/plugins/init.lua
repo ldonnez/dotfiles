@@ -4,6 +4,7 @@ return {
   "nvim-tree/nvim-web-devicons",
   {
     "folke/which-key.nvim",
+    version = "*",
     event = { "BufReadPre", "BufNewFile" },
     config = true,
   },
@@ -17,6 +18,7 @@ return {
   },
   {
     "kylechui/nvim-surround",
+    version = "*",
     keys = {
       { "cs", desc = "Change surrounding pair" },
       { "ds", desc = "Delete surrounding pair" },
