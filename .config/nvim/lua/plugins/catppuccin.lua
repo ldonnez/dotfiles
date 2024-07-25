@@ -15,6 +15,7 @@ return {
         dashboard = false,
         neotree = true,
         which_key = true,
+        nvim_surround = true,
         diffview = true,
         indent_blankline = {
           enabled = false,
