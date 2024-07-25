@@ -6,7 +6,8 @@ autoload -Uz add-zsh-hook
 
 # History
 HISTFILE=$HOME/.history
-SAVEHIST=1000
+HISTSIZE=10000
+SAVEHIST=10000
 setopt share_history
 setopt inc_append_history
 setopt append_history
