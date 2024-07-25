@@ -19,6 +19,9 @@ return {
           enabled = false,
           colored_indent_levels = false,
         },
+        mini = {
+          enabled = false,
+        },
       },
     })
 
