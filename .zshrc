@@ -17,7 +17,6 @@ setopt histreduceblanks
 setopt histignorespace
 setopt hist_no_store
 setopt extended_history
-setopt histignorespace
 
 # Make sure regular keybindings persist in foreign terminal sessions (tmux & neovims term)
 bindkey -e
