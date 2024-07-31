@@ -225,8 +225,6 @@ if [[ ! -a ~/.zsh/plugins/fzf-tab/fzf-tab.plugin.zsh ]]; then
 fi
 source ~/.zsh/plugins/fzf-tab/fzf-tab.plugin.zsh
 
-alias luamake=/Users/lenny/.local/share/nvim/site/pack/packer/start/lua-language-server/3rd/luamake/luamake
-
 #*********************************************************************
 #
 #********* ASDF ******************************************************
