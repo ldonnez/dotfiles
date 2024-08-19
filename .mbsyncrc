@@ -7,7 +7,6 @@ User lenny.donnez@gmail.com
 PassCmd "gpg -q --no-tty --for-your-eyes-only -d ~/.secrets/lenny.donnez@gmail.com-app-password.gpg"
 #
 # Use SSL
-SSLVersions TLSv1.2
 TLSType IMAPS
 
 IMAPStore gmail-remote
@@ -40,7 +39,6 @@ User lenny_donnez@hotmail.com
 PassCmd "gpg -q --no-tty --for-your-eyes-only -d ~/.secrets/lenny_donnez@hotmail.com.gpg"
 #
 # Use SSL
-SSLVersions TLSv1.2
 TLSType IMAPS
 
 IMAPStore hotmail-remote
