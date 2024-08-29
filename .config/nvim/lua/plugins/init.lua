@@ -62,6 +62,7 @@ return {
   },
   {
     "olimorris/persisted.nvim",
+    version = "*",
     lazy = false,
     priority = 2000,
     opts = {
