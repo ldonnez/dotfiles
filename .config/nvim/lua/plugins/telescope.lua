@@ -2,8 +2,16 @@ local M = {
   "nvim-telescope/telescope.nvim",
   dependencies = {
     { "nvim-telescope/telescope-file-browser.nvim" },
-    { "nvim-telescope/telescope-ui-select.nvim" },
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+    {
+      "stevearc/dressing.nvim",
+      version = "*",
+      opts = {
+        select = {
+          telescope = require("telescope.themes").get_cursor(),
+        },
+      },
+    },
   },
   cmd = { "Telescope" },
   keys = {
@@ -78,10 +86,6 @@ function M.config()
     prompt_position = "top",
   }
 
-  local dropdown_layout_config = {
-    prompt_position = "top",
-  }
-
   require("telescope").setup({
     defaults = {
       vimgrep_arguments = {
@@ -148,11 +152,6 @@ function M.config()
         case_mode = "smart_case", -- or "ignore_case" or "respect_case"
         -- the default case_mode is "smart_case"
       },
-      ["ui-select"] = {
-        require("telescope.themes").get_cursor({
-          layout_config = dropdown_layout_config,
-        }),
-      },
       file_browser = {
         theme = "ivy",
         layout_config = {
@@ -176,8 +175,6 @@ function M.config()
     },
   })
   -- To get fzf loaded and working with telescope, you need to call
-  -- load_extension, somewhere after setup function:
-  require("telescope").load_extension("ui-select")
   require("telescope").load_extension("fzf")
   require("telescope").load_extension("file_browser")
   require("telescope").load_extension("persisted")
