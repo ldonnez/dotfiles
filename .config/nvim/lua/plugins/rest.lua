@@ -1,13 +1,14 @@
 return {
   "rest-nvim/rest.nvim",
   ft = { "http" },
-  version = "v1.2.1",
+  version = "*",
   keys = {
-    { "<leader>rr", "<Plug>RestNvim <CR>", desc = "Run HTTP Request under cursor" },
-    { "<leader>rp", "<Plug>RestNvimPreview <CR>", desc = "Preview the request cURL command" },
-    { "<leader>rl", "<Plug>RestNvimLast <CR>", desc = "Re-run last request" },
+    { "<leader>rr", "<cmd>Rest run<CR>", desc = "Run HTTP Request under cursor" },
+    { "<leader>ro", "<cmd>Rest open<CR>", desc = "Open rest" },
+    { "<leader>rl", "<cmd>Rest logs<CR>", desc = "Rest logs" },
+    { "<leader>ra", "<cmd>Rest last<CR>", desc = "Re-run last request" },
+    { "<leader>re", "<cmd>Rest env show<CR>", desc = "Show rest env" },
+    { "<leader>rs", "<cmd>Rest env select<CR>", desc = "Select rest env" },
   },
-  opts = {
-    result_split_in_place = true,
-  },
+  opts = {},
 }
