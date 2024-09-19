@@ -28,3 +28,10 @@ autocmd({ "FileType" }, {
   pattern = { "markdown", "gitcommit", "mail" },
   command = "setlocal spell spelllang=en,nl",
 })
+
+autocmd({ "FileType" }, {
+  pattern = { "json" },
+  callback = function()
+    vim.bo.formatprg = "jq"
+  end,
+})
