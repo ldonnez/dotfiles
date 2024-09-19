@@ -18,6 +18,9 @@ require("lazy").setup("plugins", {
     enabled = true,
     notify = false,
   },
+  rocks = {
+    hererocks = true,
+  },
   performance = {
     cache = {
       enabled = true,
