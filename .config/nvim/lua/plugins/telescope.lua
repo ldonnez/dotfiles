@@ -79,7 +79,6 @@ local M = {
 
 function M.config()
   local actions = require("telescope.actions")
-  local fb_actions = require("telescope").extensions.file_browser.actions
 
   local layout_config = {
     mirror = true,
@@ -162,15 +161,6 @@ function M.config()
         hidden = true,
         auto_depth = true,
         respect_gitignore = false,
-        mappings = {
-          i = {
-            ["<C-x>"] = fb_actions.move,
-            ["<C-p>"] = fb_actions.copy,
-            ["<C-d>"] = fb_actions.remove,
-            ["<C-r>"] = fb_actions.rename,
-            ["<C-c>"] = fb_actions.create,
-          },
-        },
       },
     },
   })
