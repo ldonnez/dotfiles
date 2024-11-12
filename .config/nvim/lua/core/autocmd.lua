@@ -26,7 +26,7 @@ autocmd({ "FileType" }, {
 
 autocmd({ "FileType" }, {
   pattern = { "markdown", "gitcommit", "mail" },
-  command = "setlocal spell spelllang=en,nl",
+  command = "setlocal spell spelllang=en,nl spelloptions=camel",
 })
 
 autocmd({ "FileType" }, {
