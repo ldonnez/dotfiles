@@ -5,7 +5,7 @@ local augroup = vim.api.nvim_create_augroup
 local fn = vim.fn
 
 vim.defer_fn(function()
-  autocmd({ "TermOpen" }, { pattern = "*", command = "setlocal nonumber list" })
+  autocmd({ "TermOpen" }, { pattern = "*", command = "setlocal listchars= nonumber" })
 
   if global.is_wsl then
     autocmd("TextYankPost", {
