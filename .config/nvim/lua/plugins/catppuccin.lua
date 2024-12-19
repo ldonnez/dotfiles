@@ -11,7 +11,7 @@ return {
         treesitter = true,
         cmp = true,
         gitsigns = true,
-        telescope = true,
+        telescope = false,
         dashboard = false,
         neotree = true,
         which_key = true,
