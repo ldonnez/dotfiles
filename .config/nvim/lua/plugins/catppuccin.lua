@@ -1,15 +1,27 @@
 return {
   "catppuccin/nvim",
   name = "catppuccin",
-  version = "*",
   lazy = false,
   priority = 1000,
   config = function()
     require("catppuccin").setup({
       flavour = "frappe",
+      -- Override blink colors until color issues fixed in catppuccin.
+      custom_highlights = function(colors)
+        return {
+          BlinkCmpKind = { fg = colors.blue },
+          BlinkCmpMenu = { fg = colors.text },
+          BlinkCmpMenuBorder = { fg = colors.blue },
+          BlinkCmpDocBorder = { fg = colors.blue },
+          BlinkCmpSignatureHelpActiveParameter = { fg = colors.mauve },
+          BlinkCmpSignatureHelpBorder = { fg = colors.blue },
+        }
+      end,
       integrations = {
         treesitter = true,
         fzf = true,
+        cmp = false,
+        blink_cmp = true,
         gitsigns = true,
         telescope = false,
         dashboard = false,
