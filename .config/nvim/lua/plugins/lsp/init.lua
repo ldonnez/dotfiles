@@ -1,6 +1,5 @@
 local global = require("global")
 local keymaps = require("plugins.lsp.keymaps")
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 return {
   {
@@ -10,6 +9,7 @@ return {
       local servers = require("plugins.lsp.setup")
 
       for server, opts in pairs(servers) do
+        local capabilities = require("blink.cmp").get_lsp_capabilities(opts.capabilities)
         opts.capabilities = capabilities
         opts.on_attach = keymaps.on_attach
         require("lspconfig")[server].setup(opts)
