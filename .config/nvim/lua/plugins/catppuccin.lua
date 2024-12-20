@@ -1,7 +1,6 @@
 return {
   "catppuccin/nvim",
   name = "catppuccin",
-  version = "*",
   lazy = false,
   priority = 1000,
   config = function()
@@ -9,7 +8,8 @@ return {
       flavour = "frappe",
       integrations = {
         treesitter = true,
-        cmp = true,
+        cmp = false,
+        blink_cmp = true,
         gitsigns = true,
         telescope = false,
         dashboard = false,
