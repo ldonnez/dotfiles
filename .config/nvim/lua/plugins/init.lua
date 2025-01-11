@@ -84,4 +84,9 @@ return {
     event = "BufReadPre",
     config = true,
   },
+  {
+    "stevearc/dressing.nvim",
+    event = { "LspAttach" },
+    opts = {},
+  },
 }
