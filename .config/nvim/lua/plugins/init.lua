@@ -84,4 +84,12 @@ return {
     event = "BufReadPre",
     config = true,
   },
+  {
+    "folke/snacks.nvim",
+    version = "*",
+    event = { "LspAttach" },
+    opts = {
+      input = {},
+    },
+  },
 }
