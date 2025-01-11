@@ -224,6 +224,7 @@ if [[ ! -a ~/.zsh/plugins/fzf-tab/fzf-tab.plugin.zsh ]]; then
   git clone https://github.com/Aloxaf/fzf-tab ~/.zsh/plugins/fzf-tab
 fi
 source ~/.zsh/plugins/fzf-tab/fzf-tab.plugin.zsh
+zstyle ':fzf-tab:*' use-fzf-default-opts yes
 
 #*********************************************************************
 #
