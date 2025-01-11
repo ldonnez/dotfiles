@@ -29,7 +29,7 @@ function M.config()
         },
       },
     },
-    extensions = { "fugitive", "oil" },
+    extensions = { "fugitive", "oil", "fzf" },
   })
 
   -- lualine overrides this option; makes sure tabline only shows when there are atleast 2 tabpages
