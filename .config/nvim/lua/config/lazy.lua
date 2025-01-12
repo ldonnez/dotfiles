@@ -21,6 +21,9 @@ require("lazy").setup("plugins", {
   rocks = {
     hererocks = true,
   },
+  ui = {
+    border = "rounded",
+  },
   performance = {
     cache = {
       enabled = true,

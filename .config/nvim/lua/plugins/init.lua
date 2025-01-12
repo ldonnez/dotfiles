@@ -5,6 +5,11 @@ return {
   {
     "folke/which-key.nvim",
     version = "*",
+    opts = {
+      win = {
+        border = "rounded",
+      },
+    },
     event = { "BufReadPre", "BufNewFile" },
     config = true,
   },
@@ -78,5 +83,10 @@ return {
     "brenoprata10/nvim-highlight-colors",
     event = "BufReadPre",
     config = true,
+  },
+  {
+    "stevearc/dressing.nvim",
+    event = { "LspAttach" },
+    opts = {},
   },
 }
