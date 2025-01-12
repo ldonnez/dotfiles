@@ -228,8 +228,8 @@ zstyle ':fzf-tab:*' use-fzf-default-opts yes
 
 #*********************************************************************
 #
-#********* ASDF ******************************************************
+#********* MISE ******************************************************
 
-. $HOME/.asdf/asdf.sh
-fpath=(${ASDF_DIR}/completions $fpath)
-
+if [[ -x ~/.local/bin/mise ]]; then
+  eval "$(~/.local/bin/mise activate zsh)"
+fi
