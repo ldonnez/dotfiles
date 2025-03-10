@@ -1,5 +1,11 @@
 local global = require("global")
 local keymaps = require("plugins.lsp.keymaps")
+local lsp = vim.lsp
+
+-- Adds a border to the document hover window (vim.lsp.buf.hover())
+lsp.handlers["textDocument/hover"] = lsp.with(lsp.handlers.hover, {
+  border = "rounded",
+})
 
 return {
   {
