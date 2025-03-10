@@ -1,15 +1,13 @@
-local M = {
+return {
   "nvim-lualine/lualine.nvim",
   event = { "BufReadPre", "BufNewFile" },
-}
-
-function M.config()
-  require("lualine").setup({
+  opts = {
     options = {
       theme = "auto",
       globalstatus = true,
       section_separators = "",
       component_separators = "",
+      always_show_tabline = false,
     },
     tabline = {
       lualine_a = {
@@ -30,10 +28,5 @@ function M.config()
       },
     },
     extensions = { "fugitive", "oil", "fzf", "quickfix" },
-  })
-
-  -- lualine overrides this option; makes sure tabline only shows when there are atleast 2 tabpages
-  vim.opt.showtabline = 1
-end
-
-return M
+  },
+}

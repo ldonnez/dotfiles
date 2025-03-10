@@ -11,7 +11,6 @@ return {
       },
     },
     event = { "BufReadPre", "BufNewFile" },
-    config = true,
   },
   {
     "mattn/emmet-vim",
@@ -29,7 +28,7 @@ return {
       { "ds", desc = "Delete surrounding pair" },
       { "ys", desc = "Add a surrounding pair around a motion (normal mode)" },
     },
-    config = true,
+    opts = {},
   },
   { "tpope/vim-fugitive", cmd = { "G", "Git" } },
   {
@@ -41,8 +40,6 @@ return {
     },
     init = function()
       vim.g.db_ui_use_nerd_fonts = 1
-    end,
-    config = function()
       vim.g.db_ui_save_location = "~/SynologyDrive/development/saved_queries"
     end,
   },
@@ -63,7 +60,7 @@ return {
       { "<leader>dvb", ":DiffviewFileHistory <CR>", silent = true, desc = "Current branch history" },
       { "<leader>dvc", ":DiffviewClose <CR>", silent = true, desc = "Close" },
     },
-    config = true,
+    opts = {},
   },
   {
     "olimorris/persisted.nvim",
@@ -82,7 +79,7 @@ return {
   {
     "brenoprata10/nvim-highlight-colors",
     event = "BufReadPre",
-    config = true,
+    opts = {},
   },
   {
     "folke/snacks.nvim",

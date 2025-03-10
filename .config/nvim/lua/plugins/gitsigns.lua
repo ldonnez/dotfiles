@@ -1,11 +1,8 @@
-local M = {
+return {
   "lewis6991/gitsigns.nvim",
   cmd = { "Gitsigns" },
   event = { "BufReadPre" },
-}
-
-function M.config()
-  require("gitsigns").setup({
+  opts = {
     on_attach = function(bufnr)
       local gs = package.loaded.gitsigns
       local keymap = vim.keymap
@@ -78,7 +75,5 @@ function M.config()
         return "<Ignore>"
       end, { silent = true, buffer = bufnr, desc = "Go to next hunk" })
     end,
-  })
-end
-
-return M
+  },
+}
