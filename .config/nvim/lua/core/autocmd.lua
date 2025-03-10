@@ -35,3 +35,9 @@ autocmd({ "FileType" }, {
     vim.bo.formatprg = "jq"
   end,
 })
+
+-- Show all .env.* files with syntax highlights.
+autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = ".env.*",
+  command = "set filetype=sh",
+})
