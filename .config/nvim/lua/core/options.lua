@@ -38,3 +38,4 @@ opt.undodir = global.undo_dir .. "//"
 opt.completeopt = { "menu", "menuone", "noselect", "preview" }
 opt.sessionoptions = "buffers,curdir,folds,globals,tabpages,winpos,winsize"
 opt.timeoutlen = 300
+opt.winborder = "rounded"

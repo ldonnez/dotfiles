@@ -6,9 +6,8 @@ return {
     "folke/which-key.nvim",
     version = "*",
     opts = {
-      win = {
-        border = "rounded",
-      },
+      preset = "modern",
+      show_help = false,
     },
     event = { "BufReadPre", "BufNewFile" },
   },
