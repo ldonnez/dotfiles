@@ -29,37 +29,3 @@ Create Both
 # Save the synchronization state files in the relevant directory
 SyncState *
 Expunge Both
-
-### HOTMAIL ###
-IMAPAccount hotmail
-# Address to connect to
-Host imap-mail.outlook.com
-Port 993
-AuthMechs LOGIN
-User lenny_donnez@hotmail.com
-PassCmd "gpg -q --no-tty --for-your-eyes-only -d ~/.secrets/lenny_donnez@hotmail.com.gpg"
-#
-# Use SSL
-SSLType IMAPS
-SSLVersions TLSv1.2
-
-IMAPStore hotmail-remote
-Account hotmail
-
-MaildirStore hotmail-local
-Subfolders Verbatim
-# The trailing "/" is important
-Path ~/.mail/hotmail/
-Inbox ~/.mail/hotmail/Inbox
-Flatten .
-
-Channel hotmail
-Far :hotmail-remote:
-Near :hotmail-local:
-Patterns *
-# Automatically create missing mailboxes, both locally and on the server
-Create Both
-# Save the synchronization state files in the relevant directory
-SyncState *
-Expunge Both
-
