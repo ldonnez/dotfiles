@@ -83,7 +83,8 @@ return {
   {
     "folke/snacks.nvim",
     version = "*",
-    event = { "LspAttach" },
+    lazy = false,
+    priority = 1000,
     opts = {
       input = {},
     },
