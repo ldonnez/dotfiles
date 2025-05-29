@@ -9,6 +9,11 @@ return {
       fzf_opts = {
         ["--no-scrollbar"] = true,
       },
+      previewers = {
+        builtin = {
+          snacks_image = { enabled = true, render_inline = false },
+        },
+      },
       winopts = {
         row = 0.2,
         height = 0.8,
