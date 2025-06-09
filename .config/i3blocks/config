@@ -1,0 +1,29 @@
+# i3blocks config file
+
+[idle-check]
+command=~/.config/i3blocks/scripts/idle_check_status.sh
+interval=1
+
+[volume]
+command=~/.config/i3blocks/scripts/volume.sh
+interval=1
+signal=10
+
+[disk]
+label=
+command=~/.config/i3blocks/scripts/disk_usage.sh
+interval=60
+
+[cpu]
+label=
+command=~/.config/i3blocks/scripts/cpu_usage.sh
+interval=2
+
+[memory]
+label=
+command=~/.config/i3blocks/scripts/memory_usage.sh
+interval=5
+
+[time]
+command=date '+%Y-%m-%d %H:%M:%S'
+interval=1
