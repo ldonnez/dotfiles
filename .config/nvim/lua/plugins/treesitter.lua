@@ -21,7 +21,6 @@ function M.config()
       "json",
       "jsonc",
       "yaml",
-      "org",
       "prisma",
       "graphql",
       "http",
@@ -31,7 +30,7 @@ function M.config()
       "sql",
       "terraform",
     },
-    highlight = { enable = true, disable = { "yaml" }, additional_vim_regex_highlighting = { "org" } },
+    highlight = { enable = true, disable = { "yaml" } },
   })
 end
 
