@@ -133,7 +133,11 @@ Plug 'tpope/vim-dadbod'
 Plug 'kristijanhusak/vim-dadbod-ui'
 Plug 'pantharshit00/vim-prisma'
 Plug 'voldikss/vim-floaterm'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+if has('patch-9.0.0438')
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+endif
+
 call plug#end()
 
 "*******************************************************************************
@@ -270,50 +274,54 @@ let g:fzf_colors =
 " URL: https://github.com/neoclide/coc.nvim
 " Plugin: neoclide/coc.nvim
 
-let g:coc_global_extensions = [
-    \ 'coc-json',
-    \ 'coc-tsserver',
-    \ 'coc-html',
-    \ 'coc-emmet',
-    \ 'coc-eslint',
-    \ 'coc-prettier',
-    \ 'coc-css'
-\ ]
+if has('patch-9.0.0438')
 
-autocmd CursorHold * silent call CocActionAsync('highlight')
+  let g:coc_global_extensions = [
+      \ 'coc-json',
+      \ 'coc-tsserver',
+      \ 'coc-html',
+      \ 'coc-emmet',
+      \ 'coc-eslint',
+      \ 'coc-prettier',
+      \ 'coc-css'
+  \ ]
 
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
+  autocmd CursorHold * silent call CocActionAsync('highlight')
 
-nmap <leader>qf  <Plug>(coc-fix-current)
-nmap <silent> gd <Plug>(coc-definition)
-nmap <leader>rn <Plug>(coc-rename)
-nmap <silent> gr <Plug>(coc-references)
-nnoremap <silent> <leader>cR  :<C-u>CocRestart<CR>
-nnoremap <silent> <leader>cc  :<C-u>CocList commands<cr>
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-nmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>ac  <Plug>(coc-codeaction)
+  command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
-function! StatusDiagnostic() abort
-  let info = get(b:, 'coc_diagnostic_info', {})
-  if empty(info) | return '' | endif
-  let msgs = []
-  if get(info, 'error', 0)
-    call add(msgs, 'E' . info['error'])
-  endif
-  if get(info, 'warning', 0)
-    call add(msgs, 'W' . info['warning'])
-  endif
-  return join(msgs, ' '). ' ' . get(g:, 'coc_status', '')
-endfunction
+  nmap <leader>qf  <Plug>(coc-fix-current)
+  nmap <silent> gd <Plug>(coc-definition)
+  nmap <leader>rn <Plug>(coc-rename)
+  nmap <silent> gr <Plug>(coc-references)
+  nnoremap <silent> <leader>cR  :<C-u>CocRestart<CR>
+  nnoremap <silent> <leader>cc  :<C-u>CocList commands<cr>
+  nnoremap <silent> K :call <SID>show_documentation()<CR>
+  nmap <leader>a  <Plug>(coc-codeaction-selected)
+  nmap <leader>ac  <Plug>(coc-codeaction)
 
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
+  function! StatusDiagnostic() abort
+    let info = get(b:, 'coc_diagnostic_info', {})
+    if empty(info) | return '' | endif
+    let msgs = []
+    if get(info, 'error', 0)
+      call add(msgs, 'E' . info['error'])
+    endif
+    if get(info, 'warning', 0)
+      call add(msgs, 'W' . info['warning'])
+    endif
+    return join(msgs, ' '). ' ' . get(g:, 'coc_status', '')
+  endfunction
+
+  function! s:show_documentation()
+    if (index(['vim','help'], &filetype) >= 0)
+      execute 'h '.expand('<cword>')
+    else
+      call CocAction('doHover')
+    endif
+  endfunction
+
+endif
 
 "*******************************************************************************
 "
