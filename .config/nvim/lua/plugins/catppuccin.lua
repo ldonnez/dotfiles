@@ -6,15 +6,10 @@ return {
   priority = 1000,
   opts = {
     flavour = "frappe",
-    -- Override blink colors until color issues fixed in catppuccin.
+    -- Override blink background text to make it the same as vim background.
     custom_highlights = function(colors)
       return {
-        BlinkCmpKind = { fg = colors.blue },
         BlinkCmpMenu = { fg = colors.text },
-        BlinkCmpMenuBorder = { fg = colors.blue },
-        BlinkCmpDocBorder = { fg = colors.blue },
-        BlinkCmpSignatureHelpActiveParameter = { fg = colors.mauve },
-        BlinkCmpSignatureHelpBorder = { fg = colors.blue },
       }
     end,
     auto_integrations = true,
