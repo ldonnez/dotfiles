@@ -17,26 +17,7 @@ return {
         BlinkCmpSignatureHelpBorder = { fg = colors.blue },
       }
     end,
-    integrations = {
-      treesitter = true,
-      fzf = true,
-      cmp = false,
-      blink_cmp = true,
-      gitsigns = true,
-      telescope = false,
-      dashboard = false,
-      neotree = true,
-      which_key = true,
-      nvim_surround = true,
-      diffview = true,
-      indent_blankline = {
-        enabled = false,
-        colored_indent_levels = false,
-      },
-      mini = {
-        enabled = false,
-      },
-    },
+    auto_integrations = true,
   },
   init = function()
     vim.cmd.colorscheme("catppuccin")
