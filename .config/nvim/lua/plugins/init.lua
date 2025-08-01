@@ -90,4 +90,15 @@ return {
       image = {},
     },
   },
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
+    version = "*",
+    ft = { "markdown" },
+    opts = {
+      completions = { blink = { enabled = true } },
+      latex = { enabled = false },
+      indent = { enabled = true },
+    },
+  },
 }

@@ -22,6 +22,7 @@ return {
       default = { "lsp", "path", "snippets", "buffer" },
       per_filetype = {
         sql = { "dadbod" },
+        markdown = { inherit_defaults = true },
       },
       providers = {
         dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
