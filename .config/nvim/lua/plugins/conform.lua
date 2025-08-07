@@ -17,6 +17,7 @@ return {
       markdown = { "prettierd", "prettier", stop_after_first = true },
       sql = { "sqlfmt" },
       terraform = { "terraform_fmt" },
+      bash = { "shfmt" },
     },
   },
   keys = {
