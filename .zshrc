@@ -156,6 +156,7 @@ export PATH=$HOME/.yarn/bin:$PATH
 
 # GO
 export PATH=$HOME/go/bin:$PATH
+export PATH=$PATH:/usr/local/go/bin
 
 # PHP
 export PATH=/usr/local/php/bin:$PATH
