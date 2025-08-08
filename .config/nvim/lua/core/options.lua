@@ -39,34 +39,3 @@ opt.sessionoptions = "buffers,curdir,folds,globals,tabpages,winpos,winsize"
 opt.timeoutlen = 300
 opt.winborder = "rounded"
 opt.clipboard = { "unnamed", "unnamedplus" }
-
-if global.is_wsl then
-  g.clipboard = {
-    name = "WslClipboard",
-    copy = {
-      ["+"] = "clip.exe",
-      ["*"] = "clip.exe",
-    },
-    paste = {
-      ["+"] = function()
-        return vim.fn.systemlist({
-          "powershell.exe",
-          "-NoLogo",
-          "-NoProfile",
-          "-Command",
-          '[Console]::OutputEncoding = [System.Text.Encoding]::UTF8; [Console]::Out.Write((Get-Clipboard -Raw).ToString().Replace("`r", ""))',
-        })
-      end,
-      ["*"] = function()
-        return vim.fn.systemlist({
-          "powershell.exe",
-          "-NoLogo",
-          "-NoProfile",
-          "-Command",
-          '[Console]::OutputEncoding = [System.Text.Encoding]::UTF8; [Console]::Out.Write((Get-Clipboard -Raw).ToString().Replace("`r", ""))',
-        })
-      end,
-    },
-    cache_enabled = 0,
-  }
-end
