@@ -18,6 +18,7 @@ return {
       sql = { "sqlfmt" },
       terraform = { "terraform_fmt" },
       bash = { "shfmt" },
+      go = { "gofmt" },
     },
   },
   keys = {

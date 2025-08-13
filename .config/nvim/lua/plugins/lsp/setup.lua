@@ -69,6 +69,7 @@ local servers = {
     },
   },
   bashls = {},
+  gopls = {},
 }
 
 return servers
