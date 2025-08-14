@@ -29,6 +29,7 @@ function M.config()
       "haskell",
       "sql",
       "terraform",
+      "go",
     },
     highlight = { enable = true, disable = { "yaml" } },
   })
