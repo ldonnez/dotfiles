@@ -19,6 +19,7 @@ return {
       terraform = { "terraform_fmt" },
       bash = { "shfmt" },
       go = { "gofmt" },
+      xml = { "xmllint" },
     },
   },
   keys = {
