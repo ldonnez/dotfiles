@@ -31,6 +31,7 @@ function M.config()
       "terraform",
       "go",
       "bash",
+      "xml",
     },
     highlight = { enable = true, disable = { "yaml" } },
   })
