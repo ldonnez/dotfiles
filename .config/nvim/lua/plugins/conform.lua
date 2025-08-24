@@ -20,6 +20,8 @@ return {
       bash = { "shfmt" },
       go = { "gofmt" },
       xml = { "xmllint" },
+      http = { "kulala-fmt" },
+      rest = { "kulala-fmt" },
     },
   },
   keys = {

@@ -70,6 +70,7 @@ local servers = {
   },
   bashls = {},
   gopls = {},
+  kulala_ls = {},
 }
 
 return servers
