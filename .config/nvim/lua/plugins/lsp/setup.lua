@@ -71,6 +71,7 @@ local servers = {
   bashls = {},
   gopls = {},
   kulala_ls = {},
+  golangci_lint_ls = {},
 }
 
 return servers
