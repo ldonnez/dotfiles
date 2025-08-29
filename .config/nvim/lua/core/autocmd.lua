@@ -1,4 +1,5 @@
 local autocmd = vim.api.nvim_create_autocmd
+local opt = vim.opt
 
 vim.defer_fn(function()
   autocmd({ "TermOpen" }, { pattern = "*", command = "setlocal listchars= nonumber" })
@@ -12,6 +13,14 @@ autocmd({ "FileType" }, {
 autocmd({ "FileType" }, {
   pattern = { "markdown", "gitcommit", "mail" },
   command = "setlocal spell spelllang=en,nl spelloptions=camel",
+})
+
+autocmd({ "FileType" }, {
+  pattern = { "markdown" },
+  callback = function()
+    opt.foldlevel = 1
+    opt.foldlevelstart = 1
+  end,
 })
 
 autocmd({ "FileType" }, {
