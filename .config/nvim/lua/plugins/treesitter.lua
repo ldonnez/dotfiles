@@ -32,6 +32,7 @@ function M.config()
       "go",
       "bash",
       "xml",
+      "make",
     },
     highlight = { enable = true, disable = { "yaml" } },
   })
