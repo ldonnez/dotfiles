@@ -1,18 +1,16 @@
 local global = require("global")
-local keymaps = require("plugins.lsp.keymaps")
 
 return {
   {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre" },
     config = function()
+      require("plugins.lsp.autocmd")
       local servers = require("plugins.lsp.setup")
 
       for server, opts in pairs(servers) do
-        local capabilities = require("blink.cmp").get_lsp_capabilities(opts.capabilities)
-        opts.capabilities = capabilities
-        opts.on_attach = keymaps.on_attach
-        require("lspconfig")[server].setup(opts)
+        vim.lsp.config(server, opts)
+        vim.lsp.enable(server)
       end
     end,
   },
@@ -36,7 +34,6 @@ return {
     enabled = false,
     opts = {
       on_attach = function(client, bufnr)
-        keymaps.on_attach(client, bufnr)
         client.server_capabilities.documentFormattingProvider = false
         client.server_capabilities.documentRangeFormattingProvider = false
 
