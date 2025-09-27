@@ -62,17 +62,11 @@ return {
     opts = {},
   },
   {
-    "olimorris/persisted.nvim",
-    version = "*",
+    "rmagatti/auto-session",
     lazy = false,
     priority = 2000,
     opts = {
-      autoload = true,
-      allowed_dirs = {
-        "~/projects",
-        "~/config",
-        "~/dotfiles",
-      },
+      allowed_dirs = { "~/projects", "~/config", "~/dotfiles" },
     },
   },
   {
