@@ -21,9 +21,6 @@ require("lazy").setup("plugins", {
   git = {
     timeout = 300,
   },
-  rocks = {
-    hererocks = true,
-  },
   performance = {
     cache = {
       enabled = true,
