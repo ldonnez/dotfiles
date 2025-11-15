@@ -13,9 +13,6 @@ set header_cache          = ~/.mutt/cache/headers/gmail
 set message_cachedir      = ~/.mutt/cache/bodies/gmail
 set certificate_file      = ~/.mutt/certificates/gmail
 
-set sort                  = reverse-threads
-set sort_aux              = last-date-received
-
 macro index,pager         S "<save-message>=[Gmail].Spam<enter>" "Report spam"
 macro index               O "<shell-escape>mbsync gmail; notmuch new<enter>" "Update through mbsync"
 macro index               y "<save-message>=[Gmail].All Mail<enter>" "Archive"
