@@ -1,3 +1,5 @@
+# vim: ft=muttrc
+
 set from                  = "lenny.donnez@gmail.com"
 set realname              = "Lenny"
 set sendmail              = "msmtp -a gmail"
