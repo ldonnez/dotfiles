@@ -33,7 +33,6 @@ path=.mail
 [user]
 name=Lenny Donnez
 primary_email=lenny.donnez@gmail.com
-other_email=lenny_donnez@hotmail.com;
 
 # Configuration for "notmuch new"
 #
