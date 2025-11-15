@@ -33,6 +33,7 @@ function M.config()
       "bash",
       "xml",
       "make",
+      "muttrc",
     },
     highlight = { enable = true, disable = { "yaml" } },
   })
