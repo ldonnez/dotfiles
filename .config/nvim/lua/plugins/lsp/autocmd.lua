@@ -5,7 +5,7 @@ local keymap = vim.keymap
 
 autocmd("LspAttach", {
   callback = function(event)
-    local client = vim.lsp.get_client_by_id(event.data.client_id)
+    local client = lsp.get_client_by_id(event.data.client_id)
     local bufnr = event.buf
 
     if not client then
