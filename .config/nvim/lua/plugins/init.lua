@@ -97,8 +97,8 @@ return {
     },
   },
   {
-    "memo",
-    dir = "~/projects/memo.nvim",
+    "ldonnez/memo.nvim",
+    version = "*",
     cmd = { "MemoSetup", "MemoSync" },
     opts = {
       notes_dir = "~/notes",
