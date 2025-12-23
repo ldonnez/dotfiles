@@ -3,25 +3,12 @@ name: CI
 on:
   pull_request:
     branches:
-      - '*'
+      - "*"
   push:
     branches:
       - main
 
 jobs:
-  luacheck:
-    name: luacheck
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v6
-      - name: Install luacheck
-        run: |
-          sudo apt-get update
-          sudo add-apt-repository universe
-          sudo apt install luarocks -y
-          sudo luarocks install luacheck
-      - name: Run luacheck
-        run: luacheck .config/nvim
   stylua:
     name: stylua
     runs-on: ubuntu-latest
@@ -32,3 +19,33 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           version: latest
           args: --check .config/nvim
+
+  emmylua_check:
+    needs: stylua
+    name: luacheck
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup neovim
+        uses: rhysd/action-setup-vim@v1
+        with:
+          neovim: true
+
+      - uses: actions/checkout@v6
+
+      - name: Install and Run EmmyLua Check
+        run: |
+          EMMYLUA_REF="0.18.0"
+
+          INSTALL_DIR="$HOME/.local/bin/emmylua"
+          mkdir -p "$INSTALL_DIR"
+
+          URL="https://github.com/EmmyLuaLs/emmylua-analyzer-rust/releases/download/${EMMYLUA_REF}/emmylua_check-linux-x64.tar.gz"
+          curl -L "$URL" | tar -xzC "$INSTALL_DIR"
+          chmod +x "$INSTALL_DIR/emmylua_check"
+
+          echo "$INSTALL_DIR" >> $GITHUB_PATH
+
+      - name: Run emmylua_check
+        run: emmylua_check .config/nvim/lua --config ./.emmyrc.json
+        env:
+          VIMRUNTIME: /home/runner/nvim-stable/share/nvim/runtime
