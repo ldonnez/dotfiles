@@ -1,5 +1,3 @@
-local global = require("global")
-
 return {
   {
     "neovim/nvim-lspconfig",
@@ -13,11 +11,6 @@ return {
         vim.lsp.enable(server)
       end
     end,
-  },
-  {
-    "luals/lua-language-server",
-    version = "*",
-    build = global.is_unix and [[./make.sh]] or [[.\make.bat]],
   },
   {
     "folke/lazydev.nvim",
