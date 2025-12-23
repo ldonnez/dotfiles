@@ -32,7 +32,7 @@ autocmd("LspAttach", {
     nmap("<leader>e", diagnostic.open_float, "vim.diagnostic.open_float")
 
     ----Custom server capabilities
-    if client.name == "eslint" then
+    if client and client.server_capabilities and client.name == "eslint" then
       client.server_capabilities.documentFormattingProvider = true
     end
   end,

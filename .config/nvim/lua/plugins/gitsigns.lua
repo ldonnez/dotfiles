@@ -5,6 +5,11 @@ return {
   opts = {
     on_attach = function(bufnr)
       local gs = package.loaded.gitsigns
+
+      if gs == nil then
+        return
+      end
+
       local keymap = vim.keymap
 
       keymap.set(
