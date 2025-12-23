@@ -22,7 +22,7 @@ jobs:
 
   emmylua_check:
     needs: stylua
-    name: luacheck
+    name: emmylua_check
     runs-on: ubuntu-latest
     steps:
       - name: Setup neovim
@@ -34,18 +34,18 @@ jobs:
 
       - name: Install and Run EmmyLua Check
         run: |
-          EMMYLUA_REF="0.18.0"
+          EMMYLUA_VERSION="0.18.0"
 
           INSTALL_DIR="$HOME/.local/bin/emmylua"
           mkdir -p "$INSTALL_DIR"
 
-          URL="https://github.com/EmmyLuaLs/emmylua-analyzer-rust/releases/download/${EMMYLUA_REF}/emmylua_check-linux-x64.tar.gz"
+          URL="https://github.com/EmmyLuaLs/emmylua-analyzer-rust/releases/download/${EMMYLUA_VERSION}/emmylua_check-linux-x64.tar.gz"
           curl -L "$URL" | tar -xzC "$INSTALL_DIR"
           chmod +x "$INSTALL_DIR/emmylua_check"
 
           echo "$INSTALL_DIR" >> $GITHUB_PATH
 
       - name: Run emmylua_check
-        run: emmylua_check .config/nvim/lua --config ./.emmyrc.json
+        run: emmylua_check --warnings-as-errors .config/nvim/lua --config ./.emmyrc.json
         env:
           VIMRUNTIME: /home/runner/nvim-stable/share/nvim/runtime
