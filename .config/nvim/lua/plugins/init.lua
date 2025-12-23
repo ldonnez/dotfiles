@@ -66,7 +66,8 @@ return {
     lazy = false,
     priority = 2000,
     opts = {
-      allowed_dirs = { "~/projects", "~/config", "~/dotfiles" },
+      auto_save = true,
+      allowed_dirs = { "~/projects/*", "~/config", "~/dotfiles" },
     },
   },
   {
@@ -93,6 +94,32 @@ return {
       completions = { blink = { enabled = true } },
       latex = { enabled = false },
       indent = { enabled = true },
+    },
+  },
+  {
+    "memo",
+    dir = "~/projects/memo.nvim",
+    cmd = { "MemoSetup", "MemoSync" },
+    opts = {
+      notes_dir = "~/notes",
+    },
+    keys = {
+      {
+        "<leader>mc",
+        function()
+          require("memo").register_capture({
+            capture_file = "braindump.md.gpg",
+          })
+        end,
+        desc = "Braindump capture",
+      },
+      {
+        "<leader>mp",
+        function()
+          require("memo").fzf_lua_picker()
+        end,
+        desc = "Note picker",
+      },
     },
   },
 }
