@@ -1,0 +1,3 @@
+# Where notes are stored (encrypted) default: $HOME/notes
+NOTES_DIR="$HOME/notes"
+CAPTURE_FILE="braindump.md.gpg"

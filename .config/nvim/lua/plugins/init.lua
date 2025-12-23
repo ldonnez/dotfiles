@@ -97,9 +97,9 @@ return {
     },
   },
   {
-    "memo",
-    dir = "~/projects/memo.nvim",
-    cmd = { "MemoSetup", "MemoSync" },
+    "ldonnez/memo.nvim",
+    version = "*",
+    event = { "VeryLazy" },
     opts = {
       notes_dir = "~/notes",
     },
@@ -109,16 +109,27 @@ return {
         function()
           require("memo").register_capture({
             capture_file = "braindump.md.gpg",
+            capture_template = {
+              target_header = "# " .. os.date("%Y-%m-%d"),
+              header_padding = 1,
+            },
           })
         end,
-        desc = "Braindump capture",
+        desc = "Capture to braindump",
       },
       {
-        "<leader>mp",
+        "<leader>mf",
         function()
           require("memo").fzf_lua_picker()
         end,
-        desc = "Note picker",
+        desc = "Memo files picker",
+      },
+      {
+        "<leader>ms",
+        function()
+          require("memo").sync_git()
+        end,
+        desc = "Sync with git",
       },
     },
   },
