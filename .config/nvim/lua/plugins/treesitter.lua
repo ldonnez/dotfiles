@@ -19,7 +19,6 @@ function M.config()
     "vim",
     "lua",
     "json",
-    "jsonc",
     "yaml",
     "prisma",
     "graphql",
@@ -49,6 +48,11 @@ function M.config()
     group = group,
     desc = "Enable treesitter highlighting and indentation",
     callback = function(event)
+      -- Don't try to enable/install parser if its not available
+      if not vim.list_contains(ts.get_available(), vim.treesitter.language.get_lang(event.match)) then
+        return
+      end
+
       if vim.tbl_contains(ignore_filetypes, event.match) then
         return
       end
@@ -56,7 +60,7 @@ function M.config()
       local lang = vim.treesitter.language.get_lang(event.match) or event.match
       local buf = event.buf
 
-      -- Start highlighting immediately (works if parser exists)
+      -- Start highlighting immediately
       pcall(vim.treesitter.start, buf, lang)
 
       -- Enable treesitter indentation
