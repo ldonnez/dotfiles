@@ -137,10 +137,6 @@ export TERM=xterm-256color
 # EDITOR
 export EDITOR=nvim
 
-# LOCALE
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
-
 # BIN PATH
 export PATH=/usr/bin:$PATH
 export PATH=/usr/local/bin:$PATH
