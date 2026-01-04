@@ -42,6 +42,7 @@ function M.config()
     "lazy",
     "json",
     "csv",
+    "zsh",
   }
 
   -- Auto-install parsers and enable highlighting on FileType
