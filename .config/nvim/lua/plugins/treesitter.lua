@@ -41,6 +41,7 @@ function M.config()
     "checkhealth",
     "lazy",
     "json",
+    "csv",
   }
 
   -- Auto-install parsers and enable highlighting on FileType
