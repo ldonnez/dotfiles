@@ -67,7 +67,7 @@ return {
     priority = 2000,
     opts = {
       auto_save = true,
-      allowed_dirs = { "~/projects/*", "~/config", "~/dotfiles" },
+      allowed_dirs = { "~/projects", "~/projects/*", "~/config", "~/dotfiles" },
     },
   },
   {
