@@ -120,7 +120,7 @@ return {
       {
         "<leader>mf",
         function()
-          require("memo").fzf_lua_picker()
+          require("memo.pickers.fzf_lua").files_picker()
         end,
         desc = "Memo files picker",
       },
