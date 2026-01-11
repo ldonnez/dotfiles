@@ -131,6 +131,27 @@ return {
         end,
         desc = "Sync with git",
       },
+      {
+        "<leader>mt",
+        function()
+          require("memo.pickers.fzf_lua").current_buffer_todo_picker("todo")
+        end,
+        desc = "Find TODOs in buffer",
+      },
+      {
+        "<leader>ma",
+        function()
+          require("memo.pickers.fzf_lua").current_buffer_todo_picker("all")
+        end,
+        desc = "Find all TODOs in buffer",
+      },
+      {
+        "<leader>md",
+        function()
+          require("memo.pickers.fzf_lua").current_buffer_todo_picker("done")
+        end,
+        desc = "Find done TODOs in buffer",
+      },
     },
   },
 }
