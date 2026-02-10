@@ -50,11 +50,6 @@ function M.config()
     group = group,
     desc = "Enable treesitter highlighting and indentation",
     callback = function(event)
-      -- Don't try to enable/install parser if its not available
-      if not vim.list_contains(ts.get_available(), vim.treesitter.language.get_lang(event.match)) then
-        return
-      end
-
       if vim.tbl_contains(ignore_filetypes, event.match) then
         return
       end
@@ -68,8 +63,10 @@ function M.config()
       -- Enable treesitter indentation
       vim.bo[buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 
-      -- Install missing parsers (async, no-op if already installed)
-      ts.install({ lang })
+      -- Install missing parsers when available (async, no-op if already installed)
+      if vim.list_contains(ts.get_available(), vim.treesitter.language.get_lang(event.match)) then
+        ts.install({ lang })
+      end
     end,
   })
 end
