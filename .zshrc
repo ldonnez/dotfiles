@@ -190,6 +190,8 @@ export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
 [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
 export PATH=$HOME/.cabal/bin:$PATH
 
+# opencode
+export PATH=$HOME/.opencode/bin:$PATH
 #*********************************************************************
 #
 #********* COMPLETIONS ***********************************************
@@ -230,3 +232,5 @@ zstyle ':fzf-tab:*' use-fzf-default-opts yes
 if [[ -x ~/.local/bin/mise ]]; then
   eval "$(~/.local/bin/mise activate zsh)"
 fi
+
+
