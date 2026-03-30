@@ -35,5 +35,13 @@ autocmd("LspAttach", {
     if client and client.server_capabilities and client.name == "eslint" then
       client.server_capabilities.documentFormattingProvider = true
     end
+
+    -- Temporary disable semantic tokens for terraformls
+    -- Prevents high cpu usage on certain terraform files which makes neovim crash.
+    -- https://github.com/neovim/neovim/issues/36257
+    -- https://github.com/hashicorp/terraform-ls/issues/2094
+    if client and client.server_capabilities and client.name == "terraformls" then
+      client.server_capabilities.semanticTokensProvider = nil
+    end
   end,
 })
