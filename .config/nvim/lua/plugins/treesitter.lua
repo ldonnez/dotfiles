@@ -17,6 +17,7 @@ function M.config()
     "css",
     "tsx",
     "vim",
+    "vimdoc",
     "lua",
     "json",
     "yaml",
