@@ -4,7 +4,7 @@
     "version": "LuaJIT"
   },
   "diagnostics": {
-    "disable": ["unnecessary-if"],
+    "disable": ["unnecessary-if", "incomplete-signature-doc"],
     "enables": [
       "iter-variable-reassign",
       "non-literal-expressions-in-assert",
