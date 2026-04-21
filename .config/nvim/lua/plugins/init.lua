@@ -99,10 +99,7 @@ return {
   {
     "ldonnez/memo.nvim",
     version = "*",
-    event = { "VeryLazy" },
-    opts = {
-      notes_dir = "~/notes",
-    },
+    lazy = false,
     keys = {
       {
         "<leader>mc",
