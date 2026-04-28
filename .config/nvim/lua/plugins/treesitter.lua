@@ -1,15 +1,7 @@
-local M = {
-  "nvim-treesitter/nvim-treesitter",
-  build = ":TSUpdate",
-  lazy = false,
-  branch = "main",
-}
+local pack = require("pack")
 
-function M.config()
+pack.load({ "https://github.com/nvim-treesitter/nvim-treesitter" }, function()
   local ts = require("nvim-treesitter")
-  local autocmd = vim.api.nvim_create_autocmd
-
-  -- Install core parsers at startup
   ts.install({
     "javascript",
     "typescript",
@@ -37,39 +29,33 @@ function M.config()
   })
 
   local group = vim.api.nvim_create_augroup("TreesitterSetup", { clear = true })
+  local ignore_filetypes = { "checkhealth", "lazy", "json", "csv", "zsh" }
 
-  local ignore_filetypes = {
-    "checkhealth",
-    "lazy",
-    "json",
-    "csv",
-    "zsh",
-  }
-
-  -- Auto-install parsers and enable highlighting on FileType
-  autocmd("FileType", {
+  vim.api.nvim_create_autocmd("FileType", {
     group = group,
-    desc = "Enable treesitter highlighting and indentation",
     callback = function(event)
       if vim.tbl_contains(ignore_filetypes, event.match) then
         return
       end
-
       local lang = vim.treesitter.language.get_lang(event.match) or event.match
       local buf = event.buf
-
-      -- Start highlighting immediately
       pcall(vim.treesitter.start, buf, lang)
-
-      -- Enable treesitter indentation
       vim.bo[buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-
-      -- Install missing parsers when available (async, no-op if already installed)
       if vim.list_contains(ts.get_available(), vim.treesitter.language.get_lang(event.match)) then
         ts.install({ lang })
       end
     end,
   })
-end
+end)
 
-return M
+vim.api.nvim_create_autocmd("PackChanged", {
+  callback = function(ev)
+    local name, kind = ev.data.spec.name, ev.data.kind
+    if name == "nvim-treesitter" and kind == "update" then
+      if not ev.data.active then
+        vim.cmd.packadd("nvim-treesitter")
+      end
+      vim.cmd("TSUpdate")
+    end
+  end,
+})

@@ -1,6 +1,15 @@
 local autocmd = vim.api.nvim_create_autocmd
 local opt = vim.opt
 
+autocmd("BufReadPost", {
+  callback = function(args)
+    local name = vim.api.nvim_buf_get_name(args.buf)
+    if name ~= "" and vim.bo[args.buf].filetype == "" then
+      vim.cmd("filetype detect")
+    end
+  end,
+})
+
 vim.defer_fn(function()
   autocmd({ "TermOpen" }, { pattern = "*", command = "setlocal listchars= nonumber" })
 end, 10)
