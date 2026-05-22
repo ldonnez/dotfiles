@@ -83,11 +83,7 @@ local function on_commands(commands, fn)
 
       fn()
 
-      vim.cmd({
-        cmd = cmd,
-        args = args.fargs,
-        bang = args.bang,
-      })
+      vim.cmd(cmd .. " " .. args.args)
     end, { nargs = "*", bang = true })
   end
 end
