@@ -1,23 +1,21 @@
 #!/bin/bash
 
-# Get volume and mute status from pactl
-volume_info=$(pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}' | head -n1 | tr -d '%')
-mute_status=$(pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $2}')
+wpctl_out=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)
+volume_info=$(echo "$wpctl_out" | sed 's/Volume: //; s/\.\([0-9][0-9]\).*/\1/; s/^0//')
+mute_status=$(echo "$wpctl_out" | grep -q "MUTED" && echo "yes" || echo "no")
 
-# Set icon based on mute or volume level
 if [ "$mute_status" = "yes" ] || [ "$volume_info" -le 0 ]; then
-    icon=""  # muted
+    icon=""
 elif [ "$volume_info" -le 50 ]; then
-    icon=""  # low volume
+    icon=""
 elif [ "$volume_info" -le 70 ]; then
-    icon=""  # medium volume
-    color="#e5c890"  # yellow
+    icon=""
+    color="#e5c890"
 else
-    icon=""  # high volume (same icon but different color)
-    color="#ef9f76"  # orange
+    icon=""
+    color="#ef9f76"
 fi
 
-# Output for i3blocks
 echo "$icon ${volume_info}%"
 echo "$icon ${volume_info}%"
 echo "$color"
