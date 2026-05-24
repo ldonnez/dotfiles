@@ -28,7 +28,7 @@
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
     "fzf-lua": {
-      "rev": "71b45a044c4ef6ecb1910880ef642d5a0e1c02e9",
+      "rev": "c8aaa74c97157b2c62bdcfc1e57b15c052dc63ca",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "gitsigns.nvim": {
@@ -36,7 +36,7 @@
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "kulala.nvim": {
-      "rev": "99f8c4739a9ddc8914da29328307084b8bbc80b3",
+      "rev": "5809fe0b599bba8a125adf02922b535303f78b01",
       "src": "https://github.com/mistweaverco/kulala.nvim",
       "version": ">=0.0.0"
     },
@@ -84,7 +84,7 @@
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
     },
     "oil.nvim": {
-      "rev": "975a77cce3c8cb742bc1b3629f4328f5ca977dad",
+      "rev": "17c0a8faaf48298a0c0cfb0d757c0eaee4ff7a32",
       "src": "https://github.com/stevearc/oil.nvim",
       "version": ">=0.0.0"
     },
