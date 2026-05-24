@@ -29,8 +29,8 @@ end, {
   desc = "Explore installed plugins",
 })
 
--- :PackDel <plugin-name> deletes a single plugin.
-user_command("PackDel", function(opts)
+-- :PackDelete <plugin-name> deletes a single plugin.
+user_command("PackDelete", function(opts)
   local arg = opts.args
 
   if arg and arg ~= "" then
