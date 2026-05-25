@@ -177,7 +177,8 @@ bindsym $mod+r mode "resize"
 # launcher mode: launch common applications with keymaps
 mode "$mode_launcher" {
         bindsym f exec firefox; mode "default"
-        bindsym t exec thunderbird; mode "default"
+        bindsym t exec thunar; mode "default"
+        bindsym h exec thunderbird; mode "default"
         bindsym v exec vlc; mode "default"
 
         # back to normal: Enter or Escape or $mod+o
@@ -186,7 +187,7 @@ mode "$mode_launcher" {
         bindsym $mod+o mode "default"
 }
 
-set $mode_launcher launch: [f]irefox | [t]hunderbird | [v]lc
+set $mode_launcher launch: [f]irefox | [t]hunar | t[h]underbird | [v]lc
 bindsym $mod+o mode "$mode_launcher";
 
 # power mode: lock screen, logout, suspend, reboot or poweroff system
