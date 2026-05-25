@@ -4,6 +4,7 @@
 if [ "$BLOCK_BUTTON" == "1" ]; then
     status=$(systemctl --user is-active idle-check.service 2>/dev/null)
     if [ "$status" = "active" ]; then
+        xset s off -dpms
         systemctl --user stop idle-check.service
     else
         systemctl --user start idle-check.service
