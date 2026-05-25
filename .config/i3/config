@@ -206,7 +206,8 @@ mode "$mode_power" {
 }
 
 set $mode_power power: [l]ock screen | lo[g] out | [s]uspend | [r]eboot | [p]oweroff | [t]oggle idle check
-bindsym $mod+q mode "$mode_power"
+# (Super + Alt + Q). Mod1 is i3's mapping to Alt.
+bindsym $mod+Mod1+q mode "$mode_power"
 
 # Lock session
 bindsym $mod+Shift+x exec --no-startup-id $HOME/.config/i3/scripts/lock.sh
