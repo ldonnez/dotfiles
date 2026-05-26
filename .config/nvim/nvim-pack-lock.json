@@ -28,7 +28,7 @@
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
     "fzf-lua": {
-      "rev": "c8aaa74c97157b2c62bdcfc1e57b15c052dc63ca",
+      "rev": "fea9eedc6894c44d44cbb772a5cd11c93b82d7a1",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "gitsigns.nvim": {
@@ -36,7 +36,7 @@
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "kulala.nvim": {
-      "rev": "5809fe0b599bba8a125adf02922b535303f78b01",
+      "rev": "87601ddef556f21888c59e0a2713873ad73f9c29",
       "src": "https://github.com/mistweaverco/kulala.nvim",
       "version": ">=0.0.0"
     },
