@@ -411,15 +411,6 @@ pack.load({
     vim.keymap.set("n", "<leader>ms", function()
       require("memo").sync_git()
     end, { desc = "Sync with git" })
-    vim.keymap.set("n", "<leader>mt", function()
-      require("memo.pickers.fzf_lua").current_buffer_todo_picker("todo")
-    end, { desc = "Find TODOs in buffer" })
-    vim.keymap.set("n", "<leader>ma", function()
-      require("memo.pickers.fzf_lua").current_buffer_todo_picker("all")
-    end, { desc = "Find all TODOs in buffer" })
-    vim.keymap.set("n", "<leader>md", function()
-      require("memo.pickers.fzf_lua").current_buffer_todo_picker("done")
-    end, { desc = "Find done TODOs in buffer" })
   end,
 }, {
   {
