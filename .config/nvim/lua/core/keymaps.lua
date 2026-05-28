@@ -19,7 +19,14 @@ keymap.set("n", "<leader>y", function()
   print("Copied to clipboard: " .. relative_path)
 end, { silent = true, desc = "Copy current file path to clipboard" })
 
-keymap.set("n", "<leader><space>", [[:%s/\s\+$//<CR>]], { silent = true, desc = "Remove whitespace" })
+keymap.set("n", "<leader><space>", function()
+  local view = vim.fn.winsaveview() -- Wrap to save cursor position
+
+  vim.cmd([[%s/\s\+$//e]]) -- remove trailing whitespace
+  vim.cmd([[%s/\r//ge]]) -- remove ^M characters
+
+  vim.fn.winrestview(view)
+end, { silent = true, desc = "Remove whitespace and ^M" })
 
 keymap.set(
   "v",
