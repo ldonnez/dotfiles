@@ -28,12 +28,15 @@ pack.load({
       "xml",
       "make",
       "muttrc",
-      "gitcommit",
+      "diff",
+      "gitignore",
+      "git_config",
       "git_rebase",
+      "gitcommit",
     }):wait(300000) -- Wait max. 5 minutes.
 
     local group = vim.api.nvim_create_augroup("TreesitterSetup", { clear = true })
-    local ignore_filetypes = { "checkhealth", "lazy", "json", "csv", "zsh" }
+    local ignore_filetypes = { "checkhealth", "lazy", "json", "csv", "zsh", "diff" }
 
     vim.api.nvim_create_autocmd("FileType", {
       group = group,
