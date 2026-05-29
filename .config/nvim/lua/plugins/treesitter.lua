@@ -30,7 +30,7 @@ pack.load({
       "muttrc",
       "gitcommit",
       "git_rebase",
-    })
+    }):wait(300000) -- Wait max. 5 minutes.
 
     local group = vim.api.nvim_create_augroup("TreesitterSetup", { clear = true })
     local ignore_filetypes = { "checkhealth", "lazy", "json", "csv", "zsh" }
