@@ -36,12 +36,12 @@
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "kulala.nvim": {
-      "rev": "7d60be1f091cc40a64d5a14b926d060b205fc24b",
+      "rev": "6397ad2406995d5ceb061ba04677f7a96fcfb953",
       "src": "https://github.com/mistweaverco/kulala.nvim",
       "version": ">=0.0.0"
     },
     "lualine.nvim": {
-      "rev": "131a558e13f9f28b15cd235557150ccb23f89286",
+      "rev": "221ce6b2d999187044529f49da6554a92f740a96",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
     },
     "markdown-plus.nvim": {
