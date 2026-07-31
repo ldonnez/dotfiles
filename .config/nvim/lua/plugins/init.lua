@@ -425,6 +425,8 @@ pack.load({
       vscode_rest_client_environmentvars = true,
     })
 
+    -- kulala registers kulala_http for http/rest in its setup, but
+    -- its own FileType autocmd fires too late for the current buffer.
     vim.treesitter.start(vim.api.nvim_get_current_buf(), "kulala_http")
   end,
 }, {
