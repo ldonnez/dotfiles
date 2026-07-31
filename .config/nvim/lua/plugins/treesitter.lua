@@ -27,7 +27,6 @@ pack.load({
       "bash",
       "xml",
       "make",
-      "muttrc",
       "diff",
       "gitignore",
       "git_config",
