@@ -35,7 +35,7 @@ pack.load({
     }):wait(300000) -- Wait max. 5 minutes.
 
     local group = vim.api.nvim_create_augroup("TreesitterSetup", { clear = true })
-    local ignore_filetypes = { "checkhealth", "lazy", "json", "csv", "zsh", "diff" }
+    local ignore_filetypes = { "checkhealth", "lazy", "json", "csv", "zsh", "diff", "http" }
 
     vim.api.nvim_create_autocmd("FileType", {
       group = group,
