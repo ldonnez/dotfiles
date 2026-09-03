@@ -17,15 +17,7 @@ local servers = {
   tailwindcss = {},
   prismals = {},
   terraformls = {},
-  vtsls = {
-    settings = {
-      vtsls = {
-        autoUseWorkspaceTsdk = true,
-        experimental = { completion = { enableServerSideFuzzyMatch = true, entriesLimit = 1000 } },
-        typescript = { updateImportsOnFileMove = "always", tsserver = { maxTsServerMemory = 8192 } },
-      },
-    },
-  },
+  tsc = {},
   bashls = {},
   gopls = {},
   kulala_ls = {},
