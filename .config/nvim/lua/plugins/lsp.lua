@@ -18,6 +18,7 @@ local servers = {
   prismals = {},
   terraformls = {},
   tsc = {},
+  oxlint = {},
   bashls = {},
   gopls = {},
   kulala_ls = {},
