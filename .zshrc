@@ -31,13 +31,10 @@ fi
 #********* TMUX ******************************************************
 
 # sync envvariables to tmux see 'set -g update-environment' option in ~/.tmux.conf
-function update_environment_from_tmux() {
-  if [ -n "${TMUX}" ]; then
-    eval "$(tmux show-environment -s)"
-  fi
-}
-
-add-zsh-hook precmd update_environment_from_tmux
+# runs once at shell startup instead of every prompt render
+if [ -n "${TMUX}" ]; then
+  eval "$(tmux show-environment -s)"
+fi
 
 #*********************************************************************
 #
