@@ -399,18 +399,36 @@ pack.load({
     { src = "https://github.com/ldonnez/memo.nvim", version = vim.version.range("*") },
   },
   setup = function()
-    vim.keymap.set("n", "<leader>mc", function()
+    vim.keymap.set({ "n", "v" }, "<leader>mc", function()
       require("memo").register_capture({
         capture_file = "braindump.md.gpg",
         capture_template = { target_header = "# " .. os.date("%Y-%m-%d"), header_padding = 1 },
       })
-    end, { desc = "Capture to braindump" })
+    end, { desc = "Memo: Capture to braindump" })
+
+    vim.keymap.set("n", "<leader>ms", function()
+      require("memo").scratch("horizontal")
+    end, { desc = "Memo: Scratch horizontal" })
+
+    vim.keymap.set("n", "<leader>mS", function()
+      require("memo").save_as_note()
+    end, { desc = "Memo: Save as note" })
+
+    vim.keymap.set("n", "<leader>mv", function()
+      require("memo").scratch("vertical")
+    end, { desc = "Memo: Create scratch buffer vertical" })
+
+    vim.keymap.set("n", "<leader>mt", function()
+      require("memo").scratch("tab")
+    end, { desc = "Memo: Create scratch buffer tab" })
+
     vim.keymap.set("n", "<leader>mf", function()
       require("memo.pickers.fzf_lua").files_picker()
-    end, { desc = "Memo files picker" })
-    vim.keymap.set("n", "<leader>ms", function()
-      require("memo").sync_git()
-    end, { desc = "Sync with git" })
+    end, { desc = "Memo: Files picker" })
+
+    vim.keymap.set("n", "<leader>mp", function()
+      require("memo.pickers.fzf_lua").scratch_files_picker()
+    end, { desc = "Memo: Scratch files picker" })
   end,
 }, {
   {
