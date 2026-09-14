@@ -423,19 +423,19 @@ pack.load({
 
     vim.keymap.set("n", "<leader>mv", function()
       require("memo").scratch("vertical")
-    end, { desc = "Memo: Create scratch buffer vertical" })
+    end, { desc = "Memo: Scratch vertical" })
 
     vim.keymap.set("n", "<leader>mt", function()
       require("memo").scratch("tab")
-    end, { desc = "Memo: Create scratch buffer tab" })
+    end, { desc = "Memo: Scratch tab" })
 
     vim.keymap.set("n", "<leader>mf", function()
       require("memo.pickers.fzf_lua").files_picker()
-    end, { desc = "Memo: Files picker" })
+    end, { desc = "Memo: Files" })
 
     vim.keymap.set("n", "<leader>mp", function()
       require("memo.pickers.fzf_lua").scratch_files_picker()
-    end, { desc = "Memo: Scratch files picker" })
+    end, { desc = "Memo: Scratch files" })
   end,
 }, {
   {
