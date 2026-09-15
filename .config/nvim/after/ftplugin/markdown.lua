@@ -43,6 +43,15 @@ local function build_items(lines)
   return items
 end
 
+--- @param s string
+--- @return integer?
+local function parse_lnum(s)
+  local n = tonumber(s)
+  if n then
+    return math.floor(n)
+  end
+end
+
 --- @param bufnr integer
 --- @param selected string[]
 local function send_to_qf(bufnr, selected)
@@ -113,14 +122,7 @@ local function current_buffer_todo_picker(state)
         end
 
         local entry = selected[1]
-        local match = entry:match("^(%d+):")
-
-        if not match then
-          return
-        end
-
-        -- Ensure integer
-        local lnum = math.floor(match)
+        local lnum = parse_lnum(entry:match("^(%d+):") or "")
 
         if lnum then
           vim.api.nvim_win_set_cursor(0, { lnum, 0 })
