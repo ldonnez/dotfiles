@@ -37,7 +37,7 @@ end
 --- @return string[]
 local function build_items(lines)
   local items = {}
-  for _, line in pairs(lines) do
+  for _, line in ipairs(lines) do
     table.insert(items, string.format("%d: %s", line.lnum, line.raw))
   end
   return items
@@ -98,11 +98,38 @@ local function current_buffer_todo_picker(state)
   end
 
   local bufnr = vim.api.nvim_get_current_buf()
-  local lines = collect_todos(bufnr, state)
 
-  --- @diagnostic disable-next-line: need-check-nil
-  fzf.fzf_exec(build_items(lines), {
+  local function todo_contents(cb)
+    for _, item in ipairs(build_items(collect_todos(bufnr, state))) do
+      cb(item)
+    end
+    cb(nil)
+  end
+
+  local function toggle_todos(selected)
+    for _, entry in ipairs(selected or {}) do
+      local lnum = parse_lnum(entry:match("^(%d+):") or "")
+      if lnum then
+        local line = vim.api.nvim_buf_get_lines(bufnr, lnum - 1, lnum, false)[1]
+        if line then
+          local new_line = line:gsub("(%s*[-*+]%s*)%[(.)%]", function(prefix, checkbox)
+            if checkbox == " " then
+              return prefix .. "[x]"
+            else
+              return prefix .. "[ ]"
+            end
+          end)
+          if new_line ~= line then
+            vim.api.nvim_buf_set_lines(bufnr, lnum - 1, lnum, false, { new_line })
+          end
+        end
+      end
+    end
+  end
+
+  fzf.fzf_exec(todo_contents, {
     prompt = state:upper() .. "> ",
+    multiprocess = false,
     keymap = {
       fzf = {
         ["ctrl-a"] = "toggle-all",
@@ -136,6 +163,7 @@ local function current_buffer_todo_picker(state)
 
         send_to_qf(bufnr, selected)
       end,
+      ["ctrl-t"] = { fn = toggle_todos, reload = true },
     },
   })
 end
