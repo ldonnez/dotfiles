@@ -22,13 +22,6 @@ end, {
   desc = "Restores all plugins from lockfile",
 })
 
--- List all installed plugins
-user_command("PackInfo", function()
-  return vim.pack.update(nil, { offline = true })
-end, {
-  desc = "Explore installed plugins",
-})
-
 -- :PackDelete <plugin-name> deletes a single plugin.
 user_command("PackDelete", function(opts)
   local arg = opts.args
