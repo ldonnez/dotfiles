@@ -138,29 +138,26 @@ export TERM=xterm-256color
 # EDITOR
 export EDITOR=nvim
 
-# BIN PATH
-export PATH=/usr/bin:$PATH
-export PATH=/usr/local/bin:$PATH
-export PATH=/usr/local/sbin:$PATH
-export PATH=$HOME/.local/bin:$PATH
+# PATH
+path=(
+  "$HOME/.local/bin"
+  "$HOME/.npm/bin"
+  "$HOME/.yarn/bin"
+  "$HOME/go/bin"
+  "$HOME/.cargo/bin"
+  "$HOME/.opencode/bin"
+  "$HOME/.cabal/bin"
+  /usr/local/bin
+  /usr/local/sbin
+  /usr/bin
+  $path
+)
+
+# Remove duplicates
+typeset -U path PATH
 
 # NPM
 export NPM_CONFIG_PREFIX=$HOME/.npm
-export PATH=$HOME/.npm/bin:$PATH
-
-# YARN
-export PATH=$HOME/.yarn/bin:$PATH
-
-# GO
-export PATH=$HOME/go/bin:$PATH
-export PATH=$PATH:/usr/local/go/bin
-
-# PHP
-export PATH=/usr/local/php/bin:$PATH
-export PATH=$HOME/.composer/vendor/bin:$PATH
-
-# RUST
-export PATH=$HOME/.cargo/bin:$PATH
 
 # GPG
 GPG_CONFIG_FILE="~/.gnupg/gpg-agent.conf"
@@ -176,22 +173,6 @@ if [[ $(uname -m) == 'arm64' ]] && [[ $(uname) = "Darwin" ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-# LIBPQ
-if [ $(uname) = "Darwin" ]; then
-  export PATH="/usr/local/opt/libpq/bin:$PATH"
-fi
-
-# ANDROID
-export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
-export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
-export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
-
-# HASKELL
-[ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
-export PATH=$HOME/.cabal/bin:$PATH
-
-# opencode
-export PATH=$HOME/.opencode/bin:$PATH
 #*********************************************************************
 #
 #********* COMPLETIONS ***********************************************
