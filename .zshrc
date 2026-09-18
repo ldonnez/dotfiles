@@ -45,16 +45,20 @@ PROMPT='┌%F{green}[%n] [%F{green}%m]:%f%F{blue}%B%~%b%f$(git_prompt)%f
 └>'
 
 git_prompt() {
-  local BRANCH=$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/*\(.*\)/\1/')
+  local branch git_status
 
-  if [ ! -z $BRANCH ]; then
-    echo -n "%F{yellow}$BRANCH%f"
+  # Not inside a Git repository, or HEAD is unavailable.
+  branch=$(git symbolic-ref --quiet --short HEAD 2>/dev/null) ||
+    branch=$(git rev-parse --short HEAD 2>/dev/null) ||
+    return
 
-    if [ ! -z "$(git status --short)" ]; then
-      echo " %F{red}✗%f"
-    else
-      echo " %F{green}✔%f"
-    fi
+  # Empty means clean, non-empty means dirty.
+  git_status=$(git status --porcelain 2>/dev/null)
+
+  if [[ -n "$git_status" ]]; then
+    print -n " %F{yellow}$branch%f %F{red}✗%f"
+  else
+    print -n " %F{yellow}$branch%f %F{green}✔ %f"
   fi
 }
 
