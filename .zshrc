@@ -192,6 +192,12 @@ export PATH=$HOME/.opencode/bin:$PATH
 #
 #********* COMPLETIONS ***********************************************
 
+# Load local completion files
+fpath=(
+  "$HOME/.local/share/zsh/site-functions/"
+  $fpath
+)
+
 # Load autocompletions
 autoload -U +X bashcompinit && bashcompinit
 autoload -U +X compinit && compinit
