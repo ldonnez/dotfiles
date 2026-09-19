@@ -50,7 +50,7 @@
       "version": ">=0.0.0"
     },
     "memo.nvim": {
-      "rev": "fc80a3e574487b244d8cf2f49c92c1f5bed17d2b",
+      "rev": "a659857c5d8d7faddda753a6c71894ce852f2c55",
       "src": "https://github.com/ldonnez/memo.nvim",
       "version": ">=0.0.0"
     },
@@ -76,7 +76,7 @@
       "version": ">=0.0.0"
     },
     "nvim-treesitter": {
-      "rev": "9a168f6357ed21c3a636e1727bc7d382abc451b8",
+      "rev": "f603a2f4da48728f80257fb5fbb90145fd1dc173",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "nvim-web-devicons": {
