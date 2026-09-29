@@ -439,7 +439,7 @@ pack.load({
   end,
 }, {
   {
-    { src = "https://github.com/mistweaverco/kulala.nvim", version = vim.version.range("*") },
+    { src = "https://github.com/dont-be-evil-company/kulala.nvim", version = vim.version.range("*") },
   },
   filetypes = { "http", "rest" },
   setup = function()
