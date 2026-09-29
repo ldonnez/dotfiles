@@ -405,21 +405,28 @@ pack.load({
   {
     { src = "https://github.com/ldonnez/memo.nvim", version = vim.version.range("*") },
   },
+  init = function()
+    vim.g.memo_default_capture_file = "braindump.md.gpg"
+  end,
   setup = function()
     vim.keymap.set({ "n", "v" }, "<leader>mc", function()
-      require("memo").register_capture({
-        capture_file = "braindump.md.gpg",
-        capture_template = { target_header = "# " .. os.date("%Y-%m-%d"), header_padding = 1 },
+      require("memo").capture({
+        target_header = "# " .. os.date("%Y-%m-%d"),
+        header_padding = 1,
       })
     end, { desc = "Memo: Capture to braindump" })
+
+    vim.keymap.set({ "n" }, "<leader>mo", function()
+      require("memo").open({
+        window = {
+          split = "vsplit",
+        },
+      })
+    end, { desc = "Memo: Open default capture file" })
 
     vim.keymap.set("n", "<leader>ms", function()
       require("memo").scratch("horizontal")
     end, { desc = "Memo: Scratch horizontal" })
-
-    vim.keymap.set("n", "<leader>mS", function()
-      require("memo").save_as_note()
-    end, { desc = "Memo: Save as note" })
 
     vim.keymap.set("n", "<leader>mv", function()
       require("memo").scratch("vertical")
@@ -429,13 +436,27 @@ pack.load({
       require("memo").scratch("tab")
     end, { desc = "Memo: Scratch tab" })
 
+    vim.keymap.set("n", "<leader>mp", function()
+      require("memo.pickers.fzf_lua").scratch_files_picker()
+    end, { desc = "Memo: Scratch files" })
+
+    vim.keymap.set("n", "<leader>mw", function()
+      require("memo.pickers.fzf_lua").cwd_scratch_files_picker()
+    end, { desc = "Memo: Cwd Scratch files" })
+
+    vim.keymap.set({ "n", "v" }, "<leader>mS", function()
+      require("memo").save_as_note()
+    end, { desc = "Memo: Save as note" })
+
     vim.keymap.set("n", "<leader>mf", function()
       require("memo.pickers.fzf_lua").files_picker()
     end, { desc = "Memo: Files" })
 
-    vim.keymap.set("n", "<leader>mp", function()
-      require("memo.pickers.fzf_lua").scratch_files_picker()
-    end, { desc = "Memo: Scratch files" })
+    vim.keymap.set({ "n", "v" }, "<leader>mn", function()
+      require("memo").new_note({
+        window = { split = "split" },
+      })
+    end, { desc = "Memo: New note" })
   end,
 }, {
   {
