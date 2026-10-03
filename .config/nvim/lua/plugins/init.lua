@@ -406,7 +406,7 @@ pack.load({
     { src = "https://github.com/ldonnez/memo.nvim", version = vim.version.range("*") },
   },
   init = function()
-    vim.g.memo_default_capture_file = "braindump.md.gpg"
+    vim.g.memo_default_capture_file = "braindump.md.asc"
   end,
   setup = function()
     vim.keymap.set({ "n", "v" }, "<leader>mc", function()
