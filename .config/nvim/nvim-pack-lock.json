@@ -28,7 +28,7 @@
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
     "fzf-lua": {
-      "rev": "d5c12c6d72ed84554f0f8dacb84f20da094b6a2d",
+      "rev": "bba13a0d260ca5e049683344ba70791c9ad8ece6",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "gitsigns.nvim": {
@@ -50,7 +50,7 @@
       "version": ">=0.0.0"
     },
     "memo.nvim": {
-      "rev": "a8dc3c485994dbc4e25b7d50ac16dbe3174d843f",
+      "rev": "8106336c10ac9e0d15aba6cf8435a3ddd3868e3f",
       "src": "https://github.com/ldonnez/memo.nvim",
       "version": ">=0.0.0"
     },
