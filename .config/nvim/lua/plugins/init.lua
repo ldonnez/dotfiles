@@ -131,8 +131,10 @@ pack.load({
         preview = { layout = "flex", vertical = "down:60%", horizontal = "right:40%", hidden = "nohidden" },
       },
       keymap = { fzf = { ["ctrl-a"] = "toggle-all" } },
-      defaults = {
-        actions = {
+      actions = {
+        files = {
+          -- Keep fzf-lua's default file actions and override only the ones below.
+          true,
           ["ctrl-q"] = actions.file_sel_to_qf,
           ["ctrl-y"] = function(selected)
             local path = require("fzf-lua.path")
