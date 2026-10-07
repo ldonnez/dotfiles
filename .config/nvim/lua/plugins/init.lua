@@ -427,18 +427,18 @@ pack.load({
     end, { desc = "Memo: Open default capture file" })
 
     vim.keymap.set("n", "<leader>ms", function()
-      require("memo").scratch("horizontal")
+      require("memo").scratch({ window = { split = "split" } })
     end, { desc = "Memo: Scratch horizontal" })
 
     vim.keymap.set("n", "<leader>mv", function()
-      require("memo").scratch("vertical")
+      require("memo").scratch({ window = { split = "vsplit" } })
     end, { desc = "Memo: Scratch vertical" })
 
     vim.keymap.set("n", "<leader>mt", function()
-      require("memo").scratch("tab")
+      require("memo").scratch({ window = { split = "tab" } })
     end, { desc = "Memo: Scratch tab" })
 
-    vim.keymap.set("n", "<leader>mp", function()
+    vim.keymap.set("n", "<leader>mW", function()
       require("memo.pickers.fzf_lua").scratch_files_picker()
     end, { desc = "Memo: Scratch files" })
 
@@ -450,15 +450,23 @@ pack.load({
       require("memo").save_as_note()
     end, { desc = "Memo: Save as note" })
 
+    vim.keymap.set({ "n", "v" }, "<leader>mP", function()
+      require("memo").save_as_note({ encryption = { mode = "passphrase" } })
+    end, { desc = "Memo: Save as passphrase note" })
+
     vim.keymap.set("n", "<leader>mf", function()
       require("memo.pickers.fzf_lua").files_picker()
     end, { desc = "Memo: Files" })
 
     vim.keymap.set({ "n", "v" }, "<leader>mn", function()
       require("memo").new_note({
-        window = { split = "split" },
+        window = { split = "vsplit" },
       })
     end, { desc = "Memo: New note" })
+
+    vim.keymap.set({ "n", "v" }, "<leader>mN", function()
+      require("memo").new_note({ window = { split = "vsplit" }, encryption = { mode = "passphrase" } })
+    end, { desc = "Memo: New passphrase note" })
   end,
 }, {
   {
