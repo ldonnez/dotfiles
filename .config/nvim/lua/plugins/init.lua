@@ -439,11 +439,11 @@ pack.load({
     end, { desc = "Memo: Scratch tab" })
 
     vim.keymap.set("n", "<leader>mW", function()
-      require("memo.pickers.fzf_lua").scratch_files_picker()
+      require("memo.pickers.fzf_lua").scratch_files_picker({ previewer = true })
     end, { desc = "Memo: Scratch files" })
 
     vim.keymap.set("n", "<leader>mw", function()
-      require("memo.pickers.fzf_lua").cwd_scratch_files_picker()
+      require("memo.pickers.fzf_lua").cwd_scratch_files_picker({ previewer = true })
     end, { desc = "Memo: Cwd Scratch files" })
 
     vim.keymap.set({ "n", "v" }, "<leader>mS", function()
@@ -455,7 +455,7 @@ pack.load({
     end, { desc = "Memo: Save as passphrase note" })
 
     vim.keymap.set("n", "<leader>mf", function()
-      require("memo.pickers.fzf_lua").files_picker()
+      require("memo.pickers.fzf_lua").files_picker({ previewer = true })
     end, { desc = "Memo: Files" })
 
     vim.keymap.set({ "n", "v" }, "<leader>mn", function()
