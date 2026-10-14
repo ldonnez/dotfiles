@@ -53,9 +53,7 @@ local function on_events(events, fn)
   vim.api.nvim_create_autocmd(events, {
     group = augroup,
     once = true,
-    callback = function()
-      vim.schedule(fn)
-    end,
+    callback = fn,
   })
 end
 
