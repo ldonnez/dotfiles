@@ -50,7 +50,7 @@
       "version": ">=0.0.0"
     },
     "memo.nvim": {
-      "rev": "8349b63e2afe3326b5431e44a87b79d537482fd9",
+      "rev": "7be656fda75e1aab7b18d9d7b643c0a33d58eb4d",
       "src": "https://github.com/ldonnez/memo.nvim",
       "version": ">=0.0.0"
     },
