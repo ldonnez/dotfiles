@@ -39,7 +39,7 @@ jobs:
 
       - name: Install and Run EmmyLua Check
         run: |
-          EMMYLUA_VERSION="0.18.0"
+          EMMYLUA_VERSION="0.25.1"
 
           INSTALL_DIR="$HOME/.local/bin/emmylua"
           mkdir -p "$INSTALL_DIR"
