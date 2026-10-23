@@ -54,6 +54,9 @@ pack.load({
               local buflist = fn.tabpagebuflist(context.tabnr)
               local winnr = fn.tabpagewinnr(context.tabnr)
               local bufnr = buflist[winnr]
+              if not bufnr then
+                return name
+              end
               local mod = fn.getbufvar(bufnr, "&mod")
               return name .. (mod == 1 and " +" or "")
             end,
@@ -156,7 +159,7 @@ pack.load({
             end
             local path = require("fzf-lua.path")
             local entry = path.entry_to_file(selected_entry)
-            if entry.path == "<none>" then
+            if not entry.path or entry.path == "<none>" then
               return
             end
             fn.setreg("+", entry.path)
