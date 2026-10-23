@@ -13,7 +13,6 @@ local servers = {
       yaml = { schemas = { ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*" } },
     },
   },
-  emmylua_ls = {},
   tailwindcss = {},
   prismals = {},
   terraformls = {},
