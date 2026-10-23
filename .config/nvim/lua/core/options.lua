@@ -3,7 +3,8 @@ require("vim._core.ui2").enable()
 
 local opt = vim.opt
 local g = vim.g
-local state_dir = vim.fn.stdpath("state")
+local fn = require("core.vimfn")
+local state_dir = fn.stdpath("state")
 
 g.loaded_perl_provider = 0
 g.loaded_python3_provider = 0
