@@ -1,12 +1,3 @@
-local fn = require("core.vimfn")
-
----@class LualineModule
----@field setup fun(opts: table)
----@class HighlightColorsModule
----@field setup fun(opts?: table)
----@class RenderMarkdownModule
----@field setup fun(opts?: table)
-
 vim.cmd.packadd("nvim.undotree")
 
 local pack = require("pack_wrapper")
@@ -35,8 +26,7 @@ pack.load({
   { "https://github.com/nvim-lualine/lualine.nvim" },
   events = { "BufReadPre", "BufNewFile" },
   setup = function()
-    local lualine = require("lualine") --[[@as LualineModule]]
-    lualine.setup({
+    require("lualine").setup({
       options = {
         theme = "auto",
         globalstatus = true,
@@ -51,13 +41,10 @@ pack.load({
             mode = 2,
             max_length = vim.o.columns,
             fmt = function(name, context)
-              local buflist = fn.tabpagebuflist(context.tabnr)
-              local winnr = fn.tabpagewinnr(context.tabnr)
+              local buflist = vim.fn.tabpagebuflist(context.tabnr)
+              local winnr = vim.fn.tabpagewinnr(context.tabnr)
               local bufnr = buflist[winnr]
-              if not bufnr then
-                return name
-              end
-              local mod = fn.getbufvar(bufnr, "&mod")
+              local mod = vim.fn.getbufvar(bufnr, "&mod")
               return name .. (mod == 1 and " +" or "")
             end,
           },
@@ -76,7 +63,7 @@ pack.load({
   setup = function()
     local blink = require("blink.cmp")
 
-    local blink_config = {
+    blink.setup({
       keymap = { preset = "enter" },
       cmdline = {
         keymap = { preset = "super-tab" },
@@ -97,9 +84,7 @@ pack.load({
         ghost_text = { enabled = true },
       },
       signature = { enabled = true },
-    }
-    -- blink.cmp merges user options with defaults; its Config type currently describes the merged result.
-    blink.setup(blink_config --[[@as blink.cmp.Config]])
+    })
   end,
 }, {
   { "https://github.com/ibhagwan/fzf-lua" },
@@ -133,8 +118,7 @@ pack.load({
   setup = function()
     local actions = require("fzf-lua.actions")
 
-    local fzf = require("fzf-lua")
-    local fzf_config = {
+    require("fzf-lua").setup({
       "fzf-vim",
       fzf_colors = true,
       fzf_opts = { ["--no-scrollbar"] = true },
@@ -153,16 +137,12 @@ pack.load({
           true,
           ["ctrl-q"] = actions.file_sel_to_qf,
           ["ctrl-y"] = function(selected)
-            local selected_entry = selected[1]
-            if not selected_entry then
-              return
-            end
             local path = require("fzf-lua.path")
-            local entry = path.entry_to_file(selected_entry)
-            if not entry.path or entry.path == "<none>" then
+            local entry = path.entry_to_file(selected[1])
+            if entry.path == "<none>" then
               return
             end
-            fn.setreg("+", entry.path)
+            vim.fn.setreg("+", entry.path)
             print("Copied to clipboard: " .. entry.path)
           end,
         },
@@ -171,11 +151,9 @@ pack.load({
       grep = {
         rg_opts = [[--line-number --column --no-heading --color=always --with-filename --smart-case --trim --no-ignore-vcs --hidden]],
       },
-    }
-    -- fzf-lua merges partial user options with its defaults.
-    fzf.setup(fzf_config --[[@as fzf-lua.Config]])
+    })
 
-    fzf.register_ui_select(function(_, items)
+    require("fzf-lua").register_ui_select(function(_, items)
       return {
         winopts = {
           height = math.floor(math.min(vim.o.lines * 0.4, #items + 2) + 0.5),
@@ -258,7 +236,7 @@ pack.load({
         )
 
         keymap.set("n", "<leader>hS", gs.stage_buffer, { silent = true, buffer = bufnr, desc = "Stage buffer" })
-        keymap.set("n", "<leader>hu", gs.stage_hunk, { silent = true, buffer = bufnr, desc = "Undo stage hunk" })
+        keymap.set("n", "<leader>hu", gs.undo_stage_hunk, { silent = true, buffer = bufnr, desc = "Undo stage hunk" })
         keymap.set("n", "<leader>hR", gs.reset_buffer, { silent = true, buffer = bufnr, desc = "Reset buffer" })
         keymap.set("n", "<leader>hp", gs.preview_hunk, { silent = true, buffer = bufnr, desc = "Preview hunk" })
         keymap.set("n", "<leader>hb", function()
@@ -274,12 +252,7 @@ pack.load({
         keymap.set("n", "<leader>hD", function()
           gs.diffthis("~")
         end, { silent = true, buffer = bufnr, desc = "Diff current file" })
-        keymap.set(
-          "n",
-          "<leader>htd",
-          gs.preview_hunk_inline,
-          { silent = true, buffer = bufnr, desc = "Toggle deleted" }
-        )
+        keymap.set("n", "<leader>htd", gs.toggle_deleted, { silent = true, buffer = bufnr, desc = "Toggle deleted" })
         keymap.set(
           "n",
           "<leader>ih",
@@ -291,7 +264,7 @@ pack.load({
             return "]c"
           end
           vim.schedule(function()
-            gs.nav_hunk("next")
+            gs.next_hunk()
           end)
           return "<Ignore>"
         end, { silent = true, buffer = bufnr, desc = "Go to next hunk" })
@@ -300,7 +273,7 @@ pack.load({
             return "[c"
           end
           vim.schedule(function()
-            gs.nav_hunk("prev")
+            gs.prev_hunk()
           end)
           return "<Ignore>"
         end, { silent = true, buffer = bufnr, desc = "Go to next hunk" })
@@ -326,7 +299,7 @@ pack.load({
       "n",
       "<C-e>",
       function()
-        require("oil").open(fn.getcwd())
+        require("oil").open(vim.fn.getcwd())
       end,
       { desc = "Open cwd" },
     },
@@ -358,8 +331,8 @@ pack.load({
           local file_path = get_selected_file_path()
 
           if file_path then
-            local relative_path = fn.fnamemodify(file_path, ":~:.")
-            fn.setreg("+", relative_path)
+            local relative_path = vim.fn.fnamemodify(file_path, ":~:.")
+            vim.fn.setreg("+", relative_path)
             print("Copied to clipboard: " .. relative_path)
           end
         end,
@@ -367,7 +340,7 @@ pack.load({
           local file_path = get_selected_file_path()
 
           if file_path then
-            fn.setreg("+", file_path)
+            vim.fn.setreg("+", file_path)
             print("Copied to clipboard: " .. file_path)
           end
         end,
@@ -391,16 +364,13 @@ pack.load({
 }, {
   { "https://github.com/folke/which-key.nvim" },
   setup = function()
-    local which_key_config = { preset = "modern", show_help = false }
-    -- which-key merges these user options with its defaults.
-    require("which-key").setup(which_key_config --[[@as wk.Opts]])
+    require("which-key").setup({ preset = "modern", show_help = false })
   end,
 }, {
   { "https://github.com/brenoprata10/nvim-highlight-colors" },
   events = { "BufReadPre" },
   setup = function()
-    local highlight_colors = require("nvim-highlight-colors") --[[@as HighlightColorsModule]]
-    highlight_colors.setup()
+    require("nvim-highlight-colors").setup()
   end,
 }, {
   { "https://github.com/mfussenegger/nvim-ansible" },
@@ -419,8 +389,7 @@ pack.load({
   },
   filetypes = { "markdown" },
   setup = function()
-    local render_markdown = require("render-markdown") --[[@as RenderMarkdownModule]]
-    render_markdown.setup({
+    require("render-markdown").setup({
       completions = { lsp = { enabled = true } },
       latex = { enabled = false },
       indent = { enabled = true },
@@ -444,8 +413,6 @@ pack.load({
   setup = function()
     vim.keymap.set({ "n", "v" }, "<leader>mc", function()
       require("memo").capture({
-        capture_file = "braindump.md.asc",
-        window = {},
         target_header = "# " .. os.date("%Y-%m-%d"),
         header_padding = 1,
       })
