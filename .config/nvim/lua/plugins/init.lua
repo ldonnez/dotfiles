@@ -1,3 +1,5 @@
+local fn = require("core.vimfn")
+
 vim.cmd.packadd("nvim.undotree")
 
 local pack = require("pack_wrapper")
@@ -41,10 +43,10 @@ pack.load({
             mode = 2,
             max_length = vim.o.columns,
             fmt = function(name, context)
-              local buflist = vim.fn.tabpagebuflist(context.tabnr)
-              local winnr = vim.fn.tabpagewinnr(context.tabnr)
+              local buflist = fn.tabpagebuflist(context.tabnr)
+              local winnr = fn.tabpagewinnr(context.tabnr)
               local bufnr = buflist[winnr]
-              local mod = vim.fn.getbufvar(bufnr, "&mod")
+              local mod = fn.getbufvar(bufnr, "&mod")
               return name .. (mod == 1 and " +" or "")
             end,
           },
@@ -146,7 +148,7 @@ pack.load({
             if entry.path == "<none>" then
               return
             end
-            vim.fn.setreg("+", entry.path)
+            fn.setreg("+", entry.path)
             print("Copied to clipboard: " .. entry.path)
           end,
         },
@@ -308,7 +310,7 @@ pack.load({
       "n",
       "<C-e>",
       function()
-        require("oil").open(vim.fn.getcwd())
+        require("oil").open(fn.getcwd())
       end,
       { desc = "Open cwd" },
     },
@@ -340,8 +342,8 @@ pack.load({
           local file_path = get_selected_file_path()
 
           if file_path then
-            local relative_path = vim.fn.fnamemodify(file_path, ":~:.")
-            vim.fn.setreg("+", relative_path)
+            local relative_path = fn.fnamemodify(file_path, ":~:.")
+            fn.setreg("+", relative_path)
             print("Copied to clipboard: " .. relative_path)
           end
         end,
@@ -349,7 +351,7 @@ pack.load({
           local file_path = get_selected_file_path()
 
           if file_path then
-            vim.fn.setreg("+", file_path)
+            fn.setreg("+", file_path)
             print("Copied to clipboard: " .. file_path)
           end
         end,
