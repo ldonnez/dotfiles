@@ -137,6 +137,9 @@ pack.load({
           true,
           ["ctrl-q"] = actions.file_sel_to_qf,
           ["ctrl-y"] = function(selected)
+            if not selected[1] then
+              return
+            end
             local path = require("fzf-lua.path")
             local entry = path.entry_to_file(selected[1])
             if entry.path == "<none>" then
@@ -413,6 +416,8 @@ pack.load({
   setup = function()
     vim.keymap.set({ "n", "v" }, "<leader>mc", function()
       require("memo").capture({
+        capture_file = "braindump.md.asc",
+        window = {},
         target_header = "# " .. os.date("%Y-%m-%d"),
         header_padding = 1,
       })
