@@ -84,14 +84,15 @@ jobs:
             --argjson plugins "$plugin_lua_json" \
             --argjson patterns "$require_patterns_json" \
             '(.workspace.library |= map(select(. != "$VIMRUNTIME"))) |
-             .workspace.library += [$runtime, ($runtime + "/lua/vim/_meta/vimfn.gen.lua")] + $plugins |
+             .workspace.library += [$runtime] + $plugins |
              .runtime.requirePattern = (($patterns // []) + ["?.lua", "?/init.lua", "lua/?.lua", "lua/?/init.lua"])' \
             .emmyrc.json > "$RUNNER_TEMP/.emmyrc.json"
 
+          jq --arg runtime "$VIMRUNTIME" '.workspace.workspaceRoots += [($runtime + "/lua/vim/_meta")]' "$RUNNER_TEMP/.emmyrc.json" > "$RUNNER_TEMP/.emmyrc-with-runtime-root.json"
           probe=".config/nvim/lua/.vimfn-probe.lua"
           trap 'rm -f "$probe"' EXIT
           printf '%s\n' 'vim.fn.fnamemodify({}, ":p")' > "$probe"
-          if emmylua_check .config/nvim/lua --config "$RUNNER_TEMP/.emmyrc.json" > "$RUNNER_TEMP/vimfn-probe.log" 2>&1; then
+          if emmylua_check .config/nvim/lua --config "$RUNNER_TEMP/.emmyrc-with-runtime-root.json" > "$RUNNER_TEMP/vimfn-probe.log" 2>&1; then
             echo "Expected EmmyLua to reject an invalid vim.fn.fnamemodify argument, but it did not."
             cat "$RUNNER_TEMP/vimfn-probe.log"
             exit 1
