@@ -438,13 +438,9 @@ pack.load({
       require("memo").scratch({ window = { split = "tab" } })
     end, { desc = "Memo: Scratch tab" })
 
-    vim.keymap.set("n", "<leader>mW", function()
+    vim.keymap.set("n", "<leader>mw", function()
       require("memo.pickers.fzf_lua").scratch_files_picker({ previewer = true })
     end, { desc = "Memo: Scratch files" })
-
-    vim.keymap.set("n", "<leader>mw", function()
-      require("memo.pickers.fzf_lua").cwd_scratch_files_picker({ previewer = true })
-    end, { desc = "Memo: Cwd Scratch files" })
 
     vim.keymap.set({ "n", "v" }, "<leader>mS", function()
       require("memo").save_as_note()
