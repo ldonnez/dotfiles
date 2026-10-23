@@ -3,7 +3,6 @@ require("vim._core.ui2").enable()
 
 local opt = vim.opt
 local g = vim.g
----@diagnostic disable-next-line: undefined-field
 local state_dir = vim.fn.stdpath("state")
 
 g.loaded_perl_provider = 0
