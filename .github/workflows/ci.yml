@@ -51,6 +51,10 @@ jobs:
           echo "$INSTALL_DIR" >> $GITHUB_PATH
 
       - name: Run emmylua_check
-        run: emmylua_check --warnings-as-errors .config/nvim/lua --config ./.emmyrc.json
+        shell: bash
+        run: |
+          set -euo pipefail
+          jq --arg runtime "$VIMRUNTIME"             '(.workspace.library |= map(select(. != "$VIMRUNTIME"))) | .workspace.library += [$runtime]'             .emmyrc.json > "$RUNNER_TEMP/.emmyrc.json"
+          emmylua_check --warnings-as-errors .config/nvim/lua --config "$RUNNER_TEMP/.emmyrc.json"
         env:
           VIMRUNTIME: /home/runner/nvim-stable/share/nvim/runtime
