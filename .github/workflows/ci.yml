@@ -26,9 +26,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Setup neovim
-        uses: rhysd/action-setup-vim@v1
-        with:
-          neovim: true
+        shell: bash
+        run: |
+          set -euo pipefail
+          dest="$HOME/nvim-stable"
+          curl -fsSL "https://github.com/neovim/neovim/releases/download/stable/nvim-linux-x86_64.tar.gz" -o /tmp/nvim.tar.gz
+          mkdir -p "$dest"
+          tar -xzf /tmp/nvim.tar.gz -C "$dest" --strip-components=1
+          echo "$dest/bin" >> "$GITHUB_PATH"
 
       - uses: actions/checkout@v7
 
