@@ -45,6 +45,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
       return
     end
 
+    ---@param lhs string
+    ---@param rhs string|function
+    ---@param desc string
     local function nmap(lhs, rhs, desc)
       vim.keymap.set("n", lhs, rhs, { buffer = bufnr, desc = desc })
     end
