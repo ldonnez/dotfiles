@@ -88,9 +88,10 @@ jobs:
              .runtime.requirePattern = (($patterns // []) + ["?.lua", "?/init.lua", "lua/?.lua", "lua/?/init.lua"])' \
             .emmyrc.json > "$RUNNER_TEMP/.emmyrc.json"
 
-          probe="$RUNNER_TEMP/vimfn-probe.lua"
+          probe=".config/nvim/lua/.vimfn-probe.lua"
+          trap 'rm -f "$probe"' EXIT
           printf '%s\n' 'vim.fn.fnamemodify({}, ":p")' > "$probe"
-          if emmylua_check "$probe" --config "$RUNNER_TEMP/.emmyrc.json" > "$RUNNER_TEMP/vimfn-probe.log" 2>&1; then
+          if emmylua_check .config/nvim/lua --config "$RUNNER_TEMP/.emmyrc.json" > "$RUNNER_TEMP/vimfn-probe.log" 2>&1; then
             echo "Expected EmmyLua to reject an invalid vim.fn.fnamemodify argument, but it did not."
             cat "$RUNNER_TEMP/vimfn-probe.log"
             exit 1
