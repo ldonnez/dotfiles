@@ -26,7 +26,6 @@ pack.load({
   { "https://github.com/nvim-lualine/lualine.nvim" },
   events = { "BufReadPre", "BufNewFile" },
   setup = function()
-    ---@diagnostic disable-next-line: undefined-field
     require("lualine").setup({
       options = {
         theme = "auto",
@@ -42,12 +41,9 @@ pack.load({
             mode = 2,
             max_length = vim.o.columns,
             fmt = function(name, context)
-              ---@diagnostic disable-next-line: undefined-field
               local buflist = vim.fn.tabpagebuflist(context.tabnr)
-              ---@diagnostic disable-next-line: undefined-field
               local winnr = vim.fn.tabpagewinnr(context.tabnr)
               local bufnr = buflist[winnr]
-              ---@diagnostic disable-next-line: undefined-field
               local mod = vim.fn.getbufvar(bufnr, "&mod")
               return name .. (mod == 1 and " +" or "")
             end,
@@ -67,15 +63,12 @@ pack.load({
   setup = function()
     local blink = require("blink.cmp")
 
-    ---@diagnostic disable-next-line: param-type-mismatch
     blink.setup({
       keymap = { preset = "enter" },
-      ---@diagnostic disable-next-line: missing-fields
       cmdline = {
         keymap = { preset = "super-tab" },
         completion = { menu = { auto_show = true } },
       },
-      ---@diagnostic disable-next-line: missing-fields
       sources = {
         default = { "lsp", "path", "snippets", "buffer" },
         per_filetype = {
@@ -87,9 +80,7 @@ pack.load({
         },
       },
       completion = {
-        ---@diagnostic disable-next-line: missing-fields
         documentation = { auto_show = true, auto_show_delay_ms = 0 },
-        ---@diagnostic disable-next-line: missing-fields
         ghost_text = { enabled = true },
       },
       signature = { enabled = true },
@@ -131,7 +122,6 @@ pack.load({
       "fzf-vim",
       fzf_colors = true,
       fzf_opts = { ["--no-scrollbar"] = true },
-      ---@diagnostic disable-next-line: missing-fields
       previewers = { builtin = { snacks_image = { enabled = true, render_inline = false } } },
       winopts = {
         row = 0.2,
@@ -156,7 +146,6 @@ pack.load({
             if entry.path == "<none>" then
               return
             end
-            ---@diagnostic disable-next-line: undefined-field
             vim.fn.setreg("+", entry.path)
             print("Copied to clipboard: " .. entry.path)
           end,
@@ -319,7 +308,6 @@ pack.load({
       "n",
       "<C-e>",
       function()
-        ---@diagnostic disable-next-line: undefined-field
         require("oil").open(vim.fn.getcwd())
       end,
       { desc = "Open cwd" },
@@ -352,9 +340,7 @@ pack.load({
           local file_path = get_selected_file_path()
 
           if file_path then
-            ---@diagnostic disable-next-line: undefined-field
             local relative_path = vim.fn.fnamemodify(file_path, ":~:.")
-            ---@diagnostic disable-next-line: undefined-field
             vim.fn.setreg("+", relative_path)
             print("Copied to clipboard: " .. relative_path)
           end
@@ -363,7 +349,6 @@ pack.load({
           local file_path = get_selected_file_path()
 
           if file_path then
-            ---@diagnostic disable-next-line: undefined-field
             vim.fn.setreg("+", file_path)
             print("Copied to clipboard: " .. file_path)
           end
@@ -388,14 +373,12 @@ pack.load({
 }, {
   { "https://github.com/folke/which-key.nvim" },
   setup = function()
-    ---@diagnostic disable-next-line: missing-fields, param-type-mismatch
     require("which-key").setup({ preset = "modern", show_help = false })
   end,
 }, {
   { "https://github.com/brenoprata10/nvim-highlight-colors" },
   events = { "BufReadPre" },
   setup = function()
-    ---@diagnostic disable-next-line: undefined-field
     require("nvim-highlight-colors").setup()
   end,
 }, {
@@ -415,7 +398,6 @@ pack.load({
   },
   filetypes = { "markdown" },
   setup = function()
-    ---@diagnostic disable-next-line: undefined-field
     require("render-markdown").setup({
       completions = { lsp = { enabled = true } },
       latex = { enabled = false },
