@@ -1,5 +1,12 @@
 local fn = require("core.vimfn")
 
+---@class LualineModule
+---@field setup fun(opts: table)
+---@class HighlightColorsModule
+---@field setup fun(opts?: table)
+---@class RenderMarkdownModule
+---@field setup fun(opts?: table)
+
 vim.cmd.packadd("nvim.undotree")
 
 local pack = require("pack_wrapper")
@@ -28,7 +35,8 @@ pack.load({
   { "https://github.com/nvim-lualine/lualine.nvim" },
   events = { "BufReadPre", "BufNewFile" },
   setup = function()
-    require("lualine").setup({
+    local lualine = require("lualine") --[[@as LualineModule]]
+    lualine.setup({
       options = {
         theme = "auto",
         globalstatus = true,
@@ -65,7 +73,7 @@ pack.load({
   setup = function()
     local blink = require("blink.cmp")
 
-    blink.setup({
+    local blink_config = {
       keymap = { preset = "enter" },
       cmdline = {
         keymap = { preset = "super-tab" },
@@ -86,7 +94,9 @@ pack.load({
         ghost_text = { enabled = true },
       },
       signature = { enabled = true },
-    })
+    }
+    -- blink.cmp merges user options with defaults; its Config type currently describes the merged result.
+    blink.setup(blink_config --[[@as blink.cmp.Config]])
   end,
 }, {
   { "https://github.com/ibhagwan/fzf-lua" },
@@ -120,7 +130,8 @@ pack.load({
   setup = function()
     local actions = require("fzf-lua.actions")
 
-    require("fzf-lua").setup({
+    local fzf = require("fzf-lua")
+    local fzf_config = {
       "fzf-vim",
       fzf_colors = true,
       fzf_opts = { ["--no-scrollbar"] = true },
@@ -157,9 +168,11 @@ pack.load({
       grep = {
         rg_opts = [[--line-number --column --no-heading --color=always --with-filename --smart-case --trim --no-ignore-vcs --hidden]],
       },
-    })
+    }
+    -- fzf-lua merges partial user options with its defaults.
+    fzf.setup(fzf_config --[[@as fzf-lua.Config]])
 
-    require("fzf-lua").register_ui_select(function(_, items)
+    fzf.register_ui_select(function(_, items)
       return {
         winopts = {
           height = math.floor(math.min(vim.o.lines * 0.4, #items + 2) + 0.5),
@@ -375,13 +388,16 @@ pack.load({
 }, {
   { "https://github.com/folke/which-key.nvim" },
   setup = function()
-    require("which-key").setup({ preset = "modern", show_help = false })
+    local which_key_config = { preset = "modern", show_help = false }
+    -- which-key merges these user options with its defaults.
+    require("which-key").setup(which_key_config --[[@as wk.Opts]])
   end,
 }, {
   { "https://github.com/brenoprata10/nvim-highlight-colors" },
   events = { "BufReadPre" },
   setup = function()
-    require("nvim-highlight-colors").setup()
+    local highlight_colors = require("nvim-highlight-colors") --[[@as HighlightColorsModule]]
+    highlight_colors.setup()
   end,
 }, {
   { "https://github.com/mfussenegger/nvim-ansible" },
@@ -400,7 +416,8 @@ pack.load({
   },
   filetypes = { "markdown" },
   setup = function()
-    require("render-markdown").setup({
+    local render_markdown = require("render-markdown") --[[@as RenderMarkdownModule]]
+    render_markdown.setup({
       completions = { lsp = { enabled = true } },
       latex = { enabled = false },
       indent = { enabled = true },
