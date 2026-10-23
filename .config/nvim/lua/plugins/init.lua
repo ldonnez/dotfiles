@@ -267,7 +267,12 @@ pack.load({
         keymap.set("n", "<leader>hD", function()
           gs.diffthis("~")
         end, { silent = true, buffer = bufnr, desc = "Diff current file" })
-        keymap.set("n", "<leader>htd", gs.preview_hunk_inline, { silent = true, buffer = bufnr, desc = "Toggle deleted" })
+        keymap.set(
+          "n",
+          "<leader>htd",
+          gs.preview_hunk_inline,
+          { silent = true, buffer = bufnr, desc = "Toggle deleted" }
+        )
         keymap.set(
           "n",
           "<leader>ih",
