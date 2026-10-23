@@ -147,11 +147,12 @@ pack.load({
           true,
           ["ctrl-q"] = actions.file_sel_to_qf,
           ["ctrl-y"] = function(selected)
-            if not selected[1] then
+            local selected_entry = selected[1]
+            if not selected_entry then
               return
             end
             local path = require("fzf-lua.path")
-            local entry = path.entry_to_file(selected[1])
+            local entry = path.entry_to_file(selected_entry)
             if entry.path == "<none>" then
               return
             end
