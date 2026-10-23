@@ -236,7 +236,7 @@ pack.load({
         )
 
         keymap.set("n", "<leader>hS", gs.stage_buffer, { silent = true, buffer = bufnr, desc = "Stage buffer" })
-        keymap.set("n", "<leader>hu", gs.undo_stage_hunk, { silent = true, buffer = bufnr, desc = "Undo stage hunk" })
+        keymap.set("n", "<leader>hu", gs.stage_hunk, { silent = true, buffer = bufnr, desc = "Undo stage hunk" })
         keymap.set("n", "<leader>hR", gs.reset_buffer, { silent = true, buffer = bufnr, desc = "Reset buffer" })
         keymap.set("n", "<leader>hp", gs.preview_hunk, { silent = true, buffer = bufnr, desc = "Preview hunk" })
         keymap.set("n", "<leader>hb", function()
@@ -252,7 +252,7 @@ pack.load({
         keymap.set("n", "<leader>hD", function()
           gs.diffthis("~")
         end, { silent = true, buffer = bufnr, desc = "Diff current file" })
-        keymap.set("n", "<leader>htd", gs.toggle_deleted, { silent = true, buffer = bufnr, desc = "Toggle deleted" })
+        keymap.set("n", "<leader>htd", gs.preview_hunk_inline, { silent = true, buffer = bufnr, desc = "Toggle deleted" })
         keymap.set(
           "n",
           "<leader>ih",
@@ -264,7 +264,7 @@ pack.load({
             return "]c"
           end
           vim.schedule(function()
-            gs.next_hunk()
+            gs.nav_hunk("next")
           end)
           return "<Ignore>"
         end, { silent = true, buffer = bufnr, desc = "Go to next hunk" })
@@ -273,7 +273,7 @@ pack.load({
             return "[c"
           end
           vim.schedule(function()
-            gs.prev_hunk()
+            gs.nav_hunk("prev")
           end)
           return "<Ignore>"
         end, { silent = true, buffer = bufnr, desc = "Go to next hunk" })
