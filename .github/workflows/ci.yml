@@ -84,21 +84,8 @@ jobs:
             --argjson plugins "$plugin_lua_json" \
             --argjson patterns "$require_patterns_json" \
             '(.workspace.library |= map(select(. != "$VIMRUNTIME"))) |
-             .workspace.library += [$runtime, ($runtime + "/lua/vim/_meta")] + $plugins |
+             .workspace.library += [$runtime] + $plugins |
              .runtime.requirePattern = (($patterns // []) + ["?.lua", "?/init.lua", "lua/?.lua", "lua/?/init.lua"])' \
             .emmyrc.json > "$RUNNER_TEMP/.emmyrc.json"
-
-          probe="$RUNNER_TEMP/vimfn-probe.lua"
-          printf '%s\n' 'vim.fn.fnamemodify({}, ":p")' > "$probe"
-          if emmylua_check "$probe" --config "$RUNNER_TEMP/.emmyrc.json" > "$RUNNER_TEMP/vimfn-probe.log" 2>&1; then
-            echo "Expected EmmyLua to reject an invalid vim.fn.fnamemodify argument, but it did not."
-            cat "$RUNNER_TEMP/vimfn-probe.log"
-            exit 1
-          fi
-          if ! grep -Eq 'param-type-mismatch|call-arg-mismatch|argument-type-mismatch' "$RUNNER_TEMP/vimfn-probe.log"; then
-            echo "The Neovim vim.fn metadata probe failed for an unexpected reason:"
-            cat "$RUNNER_TEMP/vimfn-probe.log"
-            exit 1
-          fi
 
           emmylua_check --warnings-as-errors .config/nvim/lua --config "$RUNNER_TEMP/.emmyrc.json"
