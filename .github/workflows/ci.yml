@@ -84,7 +84,7 @@ jobs:
             --argjson plugins "$plugin_lua_json" \
             --argjson patterns "$require_patterns_json" \
             '(.workspace.library |= map(select(. != "$VIMRUNTIME"))) |
-             .workspace.library += [$runtime] + $plugins |
+             .workspace.library += [$runtime, ($runtime + "/lua/vim/_meta")] + $plugins |
              .runtime.requirePattern = (($patterns // []) + ["?.lua", "?/init.lua", "lua/?.lua", "lua/?/init.lua"])' \
             .emmyrc.json > "$RUNNER_TEMP/.emmyrc.json"
 
