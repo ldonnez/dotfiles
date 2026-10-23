@@ -3,6 +3,7 @@ require("vim._core.ui2").enable()
 
 local opt = vim.opt
 local g = vim.g
+---@diagnostic disable-next-line: undefined-field
 local state_dir = vim.fn.stdpath("state")
 
 g.loaded_perl_provider = 0
@@ -43,7 +44,7 @@ opt.writebackup = true
 opt.backupdir = state_dir .. "/backup//"
 opt.directory = state_dir .. "/swap//"
 opt.undodir = state_dir .. "/undo//"
-opt.completeopt = { "menu", "menuone", "noselect", "preview" }
+vim.o.completeopt = "menu,menuone,noselect,preview"
 opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 opt.timeoutlen = 300
 opt.winborder = "rounded"
