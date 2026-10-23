@@ -37,24 +37,56 @@ jobs:
 
       - uses: actions/checkout@v7
 
-      - name: Install and Run EmmyLua Check
+      - name: Install EmmyLua Check
+        shell: bash
         run: |
+          set -euo pipefail
           EMMYLUA_VERSION="0.25.1"
-
           INSTALL_DIR="$HOME/.local/bin/emmylua"
           mkdir -p "$INSTALL_DIR"
-
           URL="https://github.com/EmmyLuaLs/emmylua-analyzer-rust/releases/download/${EMMYLUA_VERSION}/emmylua_check-linux-x64.tar.gz"
-          curl -L "$URL" | tar -xzC "$INSTALL_DIR"
+          curl -fsSL "$URL" | tar -xzC "$INSTALL_DIR"
           chmod +x "$INSTALL_DIR/emmylua_check"
+          echo "$INSTALL_DIR" >> "$GITHUB_PATH"
 
-          echo "$INSTALL_DIR" >> $GITHUB_PATH
+      - name: Checkout locked Neovim plugins for analysis
+        shell: bash
+        run: |
+          set -euo pipefail
+          plugins_dir="$RUNNER_TEMP/emmylua-plugins"
+          mkdir -p "$plugins_dir"
+
+          while IFS=$'\t' read -r src rev; do
+            name="${src##*/}"
+            name="${name%.git}"
+            git clone --quiet --filter=blob:none --no-checkout "$src" "$plugins_dir/$name"
+            git -C "$plugins_dir/$name" checkout --quiet "$rev"
+          done < <(jq -r '.plugins[] | [.src, .rev] | @tsv' .config/nvim/nvim-pack-lock.json)
 
       - name: Run emmylua_check
         shell: bash
         run: |
           set -euo pipefail
-          jq --arg runtime "$VIMRUNTIME"             '(.workspace.library |= map(select(. != "$VIMRUNTIME"))) | .workspace.library += [$runtime]'             .emmyrc.json > "$RUNNER_TEMP/.emmyrc.json"
+          plugins_dir="$RUNNER_TEMP/emmylua-plugins"
+          plugin_lua_paths=()
+          require_patterns=()
+
+          while IFS= read -r lua_dir; do
+            plugin_lua_paths+=("$lua_dir")
+            require_patterns+=("$lua_dir/?.lua" "$lua_dir/?/init.lua")
+          done < <(find "$plugins_dir" -mindepth 2 -maxdepth 2 -type d -name lua -print)
+
+          plugin_lua_json="$(printf '%s\n' "${plugin_lua_paths[@]}" | jq -R . | jq -s .)"
+          require_patterns_json="$(printf '%s\n' "${require_patterns[@]}" | jq -R . | jq -s .)"
+
+          jq --arg runtime "$VIMRUNTIME" \
+            --argjson plugins "$plugin_lua_json" \
+            --argjson patterns "$require_patterns_json" \
+            '(.workspace.library |= map(select(. != "$VIMRUNTIME"))) |
+             .workspace.library += [$runtime] + $plugins |
+             .runtime.requirePattern = (($patterns // []) + ["?.lua", "?/init.lua", "lua/?.lua", "lua/?/init.lua"])' \
+            .emmyrc.json > "$RUNNER_TEMP/.emmyrc.json"
+
           emmylua_check --warnings-as-errors .config/nvim/lua --config "$RUNNER_TEMP/.emmyrc.json"
         env:
           VIMRUNTIME: /home/runner/nvim-stable/share/nvim/runtime
