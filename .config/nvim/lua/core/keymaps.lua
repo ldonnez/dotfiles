@@ -1,6 +1,5 @@
 local g = vim.g
 local keymap = vim.keymap
-local fn = require("core.vimfn")
 
 g.mapleader = ","
 
@@ -12,21 +11,21 @@ keymap.set("n", "<S-l>", ":bnext<CR>", { silent = true, desc = "Go to previous b
 keymap.set("n", "<S-h>", ":bprevious<CR>", { silent = true, desc = "Go to next buffer" })
 
 keymap.set("n", "<leader>y", function()
-  local path = fn.expand("%") --[[@as string]]
-  local relative_path = fn.fnamemodify(path, ":~:.")
+  local path = vim.fn.expand("%") --[[@as string]]
+  local relative_path = vim.fn.fnamemodify(path, ":~:.")
 
-  fn.setreg("+", relative_path)
+  vim.fn.setreg("+", relative_path)
 
   print("Copied to clipboard: " .. relative_path)
 end, { silent = true, desc = "Copy current file path to clipboard" })
 
 keymap.set("n", "<leader><space>", function()
-  local view = fn.winsaveview() -- Wrap to save cursor position
+  local view = vim.fn.winsaveview() -- Wrap to save cursor position
 
   vim.cmd([[%s/\s\+$//e]]) -- remove trailing whitespace
   vim.cmd([[%s/\r//ge]]) -- remove ^M characters
 
-  fn.winrestview(view)
+  vim.fn.winrestview(view)
 end, { silent = true, desc = "Remove whitespace and ^M" })
 
 keymap.set(
