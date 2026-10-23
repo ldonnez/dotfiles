@@ -26,6 +26,7 @@ pack.load({
   { "https://github.com/nvim-lualine/lualine.nvim" },
   events = { "BufReadPre", "BufNewFile" },
   setup = function()
+    ---@diagnostic disable-next-line: undefined-field
     require("lualine").setup({
       options = {
         theme = "auto",
@@ -41,9 +42,12 @@ pack.load({
             mode = 2,
             max_length = vim.o.columns,
             fmt = function(name, context)
+              ---@diagnostic disable-next-line: undefined-field
               local buflist = vim.fn.tabpagebuflist(context.tabnr)
+              ---@diagnostic disable-next-line: undefined-field
               local winnr = vim.fn.tabpagewinnr(context.tabnr)
               local bufnr = buflist[winnr]
+              ---@diagnostic disable-next-line: undefined-field
               local mod = vim.fn.getbufvar(bufnr, "&mod")
               return name .. (mod == 1 and " +" or "")
             end,
@@ -63,12 +67,15 @@ pack.load({
   setup = function()
     local blink = require("blink.cmp")
 
+    ---@diagnostic disable-next-line: param-type-mismatch
     blink.setup({
       keymap = { preset = "enter" },
+      ---@diagnostic disable-next-line: missing-fields
       cmdline = {
         keymap = { preset = "super-tab" },
         completion = { menu = { auto_show = true } },
       },
+      ---@diagnostic disable-next-line: missing-fields
       sources = {
         default = { "lsp", "path", "snippets", "buffer" },
         per_filetype = {
@@ -80,7 +87,9 @@ pack.load({
         },
       },
       completion = {
+        ---@diagnostic disable-next-line: missing-fields
         documentation = { auto_show = true, auto_show_delay_ms = 0 },
+        ---@diagnostic disable-next-line: missing-fields
         ghost_text = { enabled = true },
       },
       signature = { enabled = true },
@@ -122,6 +131,7 @@ pack.load({
       "fzf-vim",
       fzf_colors = true,
       fzf_opts = { ["--no-scrollbar"] = true },
+      ---@diagnostic disable-next-line: missing-fields
       previewers = { builtin = { snacks_image = { enabled = true, render_inline = false } } },
       winopts = {
         row = 0.2,
@@ -137,11 +147,16 @@ pack.load({
           true,
           ["ctrl-q"] = actions.file_sel_to_qf,
           ["ctrl-y"] = function(selected)
+            local selected_entry = selected[1]
+            if not selected_entry then
+              return
+            end
             local path = require("fzf-lua.path")
-            local entry = path.entry_to_file(selected[1])
+            local entry = path.entry_to_file(selected_entry)
             if entry.path == "<none>" then
               return
             end
+            ---@diagnostic disable-next-line: undefined-field
             vim.fn.setreg("+", entry.path)
             print("Copied to clipboard: " .. entry.path)
           end,
@@ -236,7 +251,7 @@ pack.load({
         )
 
         keymap.set("n", "<leader>hS", gs.stage_buffer, { silent = true, buffer = bufnr, desc = "Stage buffer" })
-        keymap.set("n", "<leader>hu", gs.undo_stage_hunk, { silent = true, buffer = bufnr, desc = "Undo stage hunk" })
+        keymap.set("n", "<leader>hu", gs.stage_hunk, { silent = true, buffer = bufnr, desc = "Undo stage hunk" })
         keymap.set("n", "<leader>hR", gs.reset_buffer, { silent = true, buffer = bufnr, desc = "Reset buffer" })
         keymap.set("n", "<leader>hp", gs.preview_hunk, { silent = true, buffer = bufnr, desc = "Preview hunk" })
         keymap.set("n", "<leader>hb", function()
@@ -252,7 +267,12 @@ pack.load({
         keymap.set("n", "<leader>hD", function()
           gs.diffthis("~")
         end, { silent = true, buffer = bufnr, desc = "Diff current file" })
-        keymap.set("n", "<leader>htd", gs.toggle_deleted, { silent = true, buffer = bufnr, desc = "Toggle deleted" })
+        keymap.set(
+          "n",
+          "<leader>htd",
+          gs.preview_hunk_inline,
+          { silent = true, buffer = bufnr, desc = "Toggle deleted" }
+        )
         keymap.set(
           "n",
           "<leader>ih",
@@ -264,7 +284,7 @@ pack.load({
             return "]c"
           end
           vim.schedule(function()
-            gs.next_hunk()
+            gs.nav_hunk("next")
           end)
           return "<Ignore>"
         end, { silent = true, buffer = bufnr, desc = "Go to next hunk" })
@@ -273,7 +293,7 @@ pack.load({
             return "[c"
           end
           vim.schedule(function()
-            gs.prev_hunk()
+            gs.nav_hunk("prev")
           end)
           return "<Ignore>"
         end, { silent = true, buffer = bufnr, desc = "Go to next hunk" })
@@ -299,6 +319,7 @@ pack.load({
       "n",
       "<C-e>",
       function()
+        ---@diagnostic disable-next-line: undefined-field
         require("oil").open(vim.fn.getcwd())
       end,
       { desc = "Open cwd" },
@@ -331,7 +352,9 @@ pack.load({
           local file_path = get_selected_file_path()
 
           if file_path then
+            ---@diagnostic disable-next-line: undefined-field
             local relative_path = vim.fn.fnamemodify(file_path, ":~:.")
+            ---@diagnostic disable-next-line: undefined-field
             vim.fn.setreg("+", relative_path)
             print("Copied to clipboard: " .. relative_path)
           end
@@ -340,6 +363,7 @@ pack.load({
           local file_path = get_selected_file_path()
 
           if file_path then
+            ---@diagnostic disable-next-line: undefined-field
             vim.fn.setreg("+", file_path)
             print("Copied to clipboard: " .. file_path)
           end
@@ -364,12 +388,14 @@ pack.load({
 }, {
   { "https://github.com/folke/which-key.nvim" },
   setup = function()
+    ---@diagnostic disable-next-line: missing-fields, param-type-mismatch
     require("which-key").setup({ preset = "modern", show_help = false })
   end,
 }, {
   { "https://github.com/brenoprata10/nvim-highlight-colors" },
   events = { "BufReadPre" },
   setup = function()
+    ---@diagnostic disable-next-line: undefined-field
     require("nvim-highlight-colors").setup()
   end,
 }, {
@@ -389,6 +415,7 @@ pack.load({
   },
   filetypes = { "markdown" },
   setup = function()
+    ---@diagnostic disable-next-line: undefined-field
     require("render-markdown").setup({
       completions = { lsp = { enabled = true } },
       latex = { enabled = false },
@@ -413,6 +440,8 @@ pack.load({
   setup = function()
     vim.keymap.set({ "n", "v" }, "<leader>mc", function()
       require("memo").capture({
+        capture_file = "braindump.md.asc",
+        window = {},
         target_header = "# " .. os.date("%Y-%m-%d"),
         header_padding = 1,
       })
