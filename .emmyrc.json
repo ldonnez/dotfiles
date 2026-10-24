@@ -20,6 +20,16 @@
     "insertSpace": true
   },
   "workspace": {
-    "library": ["$VIMRUNTIME"]
+    "library": [
+      "$VIMRUNTIME",
+      {
+        "path": "$HOME/.local/share/nvim/site/pack/core/opt",
+        "ignoreGlobs": ["**/*_spec.lua", "**/*_test.lua", "**/test/**", "**/tests/**", "**/test_helper/**"]
+      },
+      {
+        "path": "$HOME/.local/share/nvim/site/pack/local/opt",
+        "ignoreGlobs": ["**/*_spec.lua", "**/*_test.lua", "**/test/**", "**/tests/**", "**/test_helper/**"]
+      }
+    ]
   }
 }

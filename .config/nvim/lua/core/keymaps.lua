@@ -12,6 +12,7 @@ keymap.set("n", "<S-h>", ":bprevious<CR>", { silent = true, desc = "Go to next b
 
 keymap.set("n", "<leader>y", function()
   local path = vim.fn.expand("%")
+  ---@cast path string
   local relative_path = vim.fn.fnamemodify(path, ":~:.")
 
   vim.fn.setreg("+", relative_path)

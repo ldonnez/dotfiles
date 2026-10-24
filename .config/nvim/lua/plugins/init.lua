@@ -26,6 +26,7 @@ pack.load({
   { "https://github.com/nvim-lualine/lualine.nvim" },
   events = { "BufReadPre", "BufNewFile" },
   setup = function()
+    ---@diagnostic disable-next-line: undefined-field
     require("lualine").setup({
       options = {
         theme = "auto",
@@ -63,12 +64,15 @@ pack.load({
   setup = function()
     local blink = require("blink.cmp")
 
+    ---@diagnostic disable-next-line: param-type-mismatch
     blink.setup({
       keymap = { preset = "enter" },
+      ---@diagnostic disable-next-line: missing-fields
       cmdline = {
         keymap = { preset = "super-tab" },
         completion = { menu = { auto_show = true } },
       },
+      ---@diagnostic disable-next-line: missing-fields
       sources = {
         default = { "lsp", "path", "snippets", "buffer" },
         per_filetype = {
@@ -80,7 +84,9 @@ pack.load({
         },
       },
       completion = {
+        ---@diagnostic disable-next-line: missing-fields
         documentation = { auto_show = true, auto_show_delay_ms = 0 },
+        ---@diagnostic disable-next-line: missing-fields
         ghost_text = { enabled = true },
       },
       signature = { enabled = true },
@@ -122,6 +128,7 @@ pack.load({
       "fzf-vim",
       fzf_colors = true,
       fzf_opts = { ["--no-scrollbar"] = true },
+      ---@diagnostic disable-next-line: missing-fields
       previewers = { builtin = { snacks_image = { enabled = true, render_inline = false } } },
       winopts = {
         row = 0.2,
@@ -138,7 +145,9 @@ pack.load({
           ["ctrl-q"] = actions.file_sel_to_qf,
           ["ctrl-y"] = function(selected)
             local path = require("fzf-lua.path")
-            local entry = path.entry_to_file(selected[1])
+            local file = selected[1]
+            ---@cast file string
+            local entry = file and path.entry_to_file(file)
             if entry.path == "<none>" then
               return
             end
@@ -364,12 +373,14 @@ pack.load({
 }, {
   { "https://github.com/folke/which-key.nvim" },
   setup = function()
+    ---@diagnostic disable-next-line: param-type-mismatch, missing-fields
     require("which-key").setup({ preset = "modern", show_help = false })
   end,
 }, {
   { "https://github.com/brenoprata10/nvim-highlight-colors" },
   events = { "BufReadPre" },
   setup = function()
+    ---@diagnostic disable-next-line: undefined-field
     require("nvim-highlight-colors").setup()
   end,
 }, {
@@ -389,6 +400,7 @@ pack.load({
   },
   filetypes = { "markdown" },
   setup = function()
+    ---@diagnostic disable-next-line: undefined-field
     require("render-markdown").setup({
       completions = { lsp = { enabled = true } },
       latex = { enabled = false },

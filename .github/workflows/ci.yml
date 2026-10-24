@@ -25,6 +25,7 @@ jobs:
     name: emmylua_check
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v7
       - name: Setup neovim
         shell: bash
         run: |
@@ -35,22 +36,30 @@ jobs:
           tar -xzf /tmp/nvim.tar.gz -C "$dest" --strip-components=1
           echo "$dest/bin" >> "$GITHUB_PATH"
 
-      - uses: actions/checkout@v7
-
-      - name: Install and Run EmmyLua Check
+      - name: Install plugins
+        shell: bash
+        env:
+          XDG_CONFIG_HOME: ${{ github.workspace }}/.config
         run: |
-          EMMYLUA_VERSION="0.18.0"
+          set -euo pipefail
+          export XDG_DATA_HOME="$HOME/.local/share"
+          nvim --headless -u NONE "+lua vim.pack.update(nil, { target = 'lockfile' })" +qa
 
+      - name: Install emmylua_check
+        shell: bash
+        run: |
+          set -euo pipefail
+          EMMYLUA_VERSION="0.25.1"
           INSTALL_DIR="$HOME/.local/bin/emmylua"
           mkdir -p "$INSTALL_DIR"
-
           URL="https://github.com/EmmyLuaLs/emmylua-analyzer-rust/releases/download/${EMMYLUA_VERSION}/emmylua_check-linux-x64.tar.gz"
-          curl -L "$URL" | tar -xzC "$INSTALL_DIR"
+          curl -fsSL "$URL" | tar -xzC "$INSTALL_DIR"
           chmod +x "$INSTALL_DIR/emmylua_check"
-
-          echo "$INSTALL_DIR" >> $GITHUB_PATH
+          echo "$INSTALL_DIR" >> "$GITHUB_PATH"
 
       - name: Run emmylua_check
-        run: emmylua_check --warnings-as-errors .config/nvim/lua --config ./.emmyrc.json
-        env:
-          VIMRUNTIME: /home/runner/nvim-stable/share/nvim/runtime
+        shell: bash
+        run: |
+          set -euo pipefail
+          export VIMRUNTIME="$(nvim --clean --headless -c 'lua io.write(vim.env.VIMRUNTIME)' -c 'quit')"
+          emmylua_check --warnings-as-errors .config/nvim/lua --config ./.emmyrc.json
