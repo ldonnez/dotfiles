@@ -435,6 +435,10 @@ pack.load({
       })
     end, { desc = "Memo: Capture to braindump" })
 
+    vim.keymap.set({ "x" }, "<leader>ma", function()
+      require("memo").archive()
+    end, { desc = "Memo: Archive selection" })
+
     vim.keymap.set({ "n" }, "<leader>mo", function()
       require("memo").open({
         window = {
