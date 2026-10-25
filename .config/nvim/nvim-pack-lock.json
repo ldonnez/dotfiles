@@ -28,7 +28,7 @@
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
     "fzf-lua": {
-      "rev": "507dfc85551ff2d9293ec215f10f19395252aada",
+      "rev": "5b88d6f0af7fcb41d4a8bb340bf70d7e3824ee9d",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "gitsigns.nvim": {
@@ -50,7 +50,7 @@
       "version": ">=0.0.0"
     },
     "memo.nvim": {
-      "rev": "877c66ad3f19597c18fae6c884ffea406fe167f8",
+      "rev": "6c99948cc4b1bbd3c5abeaa7cea265587b319e97",
       "src": "https://github.com/ldonnez/memo.nvim",
       "version": ">=0.0.0"
     },
@@ -76,7 +76,7 @@
       "version": ">=0.0.0"
     },
     "nvim-treesitter": {
-      "rev": "29212d826054bb2948fa9d3a99eca9bf6a050eb2",
+      "rev": "a2f694478be07f89c2d03cc17858a8745a400c4b",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "nvim-web-devicons": {
@@ -103,7 +103,7 @@
       "src": "https://github.com/tpope/vim-dadbod"
     },
     "vim-dadbod-completion": {
-      "rev": "a8dac0b3cf6132c80dc9b18bef36d4cf7a9e1fe6",
+      "rev": "8c65c6b02e8434e5360fc78097e489c05e899697",
       "src": "https://github.com/kristijanhusak/vim-dadbod-completion"
     },
     "vim-dadbod-ssh": {
