@@ -431,7 +431,7 @@ pack.load({
     vim.keymap.set({ "n", "v" }, "<leader>mc", function()
       require("memo").capture({
         target_header = "# " .. os.date("%Y-%m-%d"),
-        header_padding = 1,
+        padding = { top = 1, bottom = 1 },
       })
     end, { desc = "Memo: Capture to braindump" })
 
