@@ -446,6 +446,10 @@ pack.load({
       require("memo").archive()
     end, { desc = "Memo: Archive selection" })
 
+    vim.keymap.set({ "x" }, "<leader>mr", function()
+      require("memo").refile({ padding = { top = 1 } })
+    end, { desc = "Memo: Refile selection" })
+
     vim.keymap.set({ "n" }, "<leader>mo", function()
       require("memo").open({
         window = {
