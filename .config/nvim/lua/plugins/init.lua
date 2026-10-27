@@ -128,8 +128,15 @@ pack.load({
       "fzf-vim",
       fzf_colors = true,
       fzf_opts = { ["--no-scrollbar"] = true },
-      ---@diagnostic disable-next-line: missing-fields
-      previewers = { builtin = { snacks_image = { enabled = true, render_inline = false } } },
+      previewers = {
+        builtin = {
+          ---@diagnostic disable-next-line: missing-fields
+          snacks_image = { enabled = true, render_inline = false },
+          treesitter = {
+            disabled = { "markdown" }, -- Very slow otherwise on markdown files with lines > 1000
+          },
+        },
+      },
       winopts = {
         row = 0.2,
         height = 0.8,
