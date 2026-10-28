@@ -129,8 +129,13 @@ export SHELL=/bin/zsh
 # TERM
 export TERM=xterm-256color
 
-# EDITOR
-export EDITOR=nvim
+# Neovim as EDITOR and PAGER for man and git
+if command -v nvim &> /dev/null; then
+  export EDITOR=nvim
+  export MANPAGER='nvim +Man!'
+  export GIT_EDITOR='nvim'
+  export GIT_PAGER='nvim -R'
+fi
 
 # PATH
 path=(

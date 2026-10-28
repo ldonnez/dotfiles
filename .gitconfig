@@ -1,6 +1,5 @@
 [core]
 	excludesfile = ~/.gitignore_global
-	editor = nvim
 [user]
 	name = Lenny
 	email = lenny.donnez@gmail.com
@@ -14,3 +13,5 @@
 	directory = *
 [rerere]
 	enabled = true
+[color]
+	pager = no
