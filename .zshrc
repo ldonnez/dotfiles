@@ -130,7 +130,7 @@ export SHELL=/bin/zsh
 export TERM=xterm-256color
 
 # Neovim as EDITOR and PAGER for man and git
-if command -v nvim &> /dev/null; then
+if command -v nvim &>/dev/null; then
   export EDITOR=nvim
   export MANPAGER='nvim +Man!'
   export GIT_EDITOR='nvim'
@@ -187,7 +187,7 @@ autoload -U +X compinit && compinit
 zstyle ':completion:*' menu select
 
 # Terraform
-if [[ ! -a /usr/local/bin/terraform ]]; then
+if [[ ! -e /usr/local/bin/terraform ]]; then
   complete -o nospace -C /usr/local/bin/terraform terraform
 fi
 
@@ -196,15 +196,16 @@ fi
 #********* PLUGINS ***************************************************
 
 # Z
-if [[ ! -a ~/.zsh/plugins/zsh-z/zsh-z.plugin.zsh ]]; then
+if [[ ! -e ~/.zsh/plugins/zsh-z/zsh-z.plugin.zsh ]]; then
   git clone https://github.com/agkozak/zsh-z ~/.zsh/plugins/zsh-z
 fi
 source ~/.zsh/plugins/zsh-z/zsh-z.plugin.zsh
 
 # FZF TAB
-if [[ ! -a ~/.zsh/plugins/fzf-tab/fzf-tab.plugin.zsh ]]; then
+if [[ ! -e ~/.zsh/plugins/fzf-tab/fzf-tab.plugin.zsh ]]; then
   git clone https://github.com/Aloxaf/fzf-tab ~/.zsh/plugins/fzf-tab
 fi
+
 source ~/.zsh/plugins/fzf-tab/fzf-tab.plugin.zsh
 zstyle ':fzf-tab:*' use-fzf-default-opts yes
 
@@ -215,5 +216,3 @@ zstyle ':fzf-tab:*' use-fzf-default-opts yes
 if [[ -x ~/.local/bin/mise ]]; then
   eval "$(~/.local/bin/mise activate zsh)"
 fi
-
-
