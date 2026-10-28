@@ -220,6 +220,7 @@ pack.load({
         sql = { "sqlfmt" },
         terraform = { "terraform_fmt" },
         bash = { "shfmt" },
+        zsh = { "shfmt" },
         go = { "gofmt" },
         xml = { "xmllint" },
         http = { "kulala-fmt" },
