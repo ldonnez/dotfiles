@@ -433,22 +433,26 @@ pack.load({
     { src = "https://github.com/ldonnez/memo.nvim", version = vim.version.range("*") },
   },
   init = function()
-    vim.g.memo_default_capture_file = "braindump.md.asc"
+    vim.g.memo_default_refile_target = "braindump.md.asc"
   end,
   setup = function()
     vim.keymap.set({ "n", "v" }, "<leader>mc", function()
-      require("memo").capture({
+      require("memo").refile({
         target_header = "# " .. os.date("%Y-%m-%d"),
-        padding = { top = 1, bottom = 1 },
+        prepend = true,
+        move = false,
+        padding = { top = 1 },
       })
-    end, { desc = "Memo: Capture to braindump" })
+    end, { desc = "Memo: Refile to braindump" })
 
     vim.keymap.set({ "x" }, "<leader>ma", function()
-      require("memo").archive()
+      require("memo").archive({
+        template = "---\n\nArchived: ${datetime}\nSource: ${filename}\n\n${cursor}",
+      })
     end, { desc = "Memo: Archive selection" })
 
     vim.keymap.set({ "x" }, "<leader>mr", function()
-      require("memo").refile({ padding = { top = 1 } })
+      require("memo").refile({ prompt_path = true, remove_from_source = true, padding = { top = 1 } })
     end, { desc = "Memo: Refile selection" })
 
     vim.keymap.set({ "n" }, "<leader>mo", function()
@@ -457,7 +461,7 @@ pack.load({
           split = "vsplit",
         },
       })
-    end, { desc = "Memo: Open default capture file" })
+    end, { desc = "Memo: Open default refile file" })
 
     vim.keymap.set("n", "<leader>ms", function()
       require("memo").scratch({ window = { split = "split" } })
