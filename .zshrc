@@ -5,18 +5,16 @@
 autoload -Uz add-zsh-hook
 
 # History
-HISTFILE=$HOME/.history
+HISTFILE=$HOME/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
-setopt share_history
-setopt inc_append_history
-setopt append_history
-setopt hist_ignore_dups
-setopt histignorealldups
-setopt histreduceblanks
-setopt histignorespace
-setopt hist_no_store
-setopt extended_history
+
+setopt SHARE_HISTORY        # Share history across terminals and  write immediately
+setopt HIST_IGNORE_ALL_DUPS # Removes older duplicate entries when saving new ones
+setopt HIST_REDUCE_BLANKS   # Remove extra spaces from commands
+setopt HIST_IGNORE_SPACE    # Ignore commands starting with a space
+setopt HIST_NO_STORE        # Don't save history/fc commands
+setopt EXTENDED_HISTORY     # Save timestamps alongside history
 
 # Make sure regular keybindings persist in foreign terminal sessions (tmux & neovims term)
 bindkey -e
