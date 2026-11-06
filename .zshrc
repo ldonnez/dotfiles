@@ -202,8 +202,13 @@ fi
 source ~/.zsh/plugins/zsh-z/zsh-z.plugin.zsh
 
 # FZF TAB
-if [[ ! -e ~/.zsh/plugins/fzf-tab/fzf-tab.plugin.zsh ]]; then
-  git clone https://github.com/Aloxaf/fzf-tab ~/.zsh/plugins/fzf-tab
+if command -v fzf &>/dev/null; then
+  if [[ ! -e ~/.zsh/plugins/fzf-tab/fzf-tab.plugin.zsh ]]; then
+    git clone https://github.com/Aloxaf/fzf-tab ~/.zsh/plugins/fzf-tab
+  fi
+
+  source ~/.zsh/plugins/fzf-tab/fzf-tab.plugin.zsh
+  zstyle ':fzf-tab:*' use-fzf-default-opts yes
 fi
 
 source ~/.zsh/plugins/fzf-tab/fzf-tab.plugin.zsh
