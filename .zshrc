@@ -144,6 +144,7 @@ path=(
   "$HOME/.cargo/bin"
   "$HOME/.opencode/bin"
   "$HOME/.cabal/bin"
+  "$HOME/.atuin/bin"
   /usr/local/bin
   /usr/local/sbin
   /usr/bin
@@ -209,8 +210,13 @@ if command -v fzf &>/dev/null; then
   zstyle ':fzf-tab:*' use-fzf-default-opts yes
 fi
 
-source ~/.zsh/plugins/fzf-tab/fzf-tab.plugin.zsh
-zstyle ':fzf-tab:*' use-fzf-default-opts yes
+#*********************************************************************
+#
+#********* ATUIN *****************************************************
+
+if command -v atuin &>/dev/null; then
+  eval "$(atuin init zsh)"
+fi
 
 #*********************************************************************
 #
