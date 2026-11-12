@@ -39,8 +39,15 @@ fi
 #********* PROMPT ****************************************************
 
 setopt PROMPT_SUBST
-PROMPT='┌%F{green}[%n] [%F{green}%m]:%f%F{blue}%B%~%b%f$(git_prompt)%f
+PROMPT='┌%F{green}[%n] [%F{green}%m]:%f$(python_venv_prompt)%F{blue}%B%~%b%f$(git_prompt)%f
 └>'
+
+python_venv_prompt() {
+  if [[ -n "$VIRTUAL_ENV" ]]; then
+    # Extracts just the folder name of the venv and styles it in yellow
+    echo "%F{yellow}($(basename "$VIRTUAL_ENV"))%f "
+  fi
+}
 
 git_prompt() {
   local branch git_status
