@@ -434,6 +434,7 @@ pack.load({
   },
   init = function()
     vim.g.memo_default_refile_target = "braindump.md.asc"
+    vim.g.memo_archive_dir = ".archive"
   end,
   setup = function()
     vim.keymap.set({ "n", "v" }, "<leader>mc", function()
